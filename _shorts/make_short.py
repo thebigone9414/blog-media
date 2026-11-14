@@ -120,7 +120,7 @@ def narration_for(c):
 # release if no model present. sid 9 = deep male (중후한 남성); male voices are sid 6,7,8,9.
 SUPERTONIC_URL="https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/sherpa-onnx-supertonic-3-tts-int8-2026-05-11.tar.bz2"
 SUPERTONIC_DIR="sherpa-onnx-supertonic-3-tts-int8-2026-05-11"
-DEFAULT_MALE_SID=7
+DEFAULT_MALE_SID=8
 _ST_NEED=["duration_predictor.int8.onnx","text_encoder.int8.onnx","vector_estimator.int8.onnx",
           "vocoder.int8.onnx","tts.json","unicode_indexer.bin","voice.bin"]
 
