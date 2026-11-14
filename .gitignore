@@ -1,0 +1,8 @@
+# 생성물 - 저장소에 넣지 않는다
+__pycache__/
+*.pyc
+
+# 숏폼 엔진이 자동으로 내려받는 것 (합계 260MB 이상)
+_shorts/voice/sherpa-onnx-*/
+_shorts/voice/*.tar.bz2
+node_modules/

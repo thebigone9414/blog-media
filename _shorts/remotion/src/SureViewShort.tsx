@@ -87,17 +87,26 @@ const Stage: React.FC<{ card: Card; accent: string; accent2: string; cta: Data["
   const frame = useCurrentFrame(); const { fps } = useVideoConfig();
   const rise = interpolate(appear, [0, 1], [40, 0]);
   const box: React.CSSProperties = { opacity: appear, transform: `translateY(${rise}px)` };
-  if (card.flow) return (
-    <div style={{ ...box, display: "flex", flexDirection: "column", gap: 24 }}>
-      {card.flow.map((s, i) => {
-        const a = spring({ frame: frame - 6 - i * 7, fps, config: { damping: 16 } });
-        return <React.Fragment key={i}>
-          <div style={{ opacity: a, transform: `translateY(${(1 - a) * 24}px)`, padding: "38px 32px", borderRadius: 24, fontSize: 54, fontWeight: 800, textAlign: "center", background: `${mix(accent, 11)}1c`, border: `1px solid ${mix(accent, 45)}`, color: "#eafffb" }}>{s}</div>
-          {i < card.flow!.length - 1 && <div style={{ fontSize: 48, color: accent, textAlign: "center", opacity: a }}>↓</div>}
-        </React.Fragment>;
-      })}
-    </div>
-  );
+  // 3단 이상이면 조밀하게. 넉넉한 치수 그대로 3단을 그리면 세로로 624px 가 되어
+  // 자막 띠(위쪽 끝 y≈1140)를 침범한다.
+  if (card.flow) {
+    const tight = card.flow.length >= 3;
+    const pad = tight ? "24px 28px" : "38px 32px";
+    const fs = tight ? 46 : 54;
+    const gap = tight ? 14 : 24;
+    const arrow = tight ? 34 : 48;
+    return (
+      <div style={{ ...box, display: "flex", flexDirection: "column", gap }}>
+        {card.flow.map((s, i) => {
+          const a = spring({ frame: frame - 6 - i * 7, fps, config: { damping: 16 } });
+          return <React.Fragment key={i}>
+            <div style={{ opacity: a, transform: `translateY(${(1 - a) * 24}px)`, padding: pad, borderRadius: 24, fontSize: fs, fontWeight: 800, textAlign: "center", background: `${mix(accent, 11)}1c`, border: `1px solid ${mix(accent, 45)}`, color: "#eafffb" }}>{s}</div>
+            {i < card.flow!.length - 1 && <div style={{ fontSize: arrow, color: accent, textAlign: "center", opacity: a }}>↓</div>}
+          </React.Fragment>;
+        })}
+      </div>
+    );
+  }
   if (card.grid) return (
     <div style={{ ...box, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 26 }}>
       {card.grid.map((cell, i) => {
@@ -161,13 +170,17 @@ const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, d
                 const delay = 4 + wi * 3; wi++;
                 const a = spring({ frame: frame - delay, fps, config: { damping: 20 } });
                 const col = tk.b ? mix(data.accent, 75) : tk.em ? data.accent2 : "#f4f9fb";
-                return <span key={ti} style={{ display: "inline-block", opacity: a, transform: `translateY(${(1 - a) * 18}px)`, color: col }}>{tk.t}</span>;
+                // whiteSpace:pre - inline-block 은 토큰 가장자리 공백을 삼킨다.
+                // 없으면 "그런데 <b>탐랑</b>은" 이 "그런데탐랑은" 으로 붙어 나온다.
+                return <span key={ti} style={{ display: "inline-block", whiteSpace: "pre", opacity: a, transform: `translateY(${(1 - a) * 18}px)`, color: col }}>{tk.t}</span>;
               })}
             </div>
           ))}
         </div>
         {card.sub && <div style={{ marginTop: 40, fontSize: 40, lineHeight: 1.5, fontWeight: 500, color: "#9fb4c6", opacity: appear }}>{card.sub}</div>}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", paddingBottom: 40 }}>
+        {/* paddingBottom - 자막 띠(bottom:600, 최대 3줄 ≈ 180px)를 침범하지 않게 띄운다.
+            자막 bottom:600 + 3줄(약 180px) 이면 자막 윗끝이 y≈1140 이므로 1920-1140=780. */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", paddingBottom: 780 }}>
           <Stage card={card} accent={data.accent} accent2={data.accent2} cta={data.cta} appear={appear} />
         </div>
       </div>
