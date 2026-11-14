@@ -5,7 +5,9 @@
   "footer_brand": "MindLumi",
   "cta": {
     "naver": "blog.naver.com/sweetspring978",
-    "tistory": "mindlumi.ai"
+    "tistory": "mindlumi.ai",
+    "site": "mindlumi.ai",
+    "siteLabel": "내 원반과 제2명반 무료로 보기"
   },
   "voice_sid": 8,
   "voice_speed": 1.1,
@@ -33,8 +35,9 @@
       "dur": 5,
       "title": "그런데 <b>탐랑</b>은<br>여기 없다",
       "sub": "원반에서는 천이궁에 있다",
-      "big": "원반에 화탐격은 없다",
-      "narration": "그런데 탐랑은 여기 없습니다. 원반에서는 천이궁에 가 있어서 화탐격이 성립하지 않습니다."
+      "narration": "그런데 탐랑은 여기 없습니다. 원반에서는 천이궁에 가 있어서 화탐격이 성립하지 않습니다.",
+      "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/raw/14.png",
+      "caption": "탐랑은 천이궁에 있다"
     },
     {
       "tag": "제2명반",
@@ -53,8 +56,12 @@
       "dur": 5,
       "title": "화성 + 탐랑",
       "sub": "자미두수에서 손꼽는 길격",
-      "big": "화탐격 - 횡발의 구조",
-      "narration": "화성과 탐랑이 한 자리에 있으면 화탐격입니다. 갑자기 크게 이루는 횡발의 격이거든요."
+      "narration": "화성과 탐랑이 한 자리에 있으면 화탐격입니다. 갑자기 크게 이루는 횡발의 격이거든요.",
+      "images": [
+        "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/raw/20.png",
+        "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/raw/14.png"
+      ],
+      "caption": "화탐격 - 횡발의 구조"
     },
     {
       "tag": "같은 자리",

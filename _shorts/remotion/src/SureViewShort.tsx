@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  AbsoluteFill, Sequence, Audio, staticFile, useCurrentFrame, useVideoConfig,
+  AbsoluteFill, Sequence, Audio, Img, staticFile, useCurrentFrame, useVideoConfig,
   interpolate, spring, Easing,
 } from "remotion";
 
@@ -10,11 +10,16 @@ type Card = {
   tag: string; title: string; sub?: string;
   big?: string; flow?: string[]; grid?: string[]; stat?: { value: string; label: string; tone?: string };
   cta?: boolean;
+  // 캐릭터 그림. image 는 한 장, images 는 두 장을 나란히(별이 만나는 장면).
+  // 그림이 있으면 다른 연출(big/flow/grid)보다 우선한다 - 자막 띠까지 공간이 510px 뿐이라 겹쳐 쓸 수 없다.
+  image?: string; images?: string[]; caption?: string;
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
   fps: number; series: string; accent: string; accent2: string; footerBrand: string;
-  cta: { naver: string; tistory: string };
+  // site 를 주면 CTA 카드가 사이트를 크게 앞세우고 블로그는 아래 줄로 내려간다.
+  // 사이트 홍보가 목적인 채널(MindLumi)에서 블로그 링크가 주인공이 되면 안 된다.
+  cta: { naver: string; tistory: string; site?: string; siteLabel?: string };
   audio?: string | null; bgm?: string | null;
   totalFrames: number; cards: Card[];
 };
@@ -87,6 +92,36 @@ const Stage: React.FC<{ card: Card; accent: string; accent2: string; cta: Data["
   const frame = useCurrentFrame(); const { fps } = useVideoConfig();
   const rise = interpolate(appear, [0, 1], [40, 0]);
   const box: React.CSSProperties = { opacity: appear, transform: `translateY(${rise}px)` };
+
+  // 캐릭터 그림 - 다른 연출보다 먼저 본다.
+  if (card.image || card.images) {
+    const srcs = card.images ?? [card.image as string];
+    const two = srcs.length > 1;
+    // 캡션이 붙으면 그만큼 그림을 줄인다. 안 줄이면 자막 띠(y≈1140)를 침범한다.
+    const H = two ? 400 : card.caption ? 370 : 460;
+    return (
+      <div style={{ ...box, display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
+        <div style={{ display: "flex", gap: 24, alignItems: "flex-end", justifyContent: "center", width: "100%" }}>
+          {srcs.map((s, i) => {
+            const a = spring({ frame: frame - 4 - i * 9, fps, config: { damping: 18 } });
+            return (
+              <div key={i} style={{
+                width: two ? "48%" : "86%", height: H, borderRadius: 28, overflow: "hidden",
+                background: `${mix(accent, 10)}1a`, border: `1px solid ${mix(accent, 40)}`,
+                opacity: a, transform: `translateY(${(1 - a) * 28}px) scale(${0.94 + a * 0.06})`,
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <Img src={s} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              </div>
+            );
+          })}
+        </div>
+        {card.caption && (
+          <div style={{ fontSize: 44, fontWeight: 800, color: accent2, textAlign: "center" }}>{card.caption}</div>
+        )}
+      </div>
+    );
+  }
   // 3단 이상이면 조밀하게. 넉넉한 치수 그대로 3단을 그리면 세로로 624px 가 되어
   // 자막 띠(위쪽 끝 y≈1140)를 침범한다.
   if (card.flow) {
@@ -125,6 +160,27 @@ const Stage: React.FC<{ card: Card; accent: string; accent2: string; cta: Data["
       <div style={{ fontSize: 40, fontWeight: 600, color: "#c3d2df" }}>{card.stat.label}</div>
     </div>;
   }
+  if (card.cta && cta.site) return (
+    // 사이트가 주인공. 블로그는 아래 한 줄로.
+    <div style={{ ...box, display: "flex", flexDirection: "column", gap: 22 }}>
+      <div style={{
+        padding: "52px 44px", borderRadius: 30, textAlign: "center",
+        background: `linear-gradient(135deg, ${accent}, ${mix(accent, 30, false)})`,
+      }}>
+        <div style={{ fontSize: 34, fontWeight: 800, color: "rgba(255,255,255,0.85)" }}>
+          {cta.siteLabel ?? "지금 바로 확인"}
+        </div>
+        <div style={{ fontSize: 76, fontWeight: 900, color: "#ffffff", marginTop: 14, letterSpacing: -1 }}>
+          {cta.site}
+        </div>
+      </div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, padding: "22px 30px", borderRadius: 20, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.14)" }}>
+        <div style={{ width: 46, height: 46, borderRadius: 13, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, fontWeight: 900, background: "#03c75a", color: "#fff" }}>N</div>
+        <span style={{ fontSize: 28, fontWeight: 600, color: "#9fb4c6" }}>{cta.naver}</span>
+      </div>
+    </div>
+  );
+
   if (card.cta) return (
     <div style={{ ...box, display: "flex", flexDirection: "column", gap: 26 }}>
       {[["N", "#03c75a", "네이버 블로그", cta.naver], ["T", "#ff5a2e", "티스토리", cta.tistory]].map((r, i) => (
