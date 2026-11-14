@@ -12,7 +12,7 @@ type Card = {
   cta?: boolean;
   // 캐릭터 그림. image 는 한 장, images 는 두 장을 나란히(별이 만나는 장면).
   // 그림이 있으면 다른 연출(big/flow/grid)보다 우선한다 - 자막 띠까지 공간이 510px 뿐이라 겹쳐 쓸 수 없다.
-  image?: string; images?: string[]; caption?: string;
+  image?: string; images?: string[]; caption?: string; fit?: "cover" | "contain";
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
@@ -111,7 +111,10 @@ const Stage: React.FC<{ card: Card; accent: string; accent2: string; cta: Data["
                 opacity: a, transform: `translateY(${(1 - a) * 28}px) scale(${0.94 + a * 0.06})`,
                 display: "flex", alignItems: "center", justifyContent: "center",
               }}>
-                <Img src={s} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                {/* cover 가 기본. 캐릭터는 꽉 채우는 게 낫다.
+                    명반 캡처처럼 글자가 들어간 그림은 fit:"contain" 을 줘야 한다.
+                    안 주면 좌우가 잘려 별 이름이 반쯤 날아간다(2026-11-15 에 실제로 그랬다). */}
+                <Img src={s} style={{ width: "100%", height: "100%", objectFit: card.fit === "contain" ? "contain" : "cover" }} />
               </div>
             );
           })}
@@ -244,7 +247,7 @@ const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, d
       {/* brand strip - kept high (above YouTube Shorts bottom UI) */}
       <div style={{ position: "absolute", left: 90, right: 150, top: 116, display: "flex", alignItems: "center", justifyContent: "space-between", opacity: 0.9 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 32, fontWeight: 800, color: "#dbe7f0" }}>
-          <div style={{ width: 42, height: 42, borderRadius: 11, background: `linear-gradient(135deg,${data.accent},#3862b4)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, fontWeight: 900, color: "#06131f" }}>S</div>{data.footerBrand}
+          <div style={{ width: 42, height: 42, borderRadius: 11, background: `linear-gradient(135deg,${data.accent},#3862b4)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, fontWeight: 900, color: "#06131f" }}>{data.footerBrand.charAt(0).toUpperCase()}</div>{data.footerBrand}
         </div>
         <div style={{ fontSize: 30, fontWeight: 700, color: "#8aa0b4" }}>{data.series} #{String(card.idx + 1).padStart(2, "0")}</div>
       </div>
