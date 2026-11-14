@@ -116,24 +116,57 @@ def narration_for(c):
     return ". ".join(p for p in parts if p)
 
 # ---------- offline TTS ----------
-def load_tts(voice_dir):
+# Default voice: Supertonic 3 (Korean, multi-speaker, no espeak). Auto-downloaded from GitHub
+# release if no model present. sid 9 = deep male (중후한 남성); male voices are sid 6,7,8,9.
+SUPERTONIC_URL="https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/sherpa-onnx-supertonic-3-tts-int8-2026-05-11.tar.bz2"
+SUPERTONIC_DIR="sherpa-onnx-supertonic-3-tts-int8-2026-05-11"
+DEFAULT_MALE_SID=9
+_ST_NEED=["duration_predictor.int8.onnx","text_encoder.int8.onnx","vector_estimator.int8.onnx",
+          "vocoder.int8.onnx","tts.json","unicode_indexer.bin","voice.bin"]
+
+def _is_supertonic(d): return d and all(os.path.exists(os.path.join(d,n)) for n in _ST_NEED)
+
+def ensure_voice(voice_dir):
+    """Return a usable model dir, downloading Supertonic if needed. None if unavailable."""
+    if voice_dir and os.path.isdir(voice_dir):
+        if _is_supertonic(voice_dir): return voice_dir
+        if _is_supertonic(os.path.join(voice_dir,SUPERTONIC_DIR)): return os.path.join(voice_dir,SUPERTONIC_DIR)
+        if os.path.exists(os.path.join(voice_dir,"model.onnx")): return voice_dir  # mms/vits/kokoro
+    cache=voice_dir if (voice_dir and os.path.isdir(voice_dir)) else "/tmp/_stvoice"
+    os.makedirs(cache,exist_ok=True)
+    sub=os.path.join(cache,SUPERTONIC_DIR)
+    if _is_supertonic(sub): return sub
+    try:
+        tb=os.path.join(cache,"st.tar.bz2"); print("[voice] downloading supertonic...")
+        if subprocess.run(["curl","-sL","--max-time","300",SUPERTONIC_URL,"-o",tb]).returncode or not os.path.exists(tb):
+            raise RuntimeError("download failed")
+        subprocess.run(["tar","xjf",tb,"-C",cache],check=True)
+        return sub if _is_supertonic(sub) else None
+    except Exception as e:
+        print("[voice] supertonic fetch failed:",repr(e)); return None
+
+def load_tts(mdir):
     import sherpa_onnx
-    f=lambda n: os.path.join(voice_dir,n)
-    model=f("model.onnx")
-    tokens=f("tokens.txt")
-    if not (os.path.exists(model) and os.path.exists(tokens)):
-        # try any *.onnx
-        on=[x for x in os.listdir(voice_dir) if x.endswith(".onnx")]
-        if not on: raise FileNotFoundError("no .onnx in voice dir")
+    f=lambda n: os.path.join(mdir,n)
+    mc=sherpa_onnx.OfflineTtsModelConfig(num_threads=4,provider="cpu")
+    if _is_supertonic(mdir):
+        mc.supertonic=sherpa_onnx.OfflineTtsSupertonicModelConfig(
+            duration_predictor=f("duration_predictor.int8.onnx"),text_encoder=f("text_encoder.int8.onnx"),
+            vector_estimator=f("vector_estimator.int8.onnx"),vocoder=f("vocoder.int8.onnx"),
+            tts_json=f("tts.json"),unicode_indexer=f("unicode_indexer.bin"),voice_style=f("voice.bin"))
+        return sherpa_onnx.OfflineTts(sherpa_onnx.OfflineTtsConfig(model=mc,max_num_sentences=1))
+    model=f("model.onnx"); tokens=f("tokens.txt")
+    if not os.path.exists(model):
+        on=[x for x in os.listdir(mdir) if x.endswith(".onnx")]
+        if not on: raise FileNotFoundError("no model in voice dir")
         model=f(on[0])
-    data_dir=f("espeak-ng-data"); dd=data_dir if os.path.isdir(data_dir) else ""
-    dict_dir=f("dict"); dcd=dict_dir if os.path.isdir(dict_dir) else ""
+    dd=f("espeak-ng-data"); dd=dd if os.path.isdir(dd) else ""
+    dcd=f("dict"); dcd=dcd if os.path.isdir(dcd) else ""
     voices=f("voices.bin")
-    mc=sherpa_onnx.OfflineTtsModelConfig(num_threads=2,provider="cpu")
-    if os.path.exists(voices):  # kokoro
-        lex=",".join(f(x) for x in os.listdir(voice_dir) if x.startswith("lexicon") and x.endswith(".txt"))
+    if os.path.exists(voices):
+        lex=",".join(f(x) for x in os.listdir(mdir) if x.startswith("lexicon") and x.endswith(".txt"))
         mc.kokoro=sherpa_onnx.OfflineTtsKokoroModelConfig(model=model,voices=voices,tokens=tokens,data_dir=dd,dict_dir=dcd,lexicon=lex)
-    else:  # vits / mms / piper
+    else:
         mc.vits=sherpa_onnx.OfflineTtsVitsModelConfig(model=model,tokens=tokens,data_dir=dd,dict_dir=dcd)
     return sherpa_onnx.OfflineTts(sherpa_onnx.OfflineTtsConfig(model=mc,max_num_sentences=1))
 
@@ -141,7 +174,9 @@ def synth_voice(spec, voice_dir, sid, speed):
     """Return (wav_path, per_card_durations) or (None, None) on failure."""
     import numpy as np
     try:
-        tts=load_tts(voice_dir)
+        mdir=ensure_voice(voice_dir)
+        if not mdir: raise RuntimeError("no usable voice model")
+        tts=load_tts(mdir)
         lead, tail = 0.45, 0.6
         clips=[]; sr=None
         for c in spec["cards"]:
@@ -157,7 +192,7 @@ def synth_voice(spec, voice_dir, sid, speed):
             if n>0: seg[st:st+n]=clip[:n]
             segs.append(seg)
         track=np.clip(np.concatenate(segs),-1,1)
-        wavp=os.path.join(os.path.dirname(voice_dir) or ".","_voice_track.wav")
+        wavp="/tmp/_voice_track_%d.wav"%os.getpid()
         with wave.open(wavp,'wb') as w:
             w.setnchannels(1);w.setsampwidth(2);w.setframerate(sr);w.writeframes((track*32767).astype('<i2').tobytes())
         return wavp, durs
@@ -202,8 +237,8 @@ def main():
     base=os.path.dirname(os.path.abspath(out)); name=os.path.splitext(os.path.basename(out))[0]
     cdir=f"{base}/{name}_cards"; sdir=f"{base}/{name}_scenes"; os.makedirs(cdir,exist_ok=True); os.makedirs(sdir,exist_ok=True)
     voice_wav=None; durs=[float(c.get("dur",6.0)) for c in spec["cards"]]
-    if voice_dir and os.path.isdir(voice_dir):
-        sid=int(spec.get("voice_sid",0)); speed=float(spec.get("voice_speed",1.0))
+    if os.environ.get("NO_VOICE")!="1":
+        sid=int(spec.get("voice_sid",DEFAULT_MALE_SID)); speed=float(spec.get("voice_speed",1.0))
         vw,vd=synth_voice(spec,voice_dir,sid,speed)
         if vw: voice_wav,durs=vw,vd
     asyncio.run(render_cards(spec,cdir))

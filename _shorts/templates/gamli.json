@@ -1,7 +1,7 @@
 {
   "series":"감리사로 가는 길","accent":"#2dd4bf","accent2":"#fbbf24","footer_brand":"SureView",
   "cta":{"naver":"blog.naver.com/sureview26","tistory":"sureview.tistory.com"},
-  "voice_speed":1.0,
+  "voice_speed":1.2,
   "cards":[
     {"tag":"감리사로 가는 길 · EP.1","dur":5.0,"title":"감사랑 감리,<br>같은 거 아니야?","sub":"가장 많이 헷갈리는 두 단어","big":"감사 <em>≠</em> 감리",
       "narration":"감사랑 감리, 같은 거 아니야? 가장 많이 헷갈리는 두 단어를 정리해 본다."},
