@@ -120,7 +120,7 @@ def narration_for(c):
 # release if no model present. sid 9 = deep male (중후한 남성); male voices are sid 6,7,8,9.
 SUPERTONIC_URL="https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/sherpa-onnx-supertonic-3-tts-int8-2026-05-11.tar.bz2"
 SUPERTONIC_DIR="sherpa-onnx-supertonic-3-tts-int8-2026-05-11"
-DEFAULT_MALE_SID=9
+DEFAULT_MALE_SID=7
 _ST_NEED=["duration_predictor.int8.onnx","text_encoder.int8.onnx","vector_estimator.int8.onnx",
           "vocoder.int8.onnx","tts.json","unicode_indexer.bin","voice.bin"]
 
@@ -215,8 +215,8 @@ def render_video(spec,durs,cdir,sdir,voice_wav,out):
     scenes=[]
     for i,c in enumerate(spec["cards"]):
         dur=durs[i]; img=f"{cdir}/c{i:02d}.jpg"; o=f"{sdir}/s{i:02d}.mp4"; tmp=o+".tmp.mp4"
-        cx=f"(in_w-1080)*(t/{dur})" if i%2==0 else f"(in_w-1080)*(1-t/{dur})"
-        vf=f"scale=1123:1996,crop=1080:1920:x='{cx}':y='(in_h-1920)/2',fade=t=in:st=0:d={FADE},format=yuv420p"
+        # static card (no pan) + gentle fade-in; dynamic motion comes in the Remotion build
+        vf=f"scale=1080:1920,fade=t=in:st=0:d={FADE},format=yuv420p"
         r=subprocess.run(["ffmpeg","-y","-loop","1","-framerate","30","-t",f"{dur}","-i",img,"-vf",vf,
             "-r","30","-c:v","libx264","-crf","18","-preset","veryfast","-pix_fmt","yuv420p",tmp],capture_output=True,text=True)
         if r.returncode!=0: print(r.stderr[-900:]); raise SystemExit(1)
