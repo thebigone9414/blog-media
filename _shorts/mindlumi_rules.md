@@ -66,5 +66,14 @@ cta           { naver, tistory, site: "mindlumi.ai",
 유튜브는 영상 파일 교체가 안 된다. 새로 올리고 옛 영상을 비공개로 내린다.
 1. 새 mp4 를 blog-media 에 커밋·푸시 → media_from_url → publish (privacyStatus public)
 2. 옛 post 를 update_post 로 title 앞에 [교체됨], privacyStatus "private"
-⚠️ 채널 madeForKids 가 설정돼 있지 않으면 경고가 뜬다. Studio 설정은 운영자 몫이다
+⭐ 올릴 때마다 options.youtube 에 madeForKids: false 를 넣는다 (채널은 2026-11-15 「아동용 아님」으로 설정됨)
+   빠뜨리면 경고가 뜨고 Studio 편집이 막힌다
+```
+
+## 7. 자가검증과 개선 (무승인 자동 - 운영자 지정 2026-11-15)
+
+```
+올리기 전  8카드 전부 프레임을 떠서 직접 본다. 잘림·겹침·빈 카드·자막 띠 침범이 있으면 올리지 않는다
+만들기 전  mindlumi/playbook.md §2 개선 절차를 돈다
+개선 반영  이 문서와 플레이북의 수정은 운영자에게 묻지 않고 바로 반영한다. 사후에 무엇을 바꿨는지만 보고
 ```
