@@ -30,7 +30,13 @@
       },
       "tistory": null,
       "shorts": null,
-      "excludeReason": null
+      "excludeReason": null,
+      "tistoryPending": true,
+      "tistoryEditUrl": "https://mindlumi.tistory.com/manage/newpost/1",
+      "tistoryTitle": "화탐격(火貪格)이란? 젠슨 황 명반으로 보는 원반과 제2명반의 차이",
+      "tistorySource": "mindlumi/tistory/20261114-hwatamgyeok.html",
+      "youtubeUrl": "https://www.youtube.com/watch?v=9JmBhjc0VcI",
+      "hookType": "인물 이름 + 반전"
     },
     {
       "logNo": "224468355493",
