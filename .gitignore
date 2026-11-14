@@ -6,3 +6,4 @@ __pycache__/
 _shorts/voice/sherpa-onnx-*/
 _shorts/voice/*.tar.bz2
 node_modules/
+_shorts/remotion/package-lock.json
