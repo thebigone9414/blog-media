@@ -1,0 +1,836 @@
+{
+  "blog": "sweetspring978",
+  "note": "uplika RSS 로 닿는 최근 50편 + 오늘 발행분. 전체 글수는 이보다 많다(운영자 확인 필요).",
+  "coverage": {
+    "from": "2026-06-23",
+    "to": "2026-11-14",
+    "count": 51,
+    "complete": false
+  },
+  "measuredAt": "2026-11-14",
+  "naverSummary": {
+    "checked": 50,
+    "cited": 8,
+    "exposed": 9,
+    "searchIntentTitleRatio": 0.18,
+    "weakestAxis": "search_title"
+  },
+  "posts": [
+    {
+      "logNo": "224477055499",
+      "title": "자미두수 젠슨 황 명반 - 횡발을 만든 부처궁이 움직였다",
+      "url": "https://blog.naver.com/sweetspring978/224477055499",
+      "category": "명반 해석",
+      "publishedAt": "2026-11-14",
+      "mainKeyword": "자미두수",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224468355493",
+      "title": "자미두수로 일과 직업운 보는 법 - 맞는 직업보다 맞는 역할이 먼저다",
+      "url": "https://blog.naver.com/sweetspring978/224468355493",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-11-07",
+      "mainKeyword": "자미두수로 일과 직업운 보는 법",
+      "naver": {
+        "cited": false,
+        "exposed": true,
+        "organicRank": 1
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224468318741",
+      "title": "[자미두수 전설] 17화 - 천량(天梁), 이정",
+      "url": "https://blog.naver.com/sweetspring978/224468318741",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-11-07",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": true,
+        "exposed": true,
+        "organicRank": 1
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224462013014",
+      "title": "자미두수로 재물운 보는 법 - 버는 자리와 쌓는 자리는 다르다",
+      "url": "https://blog.naver.com/sweetspring978/224462013014",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-11-02",
+      "mainKeyword": "자미두수로 재물운 보는 법",
+      "naver": {
+        "cited": false,
+        "exposed": true,
+        "organicRank": 5
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224456430742",
+      "title": "[자미두수 전설] 16화 - 화성(火星), 나타",
+      "url": "https://blog.naver.com/sweetspring978/224456430742",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-10-28",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": true,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224455319926",
+      "title": "자미두수 전서 리뷰Ⅰ - 태미부주해 (太微賦註解)",
+      "url": "https://blog.naver.com/sweetspring978/224455319926",
+      "category": "자미두수 전서",
+      "publishedAt": "2026-10-27",
+      "mainKeyword": "자미두수 전서 리뷰Ⅰ",
+      "naver": {
+        "cited": true,
+        "exposed": true,
+        "organicRank": 1
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224455163956",
+      "title": "MindLumi 자미두수 사주 감명 - 스티븐 스필버그",
+      "url": "https://blog.naver.com/sweetspring978/224455163956",
+      "category": "명반 해석",
+      "publishedAt": "2026-10-27",
+      "mainKeyword": "MindLumi 자미두수 사주 감명",
+      "naver": {
+        "cited": true,
+        "exposed": true,
+        "organicRank": 1
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224446923893",
+      "title": "[자미두수 전설] 15화 - 영성(鈴星), 뇌진자",
+      "url": "https://blog.naver.com/sweetspring978/224446923893",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-10-19",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224441905162",
+      "title": "자미두수 전서 리뷰Ⅰ - 골수부주해 (骨髓賦註解)",
+      "url": "https://blog.naver.com/sweetspring978/224441905162",
+      "category": "자미두수 전서",
+      "publishedAt": "2026-10-14",
+      "mainKeyword": "자미두수 전서 리뷰Ⅰ",
+      "naver": {
+        "cited": true,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224440657676",
+      "title": "MindLumi 자미두수 사주 감명 - 서장훈",
+      "url": "https://blog.naver.com/sweetspring978/224440657676",
+      "category": "명반 해석",
+      "publishedAt": "2026-10-13",
+      "mainKeyword": "MindLumi 자미두수 사주 감명",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224439504596",
+      "title": "[자미두수 전설] 14화 - 태양(太陽), 서개",
+      "url": "https://blog.naver.com/sweetspring978/224439504596",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-10-12",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224434524636",
+      "title": "자미두수 전서 리뷰Ⅰ - 증보태미부 (增補太微賦)",
+      "url": "https://blog.naver.com/sweetspring978/224434524636",
+      "category": "자미두수 전서",
+      "publishedAt": "2026-10-07",
+      "mainKeyword": "자미두수 전서 리뷰Ⅰ",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224434497997",
+      "title": "자미두수 전서 리뷰Ⅰ - 중보두수각솔 (重報斗數殼率)",
+      "url": "https://blog.naver.com/sweetspring978/224434497997",
+      "category": "자미두수 전서",
+      "publishedAt": "2026-10-07",
+      "mainKeyword": "자미두수 전서 리뷰Ⅰ",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224433441670",
+      "title": "MindLumi 자미두수 사주 감명 - 빌리 브란트",
+      "url": "https://blog.naver.com/sweetspring978/224433441670",
+      "category": "명반 해석",
+      "publishedAt": "2026-10-06",
+      "mainKeyword": "MindLumi 자미두수 사주 감명",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224433400924",
+      "title": "[자미두수 전설] 13화 - 천상(天相), 문중",
+      "url": "https://blog.naver.com/sweetspring978/224433400924",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-10-06",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224430995641",
+      "title": "자미두수 전서 리뷰Ⅰ - 두수발미론 (斗數發微論)",
+      "url": "https://blog.naver.com/sweetspring978/224430995641",
+      "category": "자미두수 전서",
+      "publishedAt": "2026-10-04",
+      "mainKeyword": "자미두수 전서 리뷰Ⅰ",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224430303676",
+      "title": "MindLumi 자미두수 사주 감명 - 김제동",
+      "url": "https://blog.naver.com/sweetspring978/224430303676",
+      "category": "명반 해석",
+      "publishedAt": "2026-10-03",
+      "mainKeyword": "MindLumi 자미두수 사주 감명",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224430200552",
+      "title": "[자미두수 전설] 12화 - 거문(巨門), 마천금",
+      "url": "https://blog.naver.com/sweetspring978/224430200552",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-10-03",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224428603112",
+      "title": "자미두수 전서 리뷰Ⅰ - 두수준승 (斗數準繩)",
+      "url": "https://blog.naver.com/sweetspring978/224428603112",
+      "category": "자미두수 전서",
+      "publishedAt": "2026-10-01",
+      "mainKeyword": "자미두수 전서 리뷰Ⅰ",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224427270261",
+      "title": "MindLumi 자미두수 사주 감명 - 월트 디즈니",
+      "url": "https://blog.naver.com/sweetspring978/224427270261",
+      "category": "명반 해석",
+      "publishedAt": "2026-09-30",
+      "mainKeyword": "MindLumi 자미두수 사주 감명",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224426330397",
+      "title": "[자미두수 전설] 11화 - 천기(天機), 강태공",
+      "url": "https://blog.naver.com/sweetspring978/224426330397",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-09-29",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224425247210",
+      "title": "자미두수 전서 리뷰Ⅰ - 성원론 (星垣論)",
+      "url": "https://blog.naver.com/sweetspring978/224425247210",
+      "category": "자미두수 전서",
+      "publishedAt": "2026-09-28",
+      "mainKeyword": "자미두수 전서 리뷰Ⅰ",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224423958030",
+      "title": "자미두수 전서 리뷰Ⅰ - 형성부 (形性賦)",
+      "url": "https://blog.naver.com/sweetspring978/224423958030",
+      "category": "자미두수 전서",
+      "publishedAt": "2026-09-27",
+      "mainKeyword": "자미두수 전서 리뷰Ⅰ",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224423339909",
+      "title": "MindLumi 자미두수 사주 감명 - 숀 코너리",
+      "url": "https://blog.naver.com/sweetspring978/224423339909",
+      "category": "명반 해석",
+      "publishedAt": "2026-09-26",
+      "mainKeyword": "MindLumi 자미두수 사주 감명",
+      "naver": {
+        "cited": true,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224423174532",
+      "title": "[자미두수 전설] 10화 - 칠살(七殺), 황비호",
+      "url": "https://blog.naver.com/sweetspring978/224423174532",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-09-26",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224421980913",
+      "title": "MindLumi 자미두수 사주 감명 - 무하마드 알리",
+      "url": "https://blog.naver.com/sweetspring978/224421980913",
+      "category": "명반 해석",
+      "publishedAt": "2026-09-24",
+      "mainKeyword": "MindLumi 자미두수 사주 감명",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224418865057",
+      "title": "자미두수 전서 리뷰Ⅰ - 태미부 (太微賦)",
+      "url": "https://blog.naver.com/sweetspring978/224418865057",
+      "category": "자미두수 전서",
+      "publishedAt": "2026-09-21",
+      "mainKeyword": "자미두수 전서 리뷰Ⅰ",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224417689218",
+      "title": "[자미두수 전설] 9화 - 태음(太陰), 가씨",
+      "url": "https://blog.naver.com/sweetspring978/224417689218",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-09-20",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224410085137",
+      "title": "[자미두수 전설] 8화 - 문곡(文曲), 백읍고",
+      "url": "https://blog.naver.com/sweetspring978/224410085137",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-09-13",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224401804850",
+      "title": "[자미두수 전설] 7화 - 자미(紫微), 백읍고",
+      "url": "https://blog.naver.com/sweetspring978/224401804850",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-09-05",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224394199562",
+      "title": "MindLumi 자미두수 사주 감명 결과 - 이재용 회장",
+      "url": "https://blog.naver.com/sweetspring978/224394199562",
+      "category": "명반 해석",
+      "publishedAt": "2026-08-29",
+      "mainKeyword": "MindLumi 자미두수 사주 감명 결과",
+      "naver": {
+        "cited": false,
+        "exposed": true,
+        "organicRank": 1
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224394082765",
+      "title": "[자미두수 전설] 6화 - 천동(天同), 문왕",
+      "url": "https://blog.naver.com/sweetspring978/224394082765",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-08-29",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224388892055",
+      "title": "[자미두수 전설] 5화 - 록존(祿存), 비간",
+      "url": "https://blog.naver.com/sweetspring978/224388892055",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-08-24",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224379530144",
+      "title": "MindLumi 자미두수 감명 결과 - JP.모건",
+      "url": "https://blog.naver.com/sweetspring978/224379530144",
+      "category": "명반 해석",
+      "publishedAt": "2026-08-15",
+      "mainKeyword": "MindLumi 자미두수 감명 결과",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224379428831",
+      "title": "[자미두수 전설] 4화 - 천부(天府), 황후",
+      "url": "https://blog.naver.com/sweetspring978/224379428831",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-08-15",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224370420515",
+      "title": "★ 자미두수 자동 감명 MindLumi 오픈 - AI 해석과 무엇이 다른가 ★",
+      "url": "https://blog.naver.com/sweetspring978/224370420515",
+      "category": "MindLumi 서비스",
+      "publishedAt": "2026-08-06",
+      "mainKeyword": "자미두수 자동 감명 MindLumi 오픈",
+      "naver": {
+        "cited": true,
+        "exposed": true,
+        "organicRank": 1
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224368112522",
+      "title": "MindLumi 자미두수 감명 결과 - 스티브잡스",
+      "url": "https://blog.naver.com/sweetspring978/224368112522",
+      "category": "명반 해석",
+      "publishedAt": "2026-08-04",
+      "mainKeyword": "MindLumi 자미두수 감명 결과",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224368034461",
+      "title": "[자미두수 전설] 3화 - 염정(廉貞), 비중",
+      "url": "https://blog.naver.com/sweetspring978/224368034461",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-08-04",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224365605901",
+      "title": "MindLumi 자미두수 감명 결과 - 아델",
+      "url": "https://blog.naver.com/sweetspring978/224365605901",
+      "category": "명반 해석",
+      "publishedAt": "2026-08-02",
+      "mainKeyword": "MindLumi 자미두수 감명 결과",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224365592291",
+      "title": "MindLumi 자미두수 감명 결과 - 노무현 전대통령",
+      "url": "https://blog.naver.com/sweetspring978/224365592291",
+      "category": "명반 해석",
+      "publishedAt": "2026-08-02",
+      "mainKeyword": "MindLumi 자미두수 감명 결과",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": "정치인"
+    },
+    {
+      "logNo": "224365572382",
+      "title": "[자미두수 전설] 2화 - 탐랑(貪狼), 달기",
+      "url": "https://blog.naver.com/sweetspring978/224365572382",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-08-02",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224356685161",
+      "title": "MindLumi 자미두수 감명 결과 - 살바도르 달리",
+      "url": "https://blog.naver.com/sweetspring978/224356685161",
+      "category": "명반 해석",
+      "publishedAt": "2026-07-24",
+      "mainKeyword": "MindLumi 자미두수 감명 결과",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224356629369",
+      "title": "MindLumi 자미두수 감명 결과 - 이재명 대통령",
+      "url": "https://blog.naver.com/sweetspring978/224356629369",
+      "category": "명반 해석",
+      "publishedAt": "2026-07-24",
+      "mainKeyword": "MindLumi 자미두수 감명 결과",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": "정치인"
+    },
+    {
+      "logNo": "224356594393",
+      "title": "[자미두수 전설] 1화 - 파군(破軍), 주왕",
+      "url": "https://blog.naver.com/sweetspring978/224356594393",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-07-24",
+      "mainKeyword": "자미두수 전설",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224355903644",
+      "title": "자미두수 19정성(正星) 캐릭터 - MindLumi",
+      "url": "https://blog.naver.com/sweetspring978/224355903644",
+      "category": "자미두수 기본",
+      "publishedAt": "2026-07-23",
+      "mainKeyword": "자미두수 19정성",
+      "naver": {
+        "cited": true,
+        "exposed": true,
+        "organicRank": 1
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224355898175",
+      "title": "MindLumi 자미두수 감명 결과 - 재클린 케네디",
+      "url": "https://blog.naver.com/sweetspring978/224355898175",
+      "category": "명반 해석",
+      "publishedAt": "2026-07-23",
+      "mainKeyword": "MindLumi 자미두수 감명 결과",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224343593685",
+      "title": "MindLumi 자미두수 감명 결과 - 로버트 다우니 주니어",
+      "url": "https://blog.naver.com/sweetspring978/224343593685",
+      "category": "명반 해석",
+      "publishedAt": "2026-07-11",
+      "mainKeyword": "MindLumi 자미두수 감명 결과",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224343560753",
+      "title": "★ MindLumi 오픈 준비 (9/7, 월) ★ 1주차",
+      "url": "https://blog.naver.com/sweetspring978/224343560753",
+      "category": "MindLumi 서비스",
+      "publishedAt": "2026-07-11",
+      "mainKeyword": "MindLumi 오픈 준비",
+      "naver": {
+        "cited": false,
+        "exposed": true,
+        "organicRank": 1
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    },
+    {
+      "logNo": "224336897579",
+      "title": "MindLumi 자미두수 감명 결과 - 박근혜",
+      "url": "https://blog.naver.com/sweetspring978/224336897579",
+      "category": "명반 해석",
+      "publishedAt": "2026-07-05",
+      "mainKeyword": "MindLumi 자미두수 감명 결과",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": "정치인"
+    },
+    {
+      "logNo": "224328821195",
+      "title": "MindLumi 자미두수 감명 결과 - 문재인",
+      "url": "https://blog.naver.com/sweetspring978/224328821195",
+      "category": "명반 해석",
+      "publishedAt": "2026-06-27",
+      "mainKeyword": "MindLumi 자미두수 감명 결과",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": "정치인"
+    },
+    {
+      "logNo": "224324998242",
+      "title": "MindLumi 자미두수 감명 결과 - 손석희",
+      "url": "https://blog.naver.com/sweetspring978/224324998242",
+      "category": "명반 해석",
+      "publishedAt": "2026-06-23",
+      "mainKeyword": "MindLumi 자미두수 감명 결과",
+      "naver": {
+        "cited": false,
+        "exposed": false,
+        "organicRank": null
+      },
+      "tistory": null,
+      "shorts": null,
+      "excludeReason": null
+    }
+  ]
+}
