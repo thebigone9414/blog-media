@@ -69,8 +69,8 @@ const Caption: React.FC<{ words: Word[]; tCard: number; accent2: string }> = ({ 
   if (!words?.length) return null;
   return (
     <div style={{
-      position: "absolute", left: 92, right: 92, bottom: 196, display: "flex", flexWrap: "wrap", gap: "0 16px",
-      fontSize: 44, fontWeight: 800, lineHeight: 1.4, justifyContent: "center", textAlign: "center",
+      position: "absolute", left: 90, right: 150, bottom: 600, display: "flex", flexWrap: "wrap", gap: "0 16px",
+      fontSize: 42, fontWeight: 800, lineHeight: 1.4, justifyContent: "center", textAlign: "center",
     }}>
       {words.map((wd, i) => {
         const spoken = tCard >= wd.s; const current = tCard >= wd.s && tCard < wd.e;
@@ -148,7 +148,7 @@ const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, d
       <Dots total={total} idx={card.idx} accent={data.accent} />
       {/* watermark */}
       <div style={{ position: "absolute", right: 70, top: 150, fontSize: 300, fontWeight: 900, color: "rgba(255,255,255,0.035)", lineHeight: 1 }}>{String(card.idx + 1).padStart(2, "0")}</div>
-      <div style={{ position: "absolute", inset: 0, padding: "150px 92px", display: "flex", flexDirection: "column" }}>
+      <div style={{ position: "absolute", inset: 0, padding: "232px 150px 860px 90px", display: "flex", flexDirection: "column" }}>
         {/* chip */}
         <div style={{ opacity: appear, transform: `translateY(${(1 - appear) * 20}px)`, display: "inline-flex", alignSelf: "flex-start", alignItems: "center", gap: 14, padding: "16px 28px", border: `1px solid ${mix(data.accent, 55)}`, borderRadius: 99, fontSize: 30, fontWeight: 700, color: mix(data.accent, 80) }}>
           <span style={{ color: "#0b1220", background: data.accent, borderRadius: 8, padding: "2px 12px", fontSize: 28 }}>{String(card.idx + 1).padStart(2, "0")}</span>{card.tag}
@@ -167,17 +167,17 @@ const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, d
           ))}
         </div>
         {card.sub && <div style={{ marginTop: 40, fontSize: 40, lineHeight: 1.5, fontWeight: 500, color: "#9fb4c6", opacity: appear }}>{card.sub}</div>}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", paddingBottom: 220 }}>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", paddingBottom: 40 }}>
           <Stage card={card} accent={data.accent} accent2={data.accent2} cta={data.cta} appear={appear} />
         </div>
       </div>
       <Caption words={card.words} tCard={tCard} accent2={data.accent2} />
-      {/* footer */}
-      <div style={{ position: "absolute", left: 92, right: 92, bottom: 78, display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 34 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 36, fontWeight: 800, color: "#dbe7f0" }}>
-          <div style={{ width: 46, height: 46, borderRadius: 12, background: `linear-gradient(135deg,${data.accent},#3862b4)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, fontWeight: 900, color: "#06131f" }}>S</div>{data.footerBrand}
+      {/* brand strip - kept high (above YouTube Shorts bottom UI) */}
+      <div style={{ position: "absolute", left: 90, right: 150, top: 116, display: "flex", alignItems: "center", justifyContent: "space-between", opacity: 0.9 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 32, fontWeight: 800, color: "#dbe7f0" }}>
+          <div style={{ width: 42, height: 42, borderRadius: 11, background: `linear-gradient(135deg,${data.accent},#3862b4)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, fontWeight: 900, color: "#06131f" }}>S</div>{data.footerBrand}
         </div>
-        <div style={{ fontSize: 32, fontWeight: 700, color: "#7f97ab" }}>{data.series} #{String(card.idx + 1).padStart(2, "0")}</div>
+        <div style={{ fontSize: 30, fontWeight: 700, color: "#8aa0b4" }}>{data.series} #{String(card.idx + 1).padStart(2, "0")}</div>
       </div>
     </AbsoluteFill>
   );
