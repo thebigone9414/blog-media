@@ -16,7 +16,7 @@ type Card = {
   // 찾아보기형(lookup). rows 가 있으면 카드 전체가 표 한 장이 된다 - 시청자가 자기 줄을 찾느라 멈추고 다시 본다.
   // 잘 되는 사주 숏츠(구독 수백 명 채널의 10만~30만 회)가 거의 이 형태였다(2026-11-16 벤치마크).
   // rows: [키, 값, 한마디]. note 는 표 아래 작은 주석, 자막은 띄우지 않는다(표를 가린다).
-  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; faceBase?: string; ask2?: string; kicker?: string;
+  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; bright?: boolean; hl?: string; faceBase?: string; ask2?: string; kicker?: string;
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
@@ -335,6 +335,69 @@ const LightLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) =
   );
 };
 
+// ---------- lookup card, bright professional (SureView 요약표 밝은 판) ----------
+// rows = [키, 큰 글자, 한마디]. 밝은 바탕 + 흰 줄 카드. 안전 영역: 오른쪽 150, 표는 y 1400 위.
+const BrightLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => {
+  const frame = useCurrentFrame(); const { fps } = useVideoConfig();
+  const rows = card.rows ?? []; const lines = parseTitle(card.title);
+  const RH = rows.length > 8 ? 78 : 90;
+  const KW = card.keyW ?? 110; const C2 = card.col2W ?? 290;
+  const INK = "#0f2a3a"; const HL = card.hl ?? "#0b8f80"; const WARM = "#e8590c";
+  const sweepStart = 20 + rows.length * 2;
+  const hi = frame > sweepStart ? Math.floor((frame - sweepStart) / 14) % rows.length : -1;
+  return (
+    <AbsoluteFill style={{ fontFamily: FONT, color: INK, background: "linear-gradient(170deg,#ffffff 0%,#eef8fb 48%,#dff1f4 100%)" }}>
+      <div style={{ position: "absolute", right: -180, top: -200, width: 640, height: 640, borderRadius: 999, background: `${data.accent}33` }} />
+      <div style={{ position: "absolute", left: -200, top: 1480, width: 700, height: 700, borderRadius: 999, background: `${data.accent2}2e` }} />
+      <div style={{ position: "absolute", left: 70, right: 150, top: 110, display: "flex", alignItems: "center", gap: 16, fontSize: 34, fontWeight: 900, color: INK }}>
+        <div style={{ width: 46, height: 46, borderRadius: 12, background: `linear-gradient(135deg,${data.accent},#1f6fb8)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, fontWeight: 900, color: "#fff" }}>{data.footerBrand.charAt(0).toUpperCase()}</div>{data.footerBrand}
+        <span style={{ marginLeft: "auto", fontSize: 27, fontWeight: 800, color: "#fff", background: HL, borderRadius: 99, padding: "6px 22px" }}>{card.tag}</span>
+      </div>
+      <div style={{ position: "absolute", left: 70, right: 150, top: 200 }}>
+        <div style={{ fontSize: 82, lineHeight: 1.18, fontWeight: 900, letterSpacing: -2 }}>
+          {lines.map((toks, li) => (
+            <div key={li}>{toks.map((tk, ti) => (
+              <span key={ti} style={{ whiteSpace: "pre", color: tk.b ? WARM : INK }}>{tk.t}</span>
+            ))}</div>
+          ))}
+        </div>
+        {card.sub && <div style={{ marginTop: 18, fontSize: 37, fontWeight: 800, color: HL }}>{card.sub}</div>}
+        {card.rowsHead && (
+          <div style={{ marginTop: 26, display: "flex", alignItems: "center", fontSize: 26, fontWeight: 800, color: "#5d7785", padding: "0 18px" }}>
+            <span style={{ width: KW }}>{card.rowsHead[0]}</span><span style={{ width: C2 }}>{card.rowsHead[1]}</span><span>{card.rowsHead[2]}</span>
+          </div>
+        )}
+        <div style={{ marginTop: card.rowsHead ? 10 : 30, display: "flex", flexDirection: "column", gap: 8 }}>
+          {rows.map((r, i) => {
+            const a = spring({ frame: frame - 6 - i * 2, fps, config: { damping: 18 } });
+            const on = i === hi;
+            return (
+              <div key={i} style={{
+                height: RH, display: "flex", alignItems: "center", padding: "0 18px", borderRadius: 18,
+                opacity: a, transform: `translateX(${(1 - a) * -30}px)`,
+                background: on ? "#fff4cc" : "#ffffff",
+                border: on ? `3px solid ${WARM}` : "3px solid rgba(15,42,58,0.07)",
+                boxShadow: "0 4px 14px rgba(20,70,90,0.10)",
+              }}>
+                <span style={{ width: KW, flexShrink: 0 }}>
+                  <span style={{ display: "inline-block", minWidth: 62, textAlign: "center", padding: "4px 12px", borderRadius: 12, fontSize: 40, fontWeight: 900, color: "#fff", background: HL }}>{r[0]}</span>
+                </span>
+                <span style={{ width: C2, flexShrink: 0, fontSize: 46, fontWeight: 900, color: on ? WARM : INK, whiteSpace: "nowrap" }}>{r[1]}</span>
+                <span style={{ fontSize: 32, fontWeight: 700, color: "#3d5866", whiteSpace: "nowrap" }}>{r[2]}</span>
+              </div>
+            );
+          })}
+        </div>
+        {card.note && <div style={{ marginTop: 16, fontSize: 25, fontWeight: 600, color: "#5d7785" }}>{card.note}</div>}
+        {card.ask && <div style={{ marginTop: 16, fontSize: 40, fontWeight: 900, color: INK }}>{card.ask}</div>}
+        <div style={{ marginTop: 12, fontSize: 36, fontWeight: 900, color: WARM }}>
+          {data.cta.siteLabel ?? "전체 글"} · {data.cta.site ?? ""}
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 // ---------- lookup card, pop (찾아보기형 - 눈에 띄는 판) ----------
 // 운영자 지정 2026-11-16: 숏츠는 눈길을 확 끌어야 한다. 잘 되는 영상의 좋은 점(강한 색·큰 훅·그림·좋아요 유도)은 따라 한다.
 // rows = [그림 자리(이모지 한 글자 또는 별 이름), 큰 글자, 빨간 한마디, 출생연도 줄]. faceBase 가 있으면 r[0] 이름의 캐릭터 얼굴을 쓴다.
@@ -419,6 +482,7 @@ const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, d
   const appear = spring({ frame: frame - 2, fps, config: { damping: 18, stiffness: 120 } });
   const lines = parseTitle(card.title);
   let wi = 0;
+  if (card.rows && card.bright) return <BrightLookupView card={card} data={data} />;
   if (card.rows && card.pop) return <PopLookupView card={card} data={data} />;
   if (card.rows) return card.light ? <LightLookupView card={card} data={data} /> : <LookupView card={card} data={data} />;
   return (

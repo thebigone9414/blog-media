@@ -54,7 +54,8 @@ def main():
     wav = os.path.join(REMO, "public", "voice.wav")
     with wave.open(wav, "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr); w.writeframes((track * 32767).astype("<i2").tobytes())
-    bgm = "bgm.mp3" if os.path.exists(os.path.join(REMO, "public", "bgm.mp3")) else None
+    bgm = spec.get("bgm") or "bgm.mp3"  # spec 에 "bgm": "bgm_light.mp3" 처럼 주면 그 파일을 쓴다 (없으면 기본 bgm.mp3)
+    bgm = bgm if os.path.exists(os.path.join(REMO, "public", bgm)) else None
 
     data = {"fps": FPS, "series": spec["series"], "accent": spec["accent"], "accent2": spec["accent2"],
             "footerBrand": spec.get("footer_brand", "SureView"), "cta": spec["cta"],
