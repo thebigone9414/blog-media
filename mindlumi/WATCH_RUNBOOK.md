@@ -11,11 +11,12 @@
 ## 일정표 (KST)
 
 ```
-월 07:40        주간 제작 → 화·목·토 글 3편 + 숏츠 3~4편(이틀에 1편, 다음 주 월요일분까지)이 「예약」으로 걸려야 한다
+월 07:40        주간 제작 → 화·목·토 글 3편 + 숏츠 7편(매일 1편, 다음 주 월요일분까지)이 「예약」으로 걸려야 한다
 월 08:00        지난주에 예약해 둔 숏츠 1편 (글 없는 날)
 화·목 07:30 네이버 / 08:00 유튜브
 토 21:00 네이버 / 21:30 유튜브
-일 10:10        티스토리 주간 일괄 (그 주 네이버 글 3편을 한 번에)
+매일 08:00      글이 없는 날의 숏츠 (숏츠는 매일 1편)
+⛔ 티스토리는 2026-11-16 운영자 결정으로 중단했다. 확인도 발행도 하지 않는다
 수·금 13:47     속보 점검 (발행 없음이 정상)
 일 20:20        사이트 점검·개선
 이 점검  매일 08:25 · 10:25 · 15:25 · 22:25
@@ -31,12 +32,9 @@
 ```
 예약·발행   uplika list_posts (workspaceId "ws_f7979700dc84fc70", limit 은 작게. 본문이 통째로 와서 길다)
             status 가 scheduled / published / failed / publishing 중 무엇인지, scheduledAt 이 맞는지
-            월요일 제작 뒤: 이번 주 화·목·토 글 3 + 숏츠 3~4 = 6~7건이 scheduled 인가
+            월요일 제작 뒤: 이번 주 화·목·토 글 3 + 숏츠 7 = 10건이 scheduled 인가
 인계 문서   Projects 로 JAMI 문서 목록을 보고 claude/weekly-*-handoff.md 중 「처리 완료」 표시가 없는 것이 있는가
-티스토리    WebFetch https://mindlumi.tistory.com/ (막히면 Claude in Chrome 새 탭) - 공개 글 목록이 index.json 의 tistoryUrl 과 맞는가
 연결        uplika bridge_status · list_accounts
-티스토리 로그인  토 22:25 와 일요일 점검 때만 본다. Claude in Chrome 새 탭으로 https://mindlumi.tistory.com/manage/posts/ - 로그인 화면으로 넘어가는지만. 탭은 닫는다
-            토요일 밤에 풀려 있으면 그때 미해결로 올려 운영자가 일요일 아침 전에 로그인할 수 있게 한다
 사이트(월 08:25)  mindlumi/site-log.md 맨 위가 어제인가 · Star-Chart Deploy 가 success 인가
 ```
 
@@ -58,10 +56,6 @@
     → get_help 로 원인 확인 후 retry_post 1회. 또 실패하면 같은 내용을 새 publish 로 한 번. 그래도 안 되면 미해결로 적는다
 네이버 글이 예약 시각을 1시간 넘겼는데 안 나감 (확장 offline)
     → 글은 확장이 돌아오면 나간다. 기다린다. 6시간 넘으면 미해결(운영자가 Chrome 을 봐야 함)
-티스토리 글 누락 (일 15:25 이후에 보는데 그 주 네이버 글이 티스토리에 없음. 평일에는 없는 것이 정상)
-    → 로그인이 살아 있으면 mindlumi/tistory/RUNBOOK.md 대로 빠진 것을 올린다(최대 3편). tistoryDraft 원고가 있으면 그것으로
-티스토리 비공개 대기(tistoryPending)
-    → 로그인이 살아 있으면 완료 → 공개 → 공개 발행 (본문은 건드리지 않는다)
 발행된 글·영상의 주소가 index.json 에 없음
     → url / youtubeUrl 을 채우고 status 를 published 로
 사이트가 안 열리거나 Deploy failure
@@ -78,7 +72,7 @@
 ```
 ## YYYY-MM-DD HH:MM
 확인    지나간 칸 N개 - 나간 것 N / 안 나간 것 N
-연결    네이버 확장 online|offline · 유튜브 ok · 티스토리 로그인 유지|풀림
+연결    네이버 확장 online|offline · 유튜브 ok
 조치    직접 한 것 (없으면 「없음」)
 미해결  운영자가 해야 하는 것 (없으면 「없음」)
 ```
