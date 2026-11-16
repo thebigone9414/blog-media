@@ -16,7 +16,7 @@ type Card = {
   // 찾아보기형(lookup). rows 가 있으면 카드 전체가 표 한 장이 된다 - 시청자가 자기 줄을 찾느라 멈추고 다시 본다.
   // 잘 되는 사주 숏츠(구독 수백 명 채널의 10만~30만 회)가 거의 이 형태였다(2026-11-16 벤치마크).
   // rows: [키, 값, 한마디]. note 는 표 아래 작은 주석, 자막은 띄우지 않는다(표를 가린다).
-  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string;
+  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; faceBase?: string; ask2?: string;
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
@@ -48,6 +48,7 @@ function parseTitle(html: string): Tok[][] {
 }
 
 const FONT = "'Noto Sans CJK KR','Noto Sans KR',sans-serif";
+const EFONT = "'Noto Sans CJK KR','Noto Sans KR','Noto Color Emoji',sans-serif";
 
 // ---------- background ----------
 const Bg: React.FC<{ accent: string }> = ({ accent }) => {
@@ -334,6 +335,79 @@ const LightLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) =
   );
 };
 
+// ---------- lookup card, pop (찾아보기형 - 눈에 띄는 판) ----------
+// 운영자 지정 2026-11-16: 숏츠는 눈길을 확 끌어야 한다. 잘 되는 영상의 좋은 점(강한 색·큰 훅·그림·좋아요 유도)은 따라 한다.
+// rows = [그림 자리(이모지 한 글자 또는 별 이름), 큰 글자, 빨간 한마디, 출생연도 줄]. faceBase 가 있으면 r[0] 이름의 캐릭터 얼굴을 쓴다.
+const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => {
+  const frame = useCurrentFrame(); const { fps } = useVideoConfig();
+  const rows = card.rows ?? []; const lines = parseTitle(card.title);
+  const many = rows.length > 10;
+  const RH = many ? 82 : 96; const C2 = card.col2W ?? 150; const AV = many ? 66 : 80;
+  const GOLD = "#ffd84a"; const RED = "#d1121f"; const INK = "#1c1020";
+  const pop = spring({ frame: frame - 1, fps, config: { damping: 9, stiffness: 160 } });
+  const sweepStart = 16 + rows.length * 2;
+  const hi = frame > sweepStart ? Math.floor((frame - sweepStart) / 12) % rows.length : -1;
+  const pulse = 1 + 0.04 * Math.sin(frame / 4);
+  return (
+    <AbsoluteFill style={{ fontFamily: EFONT, color: "#fff", background: "radial-gradient(120% 60% at 50% 0%,#ff5a3c 0%,#d1121f 38%,#8a0b1c 100%)" }}>
+      {Array.from({ length: 16 }).map((_, i) => {
+        const x = (i * 197) % 1080, y = (i * 331) % 1920, tw = 0.35 + 0.65 * Math.abs(Math.sin((frame + i * 9) / 11));
+        return <div key={i} style={{ position: "absolute", left: x, top: y, width: 10 + (i % 3) * 6, height: 10 + (i % 3) * 6, borderRadius: 99, background: GOLD, opacity: tw * 0.55, boxShadow: `0 0 18px ${GOLD}` }} />;
+      })}
+      <div style={{ position: "absolute", left: 56, right: 56, top: 92, display: "flex", alignItems: "center", gap: 12, fontSize: 28, fontWeight: 800, color: "#ffe9c2" }}>
+        <div style={{ width: 38, height: 38, borderRadius: 10, background: GOLD, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, fontWeight: 900, color: RED }}>{data.footerBrand.charAt(0).toUpperCase()}</div>{data.footerBrand}
+        <span style={{ marginLeft: "auto", fontSize: 26, fontWeight: 900, color: RED, background: GOLD, borderRadius: 99, padding: "4px 20px" }}>{card.tag}</span>
+      </div>
+      <div style={{ position: "absolute", left: 56, right: 56, top: 150 }}>
+        <div style={{ transform: `scale(${0.7 + 0.3 * pop})`, fontSize: 92, lineHeight: 1.14, fontWeight: 900, letterSpacing: -2.5, textAlign: "center", textShadow: "0 6px 0 rgba(60,0,10,0.55), 0 0 28px rgba(255,200,80,0.35)" }}>
+          {lines.map((toks, li) => (
+            <div key={li}>{toks.map((tk, ti) => (
+              <span key={ti} style={{ whiteSpace: "pre", color: tk.b ? GOLD : "#ffffff" }}>{tk.t}</span>
+            ))}</div>
+          ))}
+        </div>
+        {card.pill && (
+          <div style={{ marginTop: 16, display: "flex", justifyContent: "center" }}>
+            <span style={{ fontSize: 38, fontWeight: 900, color: INK, background: GOLD, borderRadius: 16, padding: "8px 30px", boxShadow: "0 5px 0 rgba(60,0,10,0.45)" }}>{card.pill}</span>
+          </div>
+        )}
+        <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 6 }}>
+          {rows.map((r, i) => {
+            const a = spring({ frame: frame - 5 - i * 2, fps, config: { damping: 14 } });
+            const on = i === hi;
+            return (
+              <div key={i} style={{
+                height: RH, display: "flex", alignItems: "center", gap: 14, padding: "0 14px", borderRadius: 20,
+                opacity: a, transform: `translateX(${(1 - a) * (i % 2 ? 60 : -60)}px) scale(${on ? 1.025 : 1})`,
+                background: on ? "#fff2a8" : "#fffdf6", border: on ? `4px solid ${GOLD}` : "4px solid rgba(255,255,255,0.0)",
+                boxShadow: on ? `0 0 26px ${GOLD}` : "0 4px 0 rgba(60,0,10,0.35)", color: INK,
+              }}>
+                {card.faceBase
+                  ? <Img src={`${card.faceBase}${r[0]}.png`} style={{ width: AV, height: AV, borderRadius: 999, border: `4px solid ${RED}`, objectFit: "cover", flexShrink: 0 }} />
+                  : <span style={{ width: AV, textAlign: "center", fontSize: AV * 0.78, lineHeight: 1, flexShrink: 0 }}>{r[0]}</span>}
+                <span style={{ width: C2, flexShrink: 0, fontSize: many ? 44 : 52, fontWeight: 900, color: on ? RED : INK, whiteSpace: "nowrap", letterSpacing: -1 }}>{r[1]}</span>
+                <span style={{ display: "flex", flexDirection: "column", justifyContent: "center", minWidth: 0 }}>
+                  <span style={{ fontSize: many ? 27 : 30, fontWeight: 900, color: RED, whiteSpace: "nowrap" }}>{r[2]}</span>
+                  {r[3] && <span style={{ fontSize: many ? 29 : 33, fontWeight: 800, color: INK, whiteSpace: "nowrap", letterSpacing: -0.6 }}>{r[3]}</span>}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+        {card.ask && (
+          <div style={{ marginTop: 18, display: "flex", justifyContent: "center" }}>
+            <span style={{ transform: `scale(${pulse})`, fontSize: 44, fontWeight: 900, color: INK, background: GOLD, borderRadius: 99, padding: "12px 40px", boxShadow: "0 6px 0 rgba(60,0,10,0.5)" }}>{card.ask}</span>
+          </div>
+        )}
+        {card.ask2 && <div style={{ marginTop: 14, fontSize: 36, fontWeight: 900, color: "#fff", textAlign: "center" }}>{card.ask2}</div>}
+        <div style={{ marginTop: 8, fontSize: 30, fontWeight: 800, color: "#ffe9c2", textAlign: "center" }}>
+          {card.note ? `${card.note} · ` : ""}{data.cta.site ?? ""}
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 // ---------- one card ----------
 const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, data, total }) => {
   const frame = useCurrentFrame(); const { fps } = useVideoConfig();
@@ -341,6 +415,7 @@ const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, d
   const appear = spring({ frame: frame - 2, fps, config: { damping: 18, stiffness: 120 } });
   const lines = parseTitle(card.title);
   let wi = 0;
+  if (card.rows && card.pop) return <PopLookupView card={card} data={data} />;
   if (card.rows) return card.light ? <LightLookupView card={card} data={data} /> : <LookupView card={card} data={data} />;
   return (
     <AbsoluteFill style={{ fontFamily: FONT, color: "#eef4f8" }}>
