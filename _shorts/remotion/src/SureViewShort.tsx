@@ -16,7 +16,7 @@ type Card = {
   // 찾아보기형(lookup). rows 가 있으면 카드 전체가 표 한 장이 된다 - 시청자가 자기 줄을 찾느라 멈추고 다시 본다.
   // 잘 되는 사주 숏츠(구독 수백 명 채널의 10만~30만 회)가 거의 이 형태였다(2026-11-16 벤치마크).
   // rows: [키, 값, 한마디]. note 는 표 아래 작은 주석, 자막은 띄우지 않는다(표를 가린다).
-  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; faceBase?: string; ask2?: string;
+  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; faceBase?: string; ask2?: string; kicker?: string;
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
@@ -356,6 +356,7 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
       })}
       <div style={{ position: "absolute", left: 56, right: 56, top: 92, display: "flex", alignItems: "center", gap: 12, fontSize: 28, fontWeight: 800, color: "#ffe9c2" }}>
         <div style={{ width: 38, height: 38, borderRadius: 10, background: GOLD, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, fontWeight: 900, color: RED }}>{data.footerBrand.charAt(0).toUpperCase()}</div>{data.footerBrand}
+        <span style={{ fontSize: 31, fontWeight: 900, color: "#ffffff", borderLeft: "3px solid rgba(255,233,194,0.6)", paddingLeft: 14, marginLeft: 4 }}>{card.kicker ?? "자미두수로 보는 내 사주"}</span>
         <span style={{ marginLeft: "auto", fontSize: 26, fontWeight: 900, color: RED, background: GOLD, borderRadius: 99, padding: "4px 20px" }}>{card.tag}</span>
       </div>
       <div style={{ position: "absolute", left: 56, right: 56, top: 150 }}>
