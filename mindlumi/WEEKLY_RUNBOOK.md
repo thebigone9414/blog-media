@@ -140,6 +140,16 @@ publish  accountIds ["conn_5f606a836d079e9b", "conn_1f570c2f58545378"]   (인스
 기록   index.json 해당 항목에 snsPostId
 ```
 
+## [9-3] 네이버 클립에도 같은 영상을 예약 (2026-11-16 연결)
+
+```
+publish  accountIds ["conn_f6ac98eba0e1f65e"]  (네이버 클립 mindlumi_ai · 블로그와 같은 확장으로 나간다)
+         workspaceId "ws_f7979700dc84fc70"   scheduledAt  유튜브와 같은 시각   mediaIds 같은 영상
+         content  이모지 훅 + 설명 + 「댓글로 알려주세요」 + 「내 명반 무료 mindlumi.ai」 를 한 문단으로. 태그 포함 300자 이내
+         options.naver_clip { categoryId "134"(인문, 교양. 결혼·연애 주제면 "123"), tags 5개(# 없이) }
+         글이 이미 나간 뒤에 거는 클립이면 contentLink 에 그 블로그 글 주소를 넣는다(예약 상태인 글은 넣지 못한다)
+```
+
 
 ## [10] 기록 - 커밋·푸시
 
