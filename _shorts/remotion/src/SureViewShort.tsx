@@ -16,7 +16,7 @@ type Card = {
   // 찾아보기형(lookup). rows 가 있으면 카드 전체가 표 한 장이 된다 - 시청자가 자기 줄을 찾느라 멈추고 다시 본다.
   // 잘 되는 사주 숏츠(구독 수백 명 채널의 10만~30만 회)가 거의 이 형태였다(2026-11-16 벤치마크).
   // rows: [키, 값, 한마디]. note 는 표 아래 작은 주석, 자막은 띄우지 않는다(표를 가린다).
-  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number;
+  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string;
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
@@ -268,6 +268,72 @@ const LookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => {
   );
 };
 
+// ---------- lookup card, bright (찾아보기형 밝은 판) ----------
+// 2026-11-16 실제로 잘 되는 찾아보기 숏츠 5편을 열어 보고 맞춘 형태: 한 장 고정, 밝은 바탕, 화면을 위에서 아래까지 채우고,
+// 시청자가 자기 출생연도를 그대로 찾는다. rows = [키, 큰 글자, 한마디, 출생연도 줄]
+const LightLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => {
+  const frame = useCurrentFrame(); const { fps } = useVideoConfig();
+  const rows = card.rows ?? []; const lines = parseTitle(card.title);
+  const many = rows.length > 10;
+  const RH = many ? 84 : 94; const KW = card.keyW ?? 96; const C2 = card.col2W ?? 190;
+  const INK = "#221a3a"; const RED = "#d8323c";
+  const sweepStart = 20 + rows.length * 2;
+  const hi = frame > sweepStart ? Math.floor((frame - sweepStart) / 14) % rows.length : -1;
+  return (
+    <AbsoluteFill style={{ fontFamily: FONT, color: INK, background: "linear-gradient(180deg,#fff7e8 0%,#fdebd2 55%,#f9dcc0 100%)" }}>
+      <div style={{ position: "absolute", left: -120, top: -160, width: 520, height: 520, borderRadius: 999, background: `${data.accent}22` }} />
+      <div style={{ position: "absolute", right: -160, top: 1500, width: 620, height: 620, borderRadius: 999, background: `${data.accent2}3a` }} />
+      <div style={{ position: "absolute", left: 60, right: 60, top: 96, display: "flex", alignItems: "center", gap: 14, fontSize: 30, fontWeight: 800, color: "#5b4a8a" }}>
+        <div style={{ width: 40, height: 40, borderRadius: 10, background: `linear-gradient(135deg,${data.accent},#5b3fc4)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 23, fontWeight: 900, color: "#fff" }}>{data.footerBrand.charAt(0).toUpperCase()}</div>{data.footerBrand}
+        <span style={{ marginLeft: "auto", fontSize: 27, fontWeight: 800, color: "#fff", background: data.accent, borderRadius: 99, padding: "4px 20px" }}>{card.tag}</span>
+      </div>
+      <div style={{ position: "absolute", left: 60, right: 60, top: 162 }}>
+        <div style={{ fontSize: 82, lineHeight: 1.17, fontWeight: 900, letterSpacing: -2, textAlign: "center" }}>
+          {lines.map((toks, li) => (
+            <div key={li}>{toks.map((tk, ti) => (
+              <span key={ti} style={{ whiteSpace: "pre", color: tk.b ? RED : INK }}>{tk.t}</span>
+            ))}</div>
+          ))}
+        </div>
+        {card.pill && (
+          <div style={{ marginTop: 18, display: "flex", justifyContent: "center" }}>
+            <span style={{ fontSize: 36, fontWeight: 800, color: "#fff", background: RED, borderRadius: 14, padding: "8px 28px" }}>{card.pill}</span>
+          </div>
+        )}
+        <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 6 }}>
+          {rows.map((r, i) => {
+            const a = spring({ frame: frame - 6 - i * 2, fps, config: { damping: 18 } });
+            const on = i === hi;
+            return (
+              <div key={i} style={{
+                height: RH, display: "flex", alignItems: "center", padding: "0 16px", borderRadius: 18,
+                opacity: a, transform: `translateY(${(1 - a) * 16}px)`,
+                background: on ? "#fff3b8" : i % 2 ? "rgba(255,255,255,0.62)" : "#ffffff",
+                border: on ? `3px solid ${RED}` : "3px solid rgba(34,26,58,0.07)",
+                boxShadow: "0 3px 10px rgba(120,80,30,0.08)",
+              }}>
+                <span style={{ width: KW, flexShrink: 0 }}>
+                  <span style={{ display: "inline-block", minWidth: 58, textAlign: "center", padding: "2px 12px", borderRadius: 12, fontSize: many ? 34 : 40, fontWeight: 900, color: "#fff", background: data.accent }}>{r[0]}</span>
+                </span>
+                <span style={{ width: C2, flexShrink: 0, fontSize: many ? 44 : 50, fontWeight: 900, color: on ? RED : INK, whiteSpace: "nowrap" }}>{r[1]}</span>
+                <span style={{ display: "flex", flexDirection: "column", justifyContent: "center", minWidth: 0 }}>
+                  <span style={{ fontSize: many ? 26 : 29, fontWeight: 800, color: "#7a4bd6", whiteSpace: "nowrap" }}>{r[2]}</span>
+                  {r[3] && <span style={{ fontSize: many ? 29 : 33, fontWeight: 800, color: INK, whiteSpace: "nowrap", letterSpacing: -0.5 }}>{r[3]}</span>}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+        {card.note && <div style={{ marginTop: 14, fontSize: 25, fontWeight: 600, color: "#8a6f58", textAlign: "center" }}>{card.note}</div>}
+        {card.ask && <div style={{ marginTop: 10, fontSize: 40, fontWeight: 900, color: INK, textAlign: "center" }}>{card.ask}</div>}
+        <div style={{ marginTop: 10, fontSize: 34, fontWeight: 900, color: RED, textAlign: "center" }}>
+          {data.cta.siteLabel ?? "내 명반 무료로 보기"} · {data.cta.site ?? ""}
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 // ---------- one card ----------
 const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, data, total }) => {
   const frame = useCurrentFrame(); const { fps } = useVideoConfig();
@@ -275,7 +341,7 @@ const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, d
   const appear = spring({ frame: frame - 2, fps, config: { damping: 18, stiffness: 120 } });
   const lines = parseTitle(card.title);
   let wi = 0;
-  if (card.rows) return <LookupView card={card} data={data} />;
+  if (card.rows) return card.light ? <LightLookupView card={card} data={data} /> : <LookupView card={card} data={data} />;
   return (
     <AbsoluteFill style={{ fontFamily: FONT, color: "#eef4f8" }}>
       <Dots total={total} idx={card.idx} accent={data.accent} />
