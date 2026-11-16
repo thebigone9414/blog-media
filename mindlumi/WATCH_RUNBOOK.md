@@ -11,7 +11,8 @@
 ## 일정표 (KST)
 
 ```
-월 07:40        주간 제작 → 화·목·토 글 3편 + 영상 3편이 「예약」으로 걸려야 한다
+월 07:40        주간 제작 → 화·목·토 글 3편 + 숏츠 3~4편(이틀에 1편, 다음 주 월요일분까지)이 「예약」으로 걸려야 한다
+월 08:00        지난주에 예약해 둔 숏츠 1편 (글 없는 날)
 화·목 07:30 네이버 / 08:00 유튜브
 토 21:00 네이버 / 21:30 유튜브
 일 10:10        티스토리 주간 일괄 (그 주 네이버 글 3편을 한 번에)
@@ -30,7 +31,7 @@
 ```
 예약·발행   uplika list_posts (workspaceId "ws_f7979700dc84fc70", limit 은 작게. 본문이 통째로 와서 길다)
             status 가 scheduled / published / failed / publishing 중 무엇인지, scheduledAt 이 맞는지
-            월요일 제작 뒤: 이번 주 화·목·토 글 3 + 영상 3 = 6건이 scheduled 인가
+            월요일 제작 뒤: 이번 주 화·목·토 글 3 + 숏츠 3~4 = 6~7건이 scheduled 인가
 인계 문서   Projects 로 JAMI 문서 목록을 보고 claude/weekly-*-handoff.md 중 「처리 완료」 표시가 없는 것이 있는가
 티스토리    WebFetch https://mindlumi.tistory.com/ (막히면 Claude in Chrome 새 탭) - 공개 글 목록이 index.json 의 tistoryUrl 과 맞는가
 연결        uplika bridge_status · list_accounts

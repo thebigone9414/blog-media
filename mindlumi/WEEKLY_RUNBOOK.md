@@ -1,7 +1,7 @@
 # MindLumi 주간 제작 절차서
 
 예약 작업 「MindLumi 주간 제작」(월 07:40)과 「MindLumi 자동화 점검」(보수할 때)이 이 문서를 읽고 그대로 수행한다.
-한 번에 그 주 글 3편과 영상 3편을 만들어 화·목·토로 예약한다.
+한 번에 그 주 글 3편(화·목·토)과 숏츠 3~4편(이틀에 1편)을 만들어 예약한다.
 
 ★완전 자동이다. 운영자가 모든 단계를 사전 승인했다. 질문하지 않는다. 승인 창이 뜨는 도구는 쓰지 않는다.
 ★승인 대신 자가검증([5] 글, [8] 영상)을 통과해야 나간다. 통과 못 한 것은 고쳐서 다시 본다.
@@ -76,13 +76,23 @@ publish  accountIds ["conn_1454e4b39c72db9a"]  workspaceId "ws_f7979700dc84fc70"
 응답의 status 가 scheduled 인지 확인한다
 ```
 
-## [7] 숏폼 3편 - `_shorts/mindlumi_rules.md` 그대로
+## [7] 숏폼 - 이틀에 1편 (주 3~4편) · `_shorts/mindlumi_rules.md` §1-1 · §1-2 그대로
 
 ```
-★기본은 찾아보기형(rows 카드) 10~12초 1장. 시청자가 자기 줄을 찾는 표.
-  기준 spec: _shorts/spec_mindlumi_20261117-lookup-hwarok.json
-  표의 내용은 [3]의 실제 표(SIHUA_MAP 등)에서 가져온다. 지어내지 않는다
-  그 주 글과 주제를 맞춘다 (결혼운 글 → 부처궁·화기 계열 표, 신년 글 → 그 해 사화 표 ...)
+★전부 찾아보기형 pop 판, 10~12초 1장. 눈에 확 띄게 만든다 (운영자 지정 2026-11-16)
+  기준 spec  별 표 _shorts/spec_mindlumi_20261121-lookup-hwarok.json · 띠 표 _20261117-lookup-hongran.json
+             궁 표 _20261123-palace-yeomjeong-hwagi.json
+★주기  index.json 의 마지막 숏츠 예약일에서 이틀씩 건너 다음 주 월요일(포함)까지 채운다. 보통 화·목·토·월 4편
+       글이 나가는 날(화·목·토)의 숏츠는 그날 글 주제에서 뽑는다. 글이 없는 날은 아래 시리즈에서 고른다
+★소재 시리즈 (운영자 제안 2026-11-16. 한 번 쓴 것은 index.json 으로 중복을 피한다)
+  A 올해·내년 사화 × 12궁   「올해 유독 힘들었다면 염정이 여기 있습니다」(병오년 염정 화기)
+                            2027 정미년: 태음 화록(어디로 복이 들어오나) · 천동 화권 · 천기 화과 · 거문 화기(구설을 조심할 자리)
+                            한 별 × 12궁 = 1편. 맨 아래는 「내 ○○ 자리, 무료 명반에서 확인」 → 사이트로 보낸다
+  B 출생연도 × 생년 사화    복의 별(화록) · 주도권(화권) · 인정(화과)
+  C 띠 × 별                 인연의 해(홍란) 등 생년 지지로 정해지는 별
+  D 궁별 한 장              블로그의 12궁 글 내용을 「○○궁에 이 별이 있으면」 표로 (명궁 주성 14개, 부처궁 주성 14개 ...)
+  표의 별·사화는 엔진 표(SIHUA_MAP · ZiWeiEngine)에서만. 궁별 한마디는 자미두수 일반 해석 범위에서 짧게
+  ⛔ 자녀·질병·수명 단정, 「깎인다」 계열, 흉격 이름 금지. 힘든 내용은 「마음 쓰이는 곳」 수준으로 쓴다
 인물 글이 나가는 주에는 그 한 편만 설명형(8카드, 인물 이름으로 시작)으로 만들어도 된다
 설치    python3 -c "import sherpa_onnx" 2>/dev/null || pip install sherpa-onnx --break-system-packages -q
         cd _shorts/remotion && npm install --no-audit --no-fund
@@ -93,8 +103,8 @@ publish  accountIds ["conn_1454e4b39c72db9a"]  workspaceId "ws_f7979700dc84fc70"
 
 ```
 ① 60초 미만, 오디오 스트림 있음
-② 프레임을 떠서 Read 로 직접 본다 (찾아보기형은 6초 지점 1장, 설명형은 8카드 전부)
-   표가 y 1400 위·x 930 왼쪽에서 끝나는가(유튜브 버튼·제목에 안 가리는가) / 글자 잘림·겹침 없음 / 배지 M
+② 프레임을 떠서 Read 로 직접 본다 (찾아보기형은 9초 지점 1장, 설명형은 8카드 전부)
+   글자 잘림·겹침 없음 / 줄이 오른쪽 끝을 넘지 않음 / 이모지·캐릭터 얼굴이 전부 뜸 / 맨 아래 버튼이 y 1650 위
 ③ 표의 모든 줄이 [3] 계산과 일치하는가 (한 줄씩 대조)
 ④ 금지선 위반 없음
 ```
@@ -104,9 +114,9 @@ publish  accountIds ["conn_1454e4b39c72db9a"]  workspaceId "ws_f7979700dc84fc70"
 ```
 mp4 → mindlumi/shorts/<YYYYMMDD>-<slug>.mp4 커밋·푸시 → raw URL → media_from_url
 publish  accountIds ["conn_40c47188dd302b4b"]  workspaceId "ws_f7979700dc84fc70"
-         scheduledAt  해당 글 30분 뒤 (화·목 08:00 · 토 21:30)
+         scheduledAt  글이 나가는 날은 글 30분 뒤(화·목 08:00 · 토 21:30), 글이 없는 날은 08:00
          content  2~3줄 + 「내 ○○는? 댓글로」 + "내 원반과 제2명반 무료로 보기" + https://mindlumi.ai/?ref=shorts + 해시태그(끝에 #Shorts)
-         options.youtube { title(시청자를 지목하는 질문 포함. 예: 「… | 내 끝자리는?」), tags 10,
+         options.youtube { title(훅 질문 + 이모지. 예: 「내가 타고난 복의 별은? 🧧 내 출생연도 찾기 #신년운세 #자미두수」), tags 10,
                            categoryId "22", privacyStatus "public", defaultLanguage "ko",
                            madeForKids false, containsSyntheticMedia true }
 ```
