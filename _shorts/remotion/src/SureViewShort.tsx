@@ -16,7 +16,7 @@ type Card = {
   // 찾아보기형(lookup). rows 가 있으면 카드 전체가 표 한 장이 된다 - 시청자가 자기 줄을 찾느라 멈추고 다시 본다.
   // 잘 되는 사주 숏츠(구독 수백 명 채널의 10만~30만 회)가 거의 이 형태였다(2026-11-16 벤치마크).
   // rows: [키, 값, 한마디]. note 는 표 아래 작은 주석, 자막은 띄우지 않는다(표를 가린다).
-  rows?: string[][]; rowsHead?: string[]; note?: string;
+  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number;
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
@@ -215,6 +215,7 @@ const LookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => {
   const frame = useCurrentFrame(); const { fps } = useVideoConfig();
   const rows = card.rows ?? []; const lines = parseTitle(card.title);
   const RH = rows.length > 10 ? 70 : 80;
+  const KW = card.keyW ?? 110; const C2 = card.col2W ?? 250;
   // 다 뜬 뒤에는 강조가 한 줄씩 내려간다. 정지 화면이면 넘겨 버린다.
   const sweepStart = 20 + rows.length * 2;
   const hi = frame > sweepStart ? Math.floor((frame - sweepStart) / 14) % rows.length : -1;
@@ -235,7 +236,7 @@ const LookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => {
         {card.sub && <div style={{ marginTop: 18, fontSize: 38, fontWeight: 700, color: mix(data.accent, 80) }}>{card.sub}</div>}
         {card.rowsHead && (
           <div style={{ marginTop: 26, display: "flex", alignItems: "center", fontSize: 26, fontWeight: 700, color: "#8aa0b4", padding: "0 18px" }}>
-            <span style={{ width: 110 }}>{card.rowsHead[0]}</span><span style={{ width: 250 }}>{card.rowsHead[1]}</span><span>{card.rowsHead[2]}</span>
+            <span style={{ width: KW }}>{card.rowsHead[0]}</span><span style={{ width: C2 }}>{card.rowsHead[1]}</span><span>{card.rowsHead[2]}</span>
           </div>
         )}
         <div style={{ marginTop: card.rowsHead ? 10 : 30, display: "flex", flexDirection: "column", gap: 6 }}>
@@ -249,10 +250,10 @@ const LookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => {
                 background: on ? `${mix(data.accent2, 30)}3a` : i % 2 ? "rgba(255,255,255,0.035)" : "rgba(255,255,255,0.07)",
                 border: on ? `2px solid ${data.accent2}` : "2px solid transparent",
               }}>
-                <span style={{ width: 110 }}>
-                  <span style={{ display: "inline-block", minWidth: 62, textAlign: "center", padding: "4px 12px", borderRadius: 12, fontSize: 42, fontWeight: 900, color: "#0b1220", background: data.accent }}>{r[0]}</span>
+                <span style={{ width: KW }}>
+                  <span style={{ display: "inline-block", minWidth: 62, textAlign: "center", padding: rows.length > 10 ? "2px 12px" : "4px 12px", borderRadius: 12, fontSize: rows.length > 10 ? 36 : 42, fontWeight: 900, color: "#0b1220", background: data.accent }}>{r[0]}</span>
                 </span>
-                <span style={{ width: 250, fontSize: 44, fontWeight: 900, color: on ? data.accent2 : "#ffffff", whiteSpace: "nowrap" }}>{r[1]}</span>
+                <span style={{ width: C2, fontSize: 44, fontWeight: 900, color: on ? data.accent2 : "#ffffff", whiteSpace: "nowrap" }}>{r[1]}</span>
                 <span style={{ fontSize: 32, fontWeight: 600, color: "#c3d2df", whiteSpace: "nowrap" }}>{r[2]}</span>
               </div>
             );
