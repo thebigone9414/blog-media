@@ -404,6 +404,9 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
         <div style={{ marginTop: 8, fontSize: 30, fontWeight: 800, color: "#ffe9c2", textAlign: "center" }}>
           {card.note ? `${card.note} · ` : ""}{data.cta.site ?? ""}
         </div>
+        {data.cta.naver && (
+          <div style={{ marginTop: 6, fontSize: 29, fontWeight: 800, color: "#ffffff", textAlign: "center" }}>📖 더 깊은 풀이 · {data.cta.naver}</div>
+        )}
       </div>
     </AbsoluteFill>
   );
