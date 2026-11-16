@@ -12,8 +12,9 @@
 
 ```
 월 07:40        주간 제작 → 화·목·토 글 3편 + 영상 3편이 「예약」으로 걸려야 한다
-화·목 07:30 네이버 / 08:00 유튜브 / 09:10 티스토리
-토 21:00 네이버 / 21:30 유튜브 / 22:40 티스토리
+화·목 07:30 네이버 / 08:00 유튜브
+토 21:00 네이버 / 21:30 유튜브
+일 10:10        티스토리 주간 일괄 (그 주 네이버 글 3편을 한 번에)
 수·금 13:47     속보 점검 (발행 없음이 정상)
 일 20:20        사이트 점검·개선
 이 점검  매일 08:25 · 10:25 · 15:25 · 22:25
@@ -33,7 +34,8 @@
 인계 문서   Projects 로 JAMI 문서 목록을 보고 claude/weekly-*-handoff.md 중 「처리 완료」 표시가 없는 것이 있는가
 티스토리    WebFetch https://mindlumi.tistory.com/ (막히면 Claude in Chrome 새 탭) - 공개 글 목록이 index.json 의 tistoryUrl 과 맞는가
 연결        uplika bridge_status · list_accounts
-티스토리 로그인  Claude in Chrome 새 탭으로 https://mindlumi.tistory.com/manage/posts/ - 로그인 화면으로 넘어가는지만. 탭은 닫는다
+티스토리 로그인  토 22:25 와 일요일 점검 때만 본다. Claude in Chrome 새 탭으로 https://mindlumi.tistory.com/manage/posts/ - 로그인 화면으로 넘어가는지만. 탭은 닫는다
+            토요일 밤에 풀려 있으면 그때 미해결로 올려 운영자가 일요일 아침 전에 로그인할 수 있게 한다
 사이트(월 08:25)  mindlumi/site-log.md 맨 위가 어제인가 · Star-Chart Deploy 가 success 인가
 ```
 
@@ -47,8 +49,8 @@
     → get_help 로 원인 확인 후 retry_post 1회. 또 실패하면 같은 내용을 새 publish 로 한 번. 그래도 안 되면 미해결로 적는다
 네이버 글이 예약 시각을 1시간 넘겼는데 안 나감 (확장 offline)
     → 글은 확장이 돌아오면 나간다. 기다린다. 6시간 넘으면 미해결(운영자가 Chrome 을 봐야 함)
-티스토리 글 누락 (그날 네이버 글은 나갔는데 티스토리에 없음)
-    → 로그인이 살아 있으면 mindlumi/tistory/RUNBOOK.md 대로 1편 올린다
+티스토리 글 누락 (일 15:25 이후에 보는데 그 주 네이버 글이 티스토리에 없음. 평일에는 없는 것이 정상)
+    → 로그인이 살아 있으면 mindlumi/tistory/RUNBOOK.md 대로 빠진 것을 올린다(최대 3편). tistoryDraft 원고가 있으면 그것으로
 티스토리 비공개 대기(tistoryPending)
     → 로그인이 살아 있으면 완료 → 공개 → 공개 발행 (본문은 건드리지 않는다)
 발행된 글·영상의 주소가 index.json 에 없음

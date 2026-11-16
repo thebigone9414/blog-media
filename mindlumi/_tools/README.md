@@ -19,3 +19,15 @@
 - 실명 인물 글: 제3자(배우자·상대방) 이름 금지, 단정 표현 금지
 - 흉격 이름 노출 금지, 「깎인다」 계열 표현 금지
 - 투자 조언으로 읽힐 표현 금지
+
+## capture_chart.mjs - 인물 글용 실제 명반 캡처 (2026-11-16)
+
+관리자 로그인도 운영자 PC 도 필요 없다. Star-Chart 를 이 컨테이너에서 개발 서버로 띄워 사이트와 같은 화면을 찍는다.
+원반·제2명반·중첩 3장이 나온다. 외부 요청은 전부 막고, 고객 기록은 불러오지 않는다.
+
+```
+git clone https://github.com/thebigone9414/Star-Chart.git && (cd Star-Chart && npm install --no-audit --no-fund)
+node mindlumi/_tools/capture_chart.mjs ./Star-Chart mindlumi jensen 1963-02-17 solar male 묘 "젠슨 황"
+```
+
+⛔ 공개 인물과 표본 명반에만 쓴다. 실고객 생년월일시를 넣지 않는다.

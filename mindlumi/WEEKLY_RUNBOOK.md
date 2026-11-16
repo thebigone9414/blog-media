@@ -30,8 +30,13 @@
 ## [2] 소재 3건
 
 ```
-화  뉴스 인물형 - 외국인 · 생시 확인 · 정치인 금지. 명반 캡처(원반·중첩)를 찍을 수 있을 때만
-    캡처는 claude/chart-capture.md. 못 찍으면 묻지 말고 상시 검색형으로 대체한다
+화  뉴스 인물형 - 외국인 · 생시 확인 · 정치인 금지
+    ★명반 캡처는 관리자 로그인도 운영자 PC 도 필요 없다 (2026-11-16 부터). 이 컨테이너에서 바로 찍는다
+      Star-Chart 를 clone 하고 npm install 한 뒤
+      node mindlumi/_tools/capture_chart.mjs <Star-Chart 경로> mindlumi <slug> <YYYY-MM-DD> <solar|lunar> <male|female> <시진 한 글자> "<표시 이름>"
+      → mindlumi/<slug>-chart-wonban.png · -secondary.png · -overlay.png (사이트와 같은 코드·같은 엔진의 화면)
+      찍은 뒤 Read 로 열어 [3]의 계산 결과와 궁·별이 같은지 대조한다
+    쓸 만한 인물·사건이 없는 주에만 상시 검색형으로 대체한다 (캡처 때문에 대체하는 일은 이제 없다)
 목  상시 검색형 - 「자미두수로 ○○운 보는 법」 형태 우선
 토  시점형 - content-ops.md 런웨이 표에서 지금 런웨이 중인 시즌
 index.json 에 있는 주제는 다시 쓰지 않는다
@@ -124,10 +129,10 @@ publish  accountIds ["conn_40c47188dd302b4b"]  workspaceId "ws_f7979700dc84fc70"
                             점검 작업이 08:25 · 10:25 · 15:25 · 22:25 에 돌며 인계 문서를 발견하면 이어서 발행한다
 ② media_presign 업로드 403  쓰지 않는다. 항상 깃헙 raw URL → media_from_url 경로만 쓴다
 ③ 네이버 확장 offline        예약은 그대로 건다. 조회·open_post 가 필요한 단계는 보관본으로 대체하고 넘어간다
-④ 명반 캡처 불가             그 인물 글을 상시 검색형으로 바꾼다
+④ 명반 캡처 실패             Star-Chart 에서 npm install 을 다시 하고 capture_chart.mjs 를 한 번 더. 그래도 안 되면 그 주만 상시 검색형으로
 ⑤ Star-Chart clone 불가      공개 저장소이므로 https clone 을 다시 시도. 안 되면 지난주 표본 명반 근거(인계 문서·index)를 재사용
 ⑥ 영상 렌더 실패             npm install 재시도 1회 → 안 되면 글만 예약하고 영상은 점검 작업에 넘긴다(인계 문서에 spec 을 적는다)
-⑦ 승인 창이 뜨는 도구        쓰지 않는다. 브라우저가 꼭 필요한 일(티스토리·캡처)은 Claude in Chrome 에서 이미 허용된 사이트만
+⑦ 승인 창이 뜨는 도구        쓰지 않는다. 브라우저가 꼭 필요한 일(티스토리)은 Claude in Chrome 에서 이미 허용된 사이트만
 ```
 
 ## 금지선

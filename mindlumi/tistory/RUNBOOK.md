@@ -1,7 +1,8 @@
 # MindLumi 티스토리 발행 절차서
 
-예약 작업 「MindLumi 티스토리 자동 발행」(화·목 오전, 토 밤)이 이 문서를 읽고 그대로 수행한다.
-네이버 글이 나간 날 1~2시간 뒤에 같은 소재를 구글용으로 다시 써서 1편 올린다.
+예약 작업 「MindLumi 티스토리 주간 일괄 발행」(일요일 10:10)이 이 문서를 읽고 그대로 수행한다.
+그 주 화·목·토에 네이버로 나간 글 3편을 구글용으로 다시 써서 일요일에 한 번에 올린다 (운영자 지정 2026-11-16).
+왜 한 번에: 티스토리(카카오) 로그인이 며칠 못 가 풀린다. 주 3회로 나누면 그때마다 멈춘다. 주 1회면 로그인 확인도 주 1회다.
 
 ★완전 자동이다. 운영자가 모든 단계를 사전 승인했다. 질문하지 않고 검수를 기다리지 않는다.
   대신 발행 전 자가검증([4])과 발행 후 확인([6])은 어떤 경우에도 건너뛰지 않는다.
@@ -16,13 +17,14 @@
 - 저장소에서 읽는다: `mindlumi/index.json`(글 목록), `mindlumi/playbook.md`(지금 쓰는 공식), `mindlumi/tistory/`(기존 원고 - 형식 참고).
 - uplika 커넥터가 안 보이면 RefreshMcpTools.
 
-## [1] 올릴 글 1편 고르기
+## [1] 올릴 글 고르기 (한 회차 최대 3편)
 
 ```
 0순위  index.json 에 tistoryPending: true 인 글이 있으면 그것부터 처리한다
        수정 화면(tistoryEditUrl)을 열어 완료 → 공개 → 공개 발행만 한다. ⛔ 본문을 덮어쓰지 않는다
        이미 공개돼 있으면 주소만 기록한다. 이 경우에도 아래 1순위 글을 이어서 올린다
-1순위  최근 10일 안에 네이버에 실제로 발행됐고 index.json 에 tistoryUrl 이 없는 글 중 가장 오래된 것
+1순위  최근 10일 안에 네이버에 실제로 발행됐고 index.json 에 tistoryUrl 이 없는 글 전부, 오래된 것부터 최대 3편
+       한 편씩 [2]~[7]을 끝내고 다음 편으로 간다. 한 편이 막혀도 나머지는 계속한다
        uplika list_channel_posts (accountId "conn_1454e4b39c72db9a", workspaceId "ws_f7979700dc84fc70") 로
        실제 발행 여부를 확인한다. 예약 상태로 아직 안 나간 글은 건너뛴다
 ⛔     excludeReason 이 있는 글(정치인 등)은 고르지 않는다
@@ -30,7 +32,7 @@
 ```
 
 원문은 uplika open_post 또는 get_post 로 읽는다. ⛔ 네이버를 브라우저로 열지 않는다(차단돼 있다).
-한 회차에 새로 쓰는 글은 1편까지다.
+한 회차에 새로 쓰는 글은 3편까지다. 글 사이에 2~3분 간격을 둔다.
 
 ## [2] 구글용으로 다시 쓴다 - ⛔ 복붙 금지
 
@@ -45,7 +47,8 @@ CTA     mindlumi.ai 만. <a href="https://mindlumi.ai/?ref=tistory">
         <p><img src="https://raw.githubusercontent.com/thebigone9414/blog-media/main/mindlumi/<파일>"
              alt="..." style="max-width:100%;height:auto;"></p>
 ★인물 글  실제 명반 캡처 2장(원반·중첩) 필수. 네이버 글 때 저장소에 올린 mindlumi/<slug>-chart-*.png 를 쓴다
-        저장소에 캡처가 없으면 그 글은 올리지 않고 보고에 1줄 남긴다. ⛔ 명반을 다시 그리지 않는다
+        저장소에 캡처가 없으면 mindlumi/_tools/capture_chart.mjs 로 찍어 올린다(관리자 로그인 불필요. 사용법은 파일 머리말)
+        ⛔ 명반을 다시 그리지 않는다
 ⛔ 금지  em/en 대시 · 「컴퓨트」 · ** 강조 · 맨 끝 면책 문구
 저장    mindlumi/tistory/<YYYYMMDD>-<slug>.html 로 커밋·푸시
 ```
@@ -74,7 +77,8 @@ CTA     mindlumi.ai 만. <a href="https://mindlumi.ai/?ref=tistory">
 
 - ★Claude in Chrome 으로 한다. 티스토리 로그인은 Chrome 에만 있다. ⛔ 내장 브라우저는 로그인 세션이 없어 쓸 수 없다.
 - ⛔ 운영자가 보고 있는 기존 탭을 쓰지 않는다. tabs_create_mcp 로 새 탭을 만들고 끝나면 닫는다.
-- 로그인 화면이 뜨면 중단하고 그 사실만 보고한다. 비밀번호는 다루지 않는다.
+- 로그인 화면이 뜨면 발행만 건너뛴다. 원고는 [2]까지 써서 저장소에 커밋해 두고 index.json 에 tistoryDraft 경로를 적는다.
+  점검 작업이 로그인이 돌아온 것을 보면 그 원고로 바로 올린다. 비밀번호는 다루지 않는다.
 - https://mindlumi.tistory.com/manage/newpost/ → 제목(#post-title-inp 네이티브 세터 + input 이벤트)
   → 본문은 페이지에서 저장소 raw URL 을 fetch 해 tinymce.get('editor-tistory').setContent(html) 후 save()
   → 가독성 인라인 스타일 일괄 주입(table·th·td·h2·p·img) 후 다시 setContent + save(), textarea 에 input 이벤트
