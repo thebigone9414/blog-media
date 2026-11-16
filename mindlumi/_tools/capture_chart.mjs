@@ -4,13 +4,18 @@
 //       명반 계산은 전부 브라우저 안에서 돌기 때문에 운영 서버·DB·관리자 비밀번호가 필요 없다.
 //       로컬 탭의 sessionStorage 에 화면 표시용 플래그만 세운다(운영 사이트에는 아무 영향이 없다).
 //       외부로 나가는 요청은 전부 막는다. 고객 기록 목록은 불러오지 않으므로 캡처에 섞일 일이 없다.
+// 글씨체 운영 사이트와 같은 웹폰트(Gowun Batang · Noto Serif KR · Noto Sans KR)를 쓴다 (운영자 지정 2026-11-16).
+//       작업 컨테이너에서는 구글 폰트 서버가 막혀 있어, 같은 폰트를 npm(@fontsource)으로 받아 그 요청 자리에 넣어 준다.
+//       폰트가 실제로 적용됐는지 검사하고, 안 됐으면 그림을 남기지 않고 실패로 끝낸다(다른 글씨체로 찍힌 명반이 나가지 않게).
 //
 // 사용  node capture_chart.mjs <Star-Chart 경로> <출력 폴더> <slug> <YYYY-MM-DD> <solar|lunar> <male|female> <시진 한 글자> [표시 이름]
 //  예   node capture_chart.mjs /home/claude/star-chart ../ jensen 1963-02-17 solar male 묘 "젠슨 황"
 // 결과  <slug>-chart-wonban.png · <slug>-chart-secondary.png · <slug>-chart-overlay.png
 //
 // ⛔ 공개 인물(보도로 생시가 확인된 외국인)과 표본 명반에만 쓴다. 실고객 생년월일시를 넣지 않는다.
-import { spawn } from 'node:child_process';
+import { spawn, execSync } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 
@@ -20,6 +25,21 @@ const [Y, M, D] = date.split('-').map(Number);
 const PORT = 5199;
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
+
+// ── 웹폰트 준비 (한 번 받아 두고 재사용) ──
+const FONTS = { 'gowun-batang': [400, 700], 'noto-serif-kr': [400, 700, 900], 'noto-sans-kr': [300, 400, 500, 700] };
+const fontDir = path.join(os.homedir(), '.cache', 'mindlumi-fonts');
+const fontMods = path.join(fontDir, 'node_modules', '@fontsource');
+if (!Object.keys(FONTS).every(k => fs.existsSync(path.join(fontMods, k)))) {
+  fs.mkdirSync(fontDir, { recursive: true });
+  if (!fs.existsSync(path.join(fontDir, 'package.json'))) fs.writeFileSync(path.join(fontDir, 'package.json'), '{"private":true}');
+  execSync('npm install --no-audit --no-fund ' + Object.keys(FONTS).map(k => '@fontsource/' + k).join(' '), { cwd: fontDir, stdio: 'ignore' });
+}
+const FONT_HOST = 'https://fonts.gstatic.com/local/';
+let fontCss = '';
+for (const [pkg, weights] of Object.entries(FONTS)) for (const w of weights) {
+  fontCss += fs.readFileSync(path.join(fontMods, pkg, `${w}.css`), 'utf8').replaceAll('url(./files/', `url(${FONT_HOST}${pkg}/files/`) + '\n';
+}
 
 const vite = spawn('npx', ['vite', '--port', String(PORT), '--strictPort', '--host', '127.0.0.1'], {
   cwd: repo, stdio: 'ignore',
@@ -37,7 +57,16 @@ for (let i = 0; i < 60; i++) {
 
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 1500, height: 1100 }, deviceScaleFactor: 2 });
-await ctx.route('**/*', r => (r.request().url().startsWith(base) ? r.continue() : r.abort()));
+await ctx.route('**/*', r => {
+  const u = r.request().url();
+  if (u.startsWith(base)) return r.continue();
+  if (u.startsWith('https://fonts.googleapis.com/')) return r.fulfill({ contentType: 'text/css', body: fontCss });
+  if (u.startsWith(FONT_HOST)) {
+    const f = path.join(fontMods, u.slice(FONT_HOST.length).split('?')[0]);
+    if (f.startsWith(fontMods) && fs.existsSync(f)) return r.fulfill({ contentType: f.endsWith('.woff2') ? 'font/woff2' : 'font/woff', headers: { 'access-control-allow-origin': '*' }, body: fs.readFileSync(f) });
+  }
+  return r.abort();
+});
 await ctx.addInitScript(() => sessionStorage.setItem('mindlumi_admin', '1'));
 const page = await ctx.newPage();
 await page.goto(`${base}/#/ziwei/chart`, { waitUntil: 'domcontentloaded' });
@@ -55,8 +84,20 @@ await page.getByRole('button', { name: '명반 생성', exact: true }).click();
 
 const grid = page.locator('div.grid-cols-4').first();
 await grid.waitFor({ timeout: 30000 });
+const fontCheck = async () => {
+  await page.waitForLoadState('networkidle');
+  await page.evaluate(() => document.fonts.ready);
+  const bad = await page.evaluate(() => {
+    const need = ['Gowun Batang', 'Noto Sans KR'];
+    const loaded = new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family.replace(/["']/g, '')));
+    const failed = [...document.fonts].filter(f => f.status === 'error').length;
+    return [...need.filter(n => !loaded.has(n)), ...(failed ? [`로딩 오류 ${failed}건`] : [])];
+  });
+  if (bad.length) { console.error('웹폰트 미적용: ' + bad.join(', ') + ' - 캡처를 남기지 않는다'); await browser.close(); stop(); process.exit(3); }
+};
 const shot = async (suffix) => {
   await page.waitForTimeout(600);
+  await fontCheck();
   const f = path.join(outDir, `${slug}-chart-${suffix}.png`);
   await grid.screenshot({ path: f });
   console.log(f);
