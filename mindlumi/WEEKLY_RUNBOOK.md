@@ -99,6 +99,9 @@ publish  accountIds ["conn_1454e4b39c72db9a"]  workspaceId "ws_f7979700dc84fc70"
 렌더    python3 _shorts/make_remotion.py <spec.json> <out.mp4>
 ```
 
+★원고와 spec 은 전부 저장소에 남긴다: 글 원고 mindlumi/w<주차>/a1~a3.md, 영상 spec _shorts/spec_mindlumi_<날짜>-<slug>.json, mp4 mindlumi/shorts/
+  (점검 작업이 미디어를 다시 올리거나 실패한 글을 새로 발행할 때 여기서 가져간다)
+
 ## [8] 영상 자가검증 - 통과 못 하면 올리지 않는다
 
 ```

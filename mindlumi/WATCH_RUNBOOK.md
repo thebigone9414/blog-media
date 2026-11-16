@@ -46,6 +46,14 @@
 이번 주 예약이 6건 미만 (월 10:25 이후)
     → mindlumi/WEEKLY_RUNBOOK.md 를 읽고 빠진 것만 직접 만든다. 인계 문서가 있으면 그 원고로 이미지부터 이어서 한다
       이미 예약된 건과 겹치지 않게 제목으로 대조한다
+★미디어 만료 대비 (매일 22:25 회차에 반드시)
+    uplika 에 올린 그림·영상은 올린 지 이틀 뒤 만료 시각이 찍힌다. 예약 글에 붙인 뒤에도 유지되는지는 문서로 확인되지 않았다
+    → 앞으로 36시간 안에 나갈 예약 유튜브 글마다: 저장소 raw URL(mindlumi/shorts/<파일>.mp4, index.json·spec 이름으로 찾는다)에서
+      media_from_url 을 다시 하고 update_post 로 mediaIds 만 갈아 끼운다 (mediaIds 만 보내면 제목·설명은 그대로다)
+    → 앞으로 36시간 안에 나갈 예약 네이버 글마다: get_post 로 본문을 읽어 media:<id> 를 전부 뽑고, 같은 순서의 그림
+      (index.json 의 images 경로 + CTA 그림)을 다시 media_from_url 해서 본문의 id 를 새 id 로 바꿔 update_post 한다
+      ⚠️ options 를 같이 보낼 때는 title·categoryId·layout·openType·tags·seoKeywords 를 전부 다시 보낸다(빼면 지워진다). 본문만 바꿀 때는 options 를 보내지 않는다
+    글 원고는 mindlumi/w<주차>/a1.md · a2.md · a3.md 에 있다({{IMG1}}~{{IMG4}} · {{CTA}} 자리 표시)
 발행 실패(failed)
     → get_help 로 원인 확인 후 retry_post 1회. 또 실패하면 같은 내용을 새 publish 로 한 번. 그래도 안 되면 미해결로 적는다
 네이버 글이 예약 시각을 1시간 넘겼는데 안 나감 (확장 offline)
