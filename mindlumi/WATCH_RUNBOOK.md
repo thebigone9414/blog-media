@@ -16,6 +16,7 @@
 화·목 07:30 네이버 / 08:00 유튜브
 토 21:00 네이버 / 21:30 유튜브
 매일 08:00      글이 없는 날의 숏츠 (숏츠는 매일 1편)
+                같은 영상이 같은 시각에 인스타그램 릴스 · 틱톡에도 나간다 (유튜브와 별도 글)
 ⛔ 티스토리는 2026-11-16 운영자 결정으로 중단했다. 확인도 발행도 하지 않는다
 수·금 13:47     속보 점검 (발행 없음이 정상)
 일 20:20        사이트 점검·개선
@@ -32,7 +33,7 @@
 ```
 예약·발행   uplika list_posts (workspaceId "ws_f7979700dc84fc70", limit 은 작게. 본문이 통째로 와서 길다)
             status 가 scheduled / published / failed / publishing 중 무엇인지, scheduledAt 이 맞는지
-            월요일 제작 뒤: 이번 주 화·목·토 글 3 + 숏츠 7 = 10건이 scheduled 인가
+            월요일 제작 뒤: 이번 주 화·목·토 글 3 + 숏츠 7(유튜브) + 7(인스타그램·틱톡) = 17건이 scheduled 인가
 인계 문서   Projects 로 JAMI 문서 목록을 보고 claude/weekly-*-handoff.md 중 「처리 완료」 표시가 없는 것이 있는가
 연결        uplika bridge_status · list_accounts
 사이트(월 08:25)  mindlumi/site-log.md 맨 위가 어제인가 · Star-Chart Deploy 가 success 인가
@@ -46,7 +47,7 @@
       이미 예약된 건과 겹치지 않게 제목으로 대조한다
 ★미디어 만료 대비 (매일 22:25 회차에 반드시)
     uplika 에 올린 그림·영상은 올린 지 이틀 뒤 만료 시각이 찍힌다. 예약 글에 붙인 뒤에도 유지되는지는 문서로 확인되지 않았다
-    → 앞으로 36시간 안에 나갈 예약 유튜브 글마다: 저장소 raw URL(mindlumi/shorts/<파일>.mp4, index.json·spec 이름으로 찾는다)에서
+    → 앞으로 36시간 안에 나갈 예약 유튜브 글과 인스타그램·틱톡 글마다: 저장소 raw URL(mindlumi/shorts/<파일>.mp4, index.json·spec 이름으로 찾는다)에서
       media_from_url 을 다시 하고 update_post 로 mediaIds 만 갈아 끼운다 (mediaIds 만 보내면 제목·설명은 그대로다)
     → 앞으로 36시간 안에 나갈 예약 네이버 글마다: get_post 로 본문을 읽어 media:<id> 를 전부 뽑고, 같은 순서의 그림
       (index.json 의 images 경로 + CTA 그림)을 다시 media_from_url 해서 본문의 id 를 새 id 로 바꿔 update_post 한다

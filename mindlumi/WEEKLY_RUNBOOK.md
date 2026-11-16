@@ -125,6 +125,22 @@ publish  accountIds ["conn_40c47188dd302b4b"]  workspaceId "ws_f7979700dc84fc70"
                            madeForKids false, containsSyntheticMedia true }
 ```
 
+## [9-2] 인스타그램 릴스 · 틱톡에도 같은 영상을 예약 (2026-11-16 연결)
+
+```
+유튜브와 별도의 글로 건다 (한쪽이 실패해도 다른 쪽에 번지지 않게). 같은 mediaId 를 그대로 쓴다
+먼저   get_publish_options(accountId "conn_1f570c2f58545378") 로 틱톡 공개 범위 값을 확인한다
+publish  accountIds ["conn_5f606a836d079e9b", "conn_1f570c2f58545378"]   (인스타그램 mindlumi2026 · 틱톡 mindlumi_ai)
+         workspaceId "ws_f7979700dc84fc70"   scheduledAt  유튜브와 같은 시각
+         content  이모지 훅 1줄 + 설명 1~2줄 + 「댓글로 알려주세요 💬」 + 「내 명반은 프로필 링크에서 무료로 (mindlumi.ai)」 + 해시태그 10개
+                  ⛔ 본문에 URL 을 넣지 않는다(눌리지 않는다). 주소는 글자로만 적는다
+         options  { "instagram": {"contentType": "reel"}, "tiktok": {"privacyLevel": "PUBLIC_TO_EVERYONE", "isAigc": true} }
+계정   list_accounts 에서 인스타그램·틱톡 health 가 ok 가 아니면 그 채널만 빼고 건다. 인스타그램 연결은 60일마다 만료된다(expiresInDays)
+       expiresInDays 가 10 이하면 보고 맨 앞에 「인스타그램 재연결 필요」 1줄
+기록   index.json 해당 항목에 snsPostId
+```
+
+
 ## [10] 기록 - 커밋·푸시
 
 - `mindlumi/index.json` 에 건별 { date, type, title, naverPostId, youtubePostId, status:"scheduled", hookType } 추가 (발행 뒤 점검 작업이 url 을 채운다)
