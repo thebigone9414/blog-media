@@ -13,6 +13,10 @@ type Card = {
   // 캐릭터 그림. image 는 한 장, images 는 두 장을 나란히(별이 만나는 장면).
   // 그림이 있으면 다른 연출(big/flow/grid)보다 우선한다 - 자막 띠까지 공간이 510px 뿐이라 겹쳐 쓸 수 없다.
   image?: string; images?: string[]; caption?: string; fit?: "cover" | "contain";
+  // 찾아보기형(lookup). rows 가 있으면 카드 전체가 표 한 장이 된다 - 시청자가 자기 줄을 찾느라 멈추고 다시 본다.
+  // 잘 되는 사주 숏츠(구독 수백 명 채널의 10만~30만 회)가 거의 이 형태였다(2026-11-16 벤치마크).
+  // rows: [키, 값, 한마디]. note 는 표 아래 작은 주석, 자막은 띄우지 않는다(표를 가린다).
+  rows?: string[][]; rowsHead?: string[]; note?: string;
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
@@ -204,6 +208,65 @@ const Stage: React.FC<{ card: Card; accent: string; accent2: string; cta: Data["
   return null;
 };
 
+// ---------- lookup card (찾아보기형) ----------
+// 안전 영역: 유튜브 쇼츠는 아래 약 420px 에 제목·설명, 오른쪽 약 140px 에 버튼이 덮인다.
+// 표는 y 1400 위, x 930 왼쪽에서 끝낸다.
+const LookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => {
+  const frame = useCurrentFrame(); const { fps } = useVideoConfig();
+  const rows = card.rows ?? []; const lines = parseTitle(card.title);
+  const RH = rows.length > 10 ? 70 : 80;
+  // 다 뜬 뒤에는 강조가 한 줄씩 내려간다. 정지 화면이면 넘겨 버린다.
+  const sweepStart = 20 + rows.length * 2;
+  const hi = frame > sweepStart ? Math.floor((frame - sweepStart) / 14) % rows.length : -1;
+  return (
+    <AbsoluteFill style={{ fontFamily: FONT, color: "#eef4f8" }}>
+      <div style={{ position: "absolute", left: 70, right: 150, top: 116, display: "flex", alignItems: "center", gap: 16, fontSize: 32, fontWeight: 800, color: "#dbe7f0", opacity: 0.9 }}>
+        <div style={{ width: 42, height: 42, borderRadius: 11, background: `linear-gradient(135deg,${data.accent},#3862b4)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, fontWeight: 900, color: "#06131f" }}>{data.footerBrand.charAt(0).toUpperCase()}</div>{data.footerBrand}
+        <span style={{ marginLeft: "auto", fontSize: 28, fontWeight: 700, color: "#8aa0b4" }}>{card.tag}</span>
+      </div>
+      <div style={{ position: "absolute", left: 70, right: 150, top: 196 }}>
+        <div style={{ fontSize: 80, lineHeight: 1.2, fontWeight: 900, letterSpacing: -1.5, color: "#f4f9fb" }}>
+          {lines.map((toks, li) => (
+            <div key={li}>{toks.map((tk, ti) => (
+              <span key={ti} style={{ whiteSpace: "pre", color: tk.b ? data.accent2 : "#f4f9fb" }}>{tk.t}</span>
+            ))}</div>
+          ))}
+        </div>
+        {card.sub && <div style={{ marginTop: 18, fontSize: 38, fontWeight: 700, color: mix(data.accent, 80) }}>{card.sub}</div>}
+        {card.rowsHead && (
+          <div style={{ marginTop: 26, display: "flex", alignItems: "center", fontSize: 26, fontWeight: 700, color: "#8aa0b4", padding: "0 18px" }}>
+            <span style={{ width: 110 }}>{card.rowsHead[0]}</span><span style={{ width: 250 }}>{card.rowsHead[1]}</span><span>{card.rowsHead[2]}</span>
+          </div>
+        )}
+        <div style={{ marginTop: card.rowsHead ? 10 : 30, display: "flex", flexDirection: "column", gap: 6 }}>
+          {rows.map((r, i) => {
+            const a = spring({ frame: frame - 6 - i * 2, fps, config: { damping: 18 } });
+            const on = i === hi;
+            return (
+              <div key={i} style={{
+                height: RH, display: "flex", alignItems: "center", padding: "0 18px", borderRadius: 16,
+                opacity: a, transform: `translateX(${(1 - a) * -30}px)`,
+                background: on ? `${mix(data.accent2, 30)}3a` : i % 2 ? "rgba(255,255,255,0.035)" : "rgba(255,255,255,0.07)",
+                border: on ? `2px solid ${data.accent2}` : "2px solid transparent",
+              }}>
+                <span style={{ width: 110 }}>
+                  <span style={{ display: "inline-block", minWidth: 62, textAlign: "center", padding: "4px 12px", borderRadius: 12, fontSize: 42, fontWeight: 900, color: "#0b1220", background: data.accent }}>{r[0]}</span>
+                </span>
+                <span style={{ width: 250, fontSize: 44, fontWeight: 900, color: on ? data.accent2 : "#ffffff", whiteSpace: "nowrap" }}>{r[1]}</span>
+                <span style={{ fontSize: 32, fontWeight: 600, color: "#c3d2df", whiteSpace: "nowrap" }}>{r[2]}</span>
+              </div>
+            );
+          })}
+        </div>
+        {card.note && <div style={{ marginTop: 16, fontSize: 25, fontWeight: 500, color: "#8aa0b4" }}>{card.note}</div>}
+        <div style={{ marginTop: 14, fontSize: 36, fontWeight: 800, color: data.accent2 }}>
+          {data.cta.siteLabel ?? "내 명반 무료로 보기"} · {data.cta.site ?? ""}
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 // ---------- one card ----------
 const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, data, total }) => {
   const frame = useCurrentFrame(); const { fps } = useVideoConfig();
@@ -211,6 +274,7 @@ const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, d
   const appear = spring({ frame: frame - 2, fps, config: { damping: 18, stiffness: 120 } });
   const lines = parseTitle(card.title);
   let wi = 0;
+  if (card.rows) return <LookupView card={card} data={data} />;
   return (
     <AbsoluteFill style={{ fontFamily: FONT, color: "#eef4f8" }}>
       <Dots total={total} idx={card.idx} accent={data.accent} />
