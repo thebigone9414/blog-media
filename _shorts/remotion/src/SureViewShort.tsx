@@ -343,33 +343,46 @@ const BrightLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) 
   const RH = rows.length > 8 ? 78 : 90;
   const KW = card.keyW ?? 110; const C2 = card.col2W ?? 290;
   const INK = "#0f2a3a"; const HL = card.hl ?? "#0b8f80"; const WARM = "#e8590c";
-  const sweepStart = 20 + rows.length * 2;
+  // motion 판 (2026-11-18): 틱톡·릴스용. 표 한 장이 멈춘 그림으로 보이지 않게 세 장면(제목만 → 표가 한 줄씩 → 마무리)으로 나눈다.
+  // 글자 크기·위치는 기본 판과 같다(확대 없음 - 안전영역 x 930, y 1400 을 그대로 지킨다). motion 이 없으면 예전과 똑같이 그린다.
+  const M = !!card.motion; const total = card.durFrames || 360;
+  const cl = { extrapolateLeft: "clamp" as const, extrapolateRight: "clamp" as const };
+  const IN0 = 36, IN1 = 56, ROW0 = M ? 60 : 6, RSTEP = M ? 6 : 2;
+  const introY = M ? interpolate(frame, [IN0, IN1], [340, 0], { ...cl, easing: Easing.out(Easing.cubic) }) : 0;
+  const bodyA = M ? interpolate(frame, [IN1 - 4, IN1 + 8], [0, 1], cl) : 1;
+  const rowsEnd = ROW0 + rows.length * RSTEP;
+  const tailA = M ? interpolate(frame, [rowsEnd, rowsEnd + 10], [0, 1], cl) : 1;
+  const outA = M ? interpolate(frame, [total - 78, total - 62], [0, 1], cl) : 0;
+  const outPop = spring({ frame: frame - (total - 74), fps, config: { damping: 14 } });
+  const sweepStart = M ? rowsEnd + 12 : 20 + rows.length * 2;
   const hi = frame > sweepStart ? Math.floor((frame - sweepStart) / 14) % rows.length : -1;
+  const dx = M ? 60 * Math.sin(frame / 40) : 0, dy = M ? 50 * Math.cos(frame / 52) : 0;
   return (
     <AbsoluteFill style={{ fontFamily: FONT, color: INK, background: "linear-gradient(170deg,#ffffff 0%,#eef8fb 48%,#dff1f4 100%)" }}>
-      <div style={{ position: "absolute", right: -180, top: -200, width: 640, height: 640, borderRadius: 999, background: `${data.accent}33` }} />
-      <div style={{ position: "absolute", left: -200, top: 1480, width: 700, height: 700, borderRadius: 999, background: `${data.accent2}2e` }} />
+      <div style={{ position: "absolute", right: -180 + dx, top: -200 + dy, width: 640, height: 640, borderRadius: 999, background: `${data.accent}33` }} />
+      <div style={{ position: "absolute", left: -200 - dx, top: 1480 - dy, width: 700, height: 700, borderRadius: 999, background: `${data.accent2}2e` }} />
+      {M && <div style={{ position: "absolute", left: 540 + 360 * Math.cos(frame / 44) - 380, top: 820 + 480 * Math.sin(frame / 57) - 380, width: 760, height: 760, borderRadius: 999, background: `radial-gradient(circle, ${data.accent}26 0%, ${data.accent}00 66%)` }} />}
       <div style={{ position: "absolute", left: 70, right: 150, top: 110, display: "flex", alignItems: "center", gap: 16, fontSize: 34, fontWeight: 900, color: INK }}>
         <div style={{ width: 46, height: 46, borderRadius: 12, background: `linear-gradient(135deg,${data.accent},#1f6fb8)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, fontWeight: 900, color: "#fff" }}>{data.footerBrand.charAt(0).toUpperCase()}</div>{data.footerBrand}
         <span style={{ marginLeft: "auto", fontSize: 27, fontWeight: 800, color: "#fff", background: HL, borderRadius: 99, padding: "6px 22px" }}>{card.tag}</span>
       </div>
       <div style={{ position: "absolute", left: 70, right: 150, top: 200 }}>
-        <div style={{ fontSize: 82, lineHeight: 1.18, fontWeight: 900, letterSpacing: -2 }}>
+        <div style={{ fontSize: 82, lineHeight: 1.18, fontWeight: 900, letterSpacing: -2, transform: `translateY(${introY}px)` }}>
           {lines.map((toks, li) => (
             <div key={li}>{toks.map((tk, ti) => (
               <span key={ti} style={{ whiteSpace: "pre", color: tk.b ? WARM : INK }}>{tk.t}</span>
             ))}</div>
           ))}
         </div>
-        {card.sub && <div style={{ marginTop: 18, fontSize: 37, fontWeight: 800, color: HL }}>{card.sub}</div>}
+        {card.sub && <div style={{ marginTop: 18, fontSize: 37, fontWeight: 800, color: HL, opacity: bodyA }}>{card.sub}</div>}
         {card.rowsHead && (
-          <div style={{ marginTop: 26, display: "flex", alignItems: "center", fontSize: 26, fontWeight: 800, color: "#5d7785", padding: "0 18px" }}>
+          <div style={{ marginTop: 26, display: "flex", alignItems: "center", fontSize: 26, fontWeight: 800, color: "#5d7785", padding: "0 18px", opacity: bodyA }}>
             <span style={{ width: KW }}>{card.rowsHead[0]}</span><span style={{ width: C2 }}>{card.rowsHead[1]}</span><span>{card.rowsHead[2]}</span>
           </div>
         )}
         <div style={{ marginTop: card.rowsHead ? 10 : 30, display: "flex", flexDirection: "column", gap: 8 }}>
           {rows.map((r, i) => {
-            const a = spring({ frame: frame - 6 - i * 2, fps, config: { damping: 18 } });
+            const a = spring({ frame: frame - ROW0 - i * RSTEP, fps, config: { damping: 18 } });
             const on = i === hi;
             return (
               <div key={i} style={{
@@ -388,12 +401,32 @@ const BrightLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) 
             );
           })}
         </div>
+        <div style={{ opacity: tailA }}>
         {card.note && <div style={{ marginTop: 16, fontSize: 25, fontWeight: 600, color: "#5d7785" }}>{card.note}</div>}
         {card.ask && <div style={{ marginTop: 16, fontSize: 40, fontWeight: 900, color: INK }}>{card.ask}</div>}
         <div style={{ marginTop: 12, fontSize: 36, fontWeight: 900, color: WARM }}>
           {data.cta.siteLabel ?? "전체 글"} · {data.cta.site ?? ""}
         </div>
+        </div>
       </div>
+      {M && outA > 0 && (
+        <AbsoluteFill style={{ opacity: outA, background: "linear-gradient(170deg,#ffffff 0%,#eef8fb 48%,#dff1f4 100%)" }}>
+          <div style={{ position: "absolute", right: -180 + dx, top: -200 + dy, width: 640, height: 640, borderRadius: 999, background: `${data.accent}33` }} />
+          <div style={{ position: "absolute", left: 70, right: 150, top: 430 }}>
+            <div style={{ fontSize: 34, fontWeight: 900, color: HL }}>{data.footerBrand} · {card.tag}</div>
+            <div style={{ marginTop: 26, fontSize: 76, lineHeight: 1.2, fontWeight: 900, letterSpacing: -2, transform: `scale(${0.9 + 0.1 * outPop})`, transformOrigin: "0% 50%" }}>
+              {lines.map((toks, li) => (
+                <div key={li}>{toks.map((tk, ti) => (
+                  <span key={ti} style={{ whiteSpace: "pre", color: tk.b ? WARM : INK }}>{tk.t}</span>
+                ))}</div>
+              ))}
+            </div>
+            {card.ask2 && <div style={{ marginTop: 40, fontSize: 44, lineHeight: 1.3, fontWeight: 900, color: INK, wordBreak: "keep-all" }}>{card.ask2}</div>}
+            <div style={{ marginTop: 44, fontSize: 34, fontWeight: 800, color: "#5d7785" }}>{data.cta.siteLabel ?? "전체 글"}</div>
+            <div style={{ marginTop: 6, fontSize: 50, fontWeight: 900, color: WARM, transform: `translateY(${5 * Math.sin(frame / 6)}px)` }}>{data.cta.site ?? ""}</div>
+          </div>
+        </AbsoluteFill>
+      )}
     </AbsoluteFill>
   );
 };

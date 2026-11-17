@@ -1,0 +1,245 @@
+{
+ "note": "매주 전략 점검이 누적한다. 최신 실행이 runs 맨 앞. 숫자는 도구가 준 값 그대로, 못 읽은 것은 unread 에 적는다.",
+ "runs": [
+  {
+   "checkedAt": "2026-11-18 08:15 KST",
+   "window": "2026-10-21 ~ 2026-11-18",
+   "source": "uplika get_insights (누적값, 날짜는 한국 시간 발행일)",
+   "items": [
+    {
+     "date": "2026-11-14",
+     "series": "정보시스템감리",
+     "channel": "유튜브 쇼츠",
+     "title": "감사가 아니라 감리다 | 감리와 감사, 뭐가 다를까?",
+     "views": 22,
+     "likes": 0,
+     "comments": 0,
+     "url": "https://www.youtube.com/watch?v=nUAsR0p6jiE",
+     "note": "8카드 약 50초 형식"
+    },
+    {
+     "date": "2026-11-14",
+     "series": "주간 AI",
+     "channel": "유튜브 쇼츠",
+     "title": "소프트뱅크 71억 달러 적자? 이번 주 AI 3줄 요약",
+     "views": 27,
+     "likes": 0,
+     "comments": 0,
+     "url": "https://www.youtube.com/watch?v=oF4E33jRmT4",
+     "note": "8카드 약 50초 형식"
+    },
+    {
+     "date": "2026-11-14",
+     "series": "주간 시황",
+     "channel": "유튜브 쇼츠",
+     "title": "코스피 +4.56% 반등, 누가 샀나? | 주간 시황",
+     "views": 32,
+     "likes": 0,
+     "comments": 0,
+     "url": "https://www.youtube.com/watch?v=3apjR0TEU_A",
+     "note": "8카드 약 50초 형식"
+    },
+    {
+     "date": "2026-11-14",
+     "series": "정보시스템감리",
+     "channel": "네이버 블로그",
+     "title": "[감리사로 가는 길] 14. 감리는 어떻게 진행되는가",
+     "views": 23,
+     "likes": 0,
+     "comments": 0,
+     "url": "https://blog.naver.com/sureview26/224476804928"
+    },
+    {
+     "date": "2026-11-14",
+     "series": "주간 시황",
+     "channel": "네이버 블로그",
+     "title": "[주간 시황] 코스피 +4.56% 반등의 매수 주체는 외국인도 연기금도 아닌 기타법인 ...",
+     "views": 12,
+     "likes": 1,
+     "comments": 2,
+     "url": "https://blog.naver.com/sureview26/224476768684"
+    },
+    {
+     "date": "2026-11-14",
+     "series": "주간 AI",
+     "channel": "네이버 블로그",
+     "title": "[주간 AI] 모델 역할분업·피지컬 AI 가속, 인프라 선투자 재무 부담 수면 위로",
+     "views": 6,
+     "likes": 0,
+     "comments": 0,
+     "url": "https://blog.naver.com/sureview26/224476752278"
+    },
+    {
+     "date": "2026-11-07",
+     "series": "정보시스템감리",
+     "channel": "네이버 블로그",
+     "title": "[감리사로 가는 길] 13. 왜 감리사인가",
+     "views": 52,
+     "likes": 0,
+     "comments": 0,
+     "url": "https://blog.naver.com/sureview26/224468215600"
+    },
+    {
+     "date": "2026-11-07",
+     "series": "주간 시황",
+     "channel": "네이버 블로그",
+     "title": "[주간 시황] AI 데이터센터 규제 공포가 메모리 밸류에이션을 직격, 코스피 주간 -11.71%",
+     "views": 7,
+     "likes": 0,
+     "comments": 1,
+     "url": "https://blog.naver.com/sureview26/224468197534"
+    },
+    {
+     "date": "2026-11-07",
+     "series": "주간 AI",
+     "channel": "네이버 블로그",
+     "title": "[주간 AI] 사상 최대 AI 주가 조정 속 인프라 자본 재편 가속",
+     "views": 3,
+     "likes": 0,
+     "comments": 0,
+     "url": "https://blog.naver.com/sureview26/224468175978"
+    },
+    {
+     "date": "2026-10-31",
+     "series": "주간 시황",
+     "channel": "네이버 블로그",
+     "title": "[주간 시황] 메모리 실적이 만든 반등을 미국 AI 캐펙스 회의론이 이틀 만에 되돌린 주 ...",
+     "views": 14,
+     "likes": 3,
+     "comments": 0,
+     "url": "https://blog.naver.com/sureview26/224460008449"
+    },
+    {
+     "date": "2026-10-31",
+     "series": "주간 AI",
+     "channel": "네이버 블로그",
+     "title": "[주간 AI] 빅테크 어닝 위크, 사상 최대 CAPEX 와 ROI 논쟁 그리고 국내 메모리 초호황",
+     "views": 19,
+     "likes": 2,
+     "comments": 0,
+     "url": "https://blog.naver.com/sureview26/224459981925"
+    },
+    {
+     "date": "2026-10-30",
+     "series": "정보시스템감리",
+     "channel": "네이버 블로그",
+     "title": "[감리사로 가는 길] 12. 숫자로 보는 감리 업계, 그리고 AI가 바꾸는 판",
+     "views": 42,
+     "likes": 1,
+     "comments": 0,
+     "url": "https://blog.naver.com/sureview26/224458818328"
+    },
+    {
+     "date": "2026-10-30",
+     "series": "정보시스템감리",
+     "channel": "네이버 블로그",
+     "title": "[감리사로 가는 길] 11. 누가 이 일을 하는가",
+     "views": 67,
+     "likes": 1,
+     "comments": 0,
+     "url": "https://blog.naver.com/sureview26/224458775386"
+    },
+    {
+     "date": "2026-10-28",
+     "series": "정보시스템감리",
+     "channel": "네이버 블로그",
+     "title": "[감리사로 가는 길] 10. AI가 지켜야할 것은 지켰는가",
+     "views": 14,
+     "likes": 0,
+     "comments": 0,
+     "url": "https://blog.naver.com/sureview26/224456359695"
+    },
+    {
+     "date": "2026-10-26",
+     "series": "정보시스템감리",
+     "channel": "네이버 블로그",
+     "title": "[감리사로 가는 길] 9. AI를 어떻게 검증할까",
+     "views": 27,
+     "likes": 1,
+     "comments": 0,
+     "url": "https://blog.naver.com/sureview26/224454258783"
+    },
+    {
+     "date": "2026-10-26",
+     "series": "주간 시황",
+     "channel": "네이버 블로그",
+     "title": "[주간 시황] 지수 낙폭보다 거래대금 -27.9%와 섹터 쏠림이 더 큰 주간 ...",
+     "views": 6,
+     "likes": 0,
+     "comments": 0,
+     "url": "https://blog.naver.com/sureview26/224453969662"
+    },
+    {
+     "date": "2026-10-26",
+     "series": "주간 AI",
+     "channel": "네이버 블로그",
+     "title": "[주간 AI] 베라루빈 양산과 메타 실적이 연 CAPEX 과열, CoreWeave 부채 공포로 번진 한 주",
+     "views": 11,
+     "likes": 1,
+     "comments": 0,
+     "url": "https://blog.naver.com/sureview26/224453950480"
+    }
+   ],
+   "channelsNoPosts": {
+    "인스타 릴스": "SureView 게시물 0건(11-16 연결, 첫 발행 전)",
+    "틱톡": "SureView 게시물 0건(11-16 연결, 첫 발행 전)",
+    "네이버 클립": "SureView 게시물 0건(11-16 연결, 첫 발행 전)"
+   },
+   "unread": [],
+   "naverSearch": {
+    "checkedAt": "2026-11-18",
+    "source": "uplika check_naver_visibility",
+    "keywords": [
+     {
+      "keyword": "정보시스템감리사",
+      "aiBriefing": "브리핑 없음",
+      "organicRank": 4,
+      "post": "14편"
+     },
+     {
+      "keyword": "정보시스템감리",
+      "aiBriefing": "인용 3위(4편)·6위(14편)",
+      "organicRank": 5,
+      "post": "14편"
+     },
+     {
+      "keyword": "정보시스템감리사 응시자격",
+      "aiBriefing": "인용 안 됨",
+      "organicRank": 4,
+      "post": "11편"
+     },
+     {
+      "keyword": "정보시스템감리 절차",
+      "aiBriefing": "인용 안 됨",
+      "organicRank": 2,
+      "post": "224425291931"
+     }
+    ],
+    "titleDiagnosis": {
+     "source": "uplika diagnose_naver_blog (최근 50편)",
+     "searchIntentTitles": 1,
+     "searchIntentRatioPct": 2,
+     "thresholdPct": 30,
+     "postsPerMonth": 13.4
+    }
+   },
+   "comments": [
+    {
+     "date": "2026-11-14",
+     "post": "주간 시황 11-14",
+     "text": "기타법인이 실질 매수 주체였다는 대목에 반응, 엔비디아 실적 전까지 확인 필요하다는 의견"
+    },
+    {
+     "date": "2026-11-15",
+     "post": "주간 시황 11-14",
+     "text": "기타법인이 받쳐준 반등이라 불안하다는 의견"
+    },
+    {
+     "date": "2026-11-07",
+     "post": "주간 시황 11-07",
+     "text": "지표·수급 정리에 감사, 다음 일정을 참고하겠다는 의견"
+    }
+   ]
+  }
+ ]
+}
