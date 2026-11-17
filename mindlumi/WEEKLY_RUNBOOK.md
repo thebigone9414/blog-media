@@ -1,6 +1,6 @@
 # MindLumi 주간 제작 절차서
 
-예약 작업 「MindLumi 주간 제작」(월 07:40)과 「MindLumi 자동화 점검」(보수할 때)이 이 문서를 읽고 그대로 수행한다.
+예약 작업 「MindLumi 주간 제작」(월 04:10 - 2026-11-18 변경, 06:00 전에 끝낸다)과 「MindLumi 자동화 점검」(보수할 때)이 이 문서를 읽고 그대로 수행한다.
 한 번에 그 주 글 3편(화·목·토)과 숏츠 7편(매일 1편, 화요일부터 다음 주 월요일까지)을 만들어 예약한다.
 
 ★완전 자동이다. 운영자가 모든 단계를 사전 승인했다. 질문하지 않는다. 승인 창이 뜨는 도구는 쓰지 않는다.
@@ -114,7 +114,7 @@ Star-Chart 저장소(add_repo read 또는 공개 clone)의 `src/components/Publi
 
 ```
 publish  accountIds ["conn_1454e4b39c72db9a"]  workspaceId "ws_f7979700dc84fc70"
-         scheduledAt  화 07:30 · 목 07:30 · 토 21:00 (+09:00)   ⛔ 심야 금지
+         scheduledAt  화 06:00 · 목 06:00 · 토 21:00 (+09:00)  ★주중은 06:00 (2026-11-18 운영자 지정: 주중 실행은 오전 7시 전)   ⛔ 심야 금지
          options.naver_blog { title, categoryId(명반 해석 21 · 자미두수 기본 20 · 전서 12 · 서비스 22),
                               layout "as-is", openType "public", tags 10~15, seoKeywords }
 확장이 offline 이어도 예약은 그대로 건다. 글은 확장이 돌아오면 나간다(최대 7일)
@@ -163,7 +163,7 @@ publish  accountIds ["conn_1454e4b39c72db9a"]  workspaceId "ws_f7979700dc84fc70"
 ```
 mp4 → mindlumi/shorts/<YYYYMMDD>-<slug>.mp4 커밋·푸시 → raw URL → media_from_url
 publish  accountIds ["conn_40c47188dd302b4b"]  workspaceId "ws_f7979700dc84fc70"
-         scheduledAt  글이 나가는 날은 글 30분 뒤(화·목 08:00 · 토 21:30), 글이 없는 날은 08:00
+         scheduledAt  주중(월~금)은 전부 06:00 (글이 나가는 화·목도 글과 같은 06:00). 토 21:30 · 일 08:00
          content  2~3줄 + 「내 ○○는? 댓글로」 + "내 원반과 제2명반 무료로 보기" + https://mindlumi.ai/?ref=shorts + 해시태그(끝에 #Shorts)
          options.youtube { title(훅 질문 + 이모지. 예: 「내가 타고난 복의 별은? 🧧 내 출생연도 찾기 #신년운세 #자미두수」), tags 10,
                            categoryId "22", privacyStatus "public", defaultLanguage "ko",
