@@ -16,7 +16,7 @@ type Card = {
   // 찾아보기형(lookup). rows 가 있으면 카드 전체가 표 한 장이 된다 - 시청자가 자기 줄을 찾느라 멈추고 다시 본다.
   // 잘 되는 사주 숏츠(구독 수백 명 채널의 10만~30만 회)가 거의 이 형태였다(2026-11-16 벤치마크).
   // rows: [키, 값, 한마디]. note 는 표 아래 작은 주석, 자막은 띄우지 않는다(표를 가린다).
-  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; bright?: boolean; hl?: string; faceBase?: string; ask2?: string; kicker?: string;
+  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; motion?: boolean; bright?: boolean; hl?: string; faceBase?: string; ask2?: string; kicker?: string;
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
@@ -411,10 +411,25 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
   const sweepStart = 16 + rows.length * 2;
   const hi = frame > sweepStart ? Math.floor((frame - sweepStart) / 12) % rows.length : -1;
   const pulse = 1 + 0.04 * Math.sin(frame / 4);
+  // motion 판 (2026-11-17): 틱톡이 「움직이지 않는 이미지」를 추천에서 뺀다. 세 장면(제목 → 표가 한 줄씩 → 마무리)으로 나누고 화면 전체가 계속 움직이게 한다.
+  const M = !!card.motion; const total = card.durFrames || 330;
+  const IN0 = 40, IN1 = 60, ROW0 = M ? 62 : 5, RSTEP = M ? 5 : 2;
+  const cl = { extrapolateLeft: "clamp" as const, extrapolateRight: "clamp" as const };
+  const introY = M ? interpolate(frame, [IN0, IN1], [430, 0], { ...cl, easing: Easing.out(Easing.cubic) }) : 0;
+  const introS = M ? interpolate(frame, [IN0, IN1], [1.16, 1], cl) : 1;
+  const zoom = M ? 1 + 0.035 * Math.min(1, Math.max(0, (frame - IN1) / Math.max(1, total - IN1))) : 1;
+  const outA = M ? interpolate(frame, [total - 84, total - 68], [0, 1], cl) : 0;
+  const outPop = spring({ frame: frame - (total - 80), fps, config: { damping: 10, stiffness: 140 } });
+  const tailA = M ? interpolate(frame, [ROW0 + rows.length * RSTEP, ROW0 + rows.length * RSTEP + 10], [0, 1], cl) : 1;
+  const sweepFrom = M ? ROW0 + rows.length * RSTEP + 10 : sweepStart;
+  const hiM = frame > sweepFrom ? Math.floor((frame - sweepFrom) / 12) % rows.length : -1;
   return (
     <AbsoluteFill style={{ fontFamily: EFONT, color: "#fff", background: "radial-gradient(120% 60% at 50% 0%,#ff5a3c 0%,#d1121f 38%,#8a0b1c 100%)" }}>
-      {Array.from({ length: 16 }).map((_, i) => {
-        const x = (i * 197) % 1080, y = (i * 331) % 1920, tw = 0.35 + 0.65 * Math.abs(Math.sin((frame + i * 9) / 11));
+      {M && <div style={{ position: "absolute", left: 540 + 380 * Math.cos(frame / 38) - 450, top: 760 + 520 * Math.sin(frame / 47) - 450, width: 900, height: 900, borderRadius: 999, background: "radial-gradient(circle, rgba(255,216,74,0.30) 0%, rgba(255,216,74,0) 65%)" }} />}
+      {Array.from({ length: M ? 26 : 16 }).map((_, i) => {
+        const x = M ? ((i * 197) % 1080) + 26 * Math.sin((frame + i * 13) / 21) : (i * 197) % 1080;
+        const y = M ? ((((i * 331) - frame * (2 + (i % 4))) % 1920) + 1920) % 1920 : (i * 331) % 1920;
+        const tw = 0.35 + 0.65 * Math.abs(Math.sin((frame + i * 9) / 11));
         return <div key={i} style={{ position: "absolute", left: x, top: y, width: 10 + (i % 3) * 6, height: 10 + (i % 3) * 6, borderRadius: 99, background: GOLD, opacity: tw * 0.55, boxShadow: `0 0 18px ${GOLD}` }} />;
       })}
       <div style={{ position: "absolute", left: 56, right: 56, top: 92, display: "flex", alignItems: "center", gap: 12, fontSize: 28, fontWeight: 800, color: "#ffe9c2" }}>
@@ -422,8 +437,8 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
         <span style={{ fontSize: 31, fontWeight: 900, color: "#ffffff", borderLeft: "3px solid rgba(255,233,194,0.6)", paddingLeft: 14, marginLeft: 4 }}>{card.kicker ?? "자미두수로 보는 내 사주"}</span>
         <span style={{ marginLeft: "auto", fontSize: 26, fontWeight: 900, color: RED, background: GOLD, borderRadius: 99, padding: "4px 20px" }}>{card.tag}</span>
       </div>
-      <div style={{ position: "absolute", left: 56, right: 56, top: 150 }}>
-        <div style={{ transform: `scale(${0.7 + 0.3 * pop})`, fontSize: 92, lineHeight: 1.14, fontWeight: 900, letterSpacing: -2.5, textAlign: "center", textShadow: "0 6px 0 rgba(60,0,10,0.55), 0 0 28px rgba(255,200,80,0.35)" }}>
+      <div style={{ position: "absolute", left: 56, right: 56, top: 150, transform: `translateY(${introY}px) scale(${zoom})`, transformOrigin: "50% 30%" }}>
+        <div style={{ transform: `scale(${(0.7 + 0.3 * pop) * introS})`, fontSize: 92, lineHeight: 1.14, fontWeight: 900, letterSpacing: -2.5, textAlign: "center", textShadow: "0 6px 0 rgba(60,0,10,0.55), 0 0 28px rgba(255,200,80,0.35)" }}>
           {lines.map((toks, li) => (
             <div key={li}>{toks.map((tk, ti) => (
               <span key={ti} style={{ whiteSpace: "pre", color: tk.b ? GOLD : "#ffffff" }}>{tk.t}</span>
@@ -437,8 +452,8 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
         )}
         <div style={{ marginTop: 22, display: "flex", flexDirection: "column", gap: 6 }}>
           {rows.map((r, i) => {
-            const a = spring({ frame: frame - 5 - i * 2, fps, config: { damping: 14 } });
-            const on = i === hi;
+            const a = spring({ frame: frame - ROW0 - i * RSTEP, fps, config: { damping: 14 } });
+            const on = i === (M ? hiM : hi);
             return (
               <div key={i} style={{
                 height: RH, display: "flex", alignItems: "center", gap: 14, padding: "0 14px", borderRadius: 20,
@@ -458,6 +473,7 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
             );
           })}
         </div>
+        <div style={{ opacity: tailA }}>
         {card.ask && (
           <div style={{ marginTop: 18, display: "flex", justifyContent: "center" }}>
             <span style={{ transform: `scale(${pulse})`, fontSize: 44, fontWeight: 900, color: INK, background: GOLD, borderRadius: 99, padding: "12px 40px", boxShadow: "0 6px 0 rgba(60,0,10,0.5)" }}>{card.ask}</span>
@@ -470,7 +486,17 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
         {data.cta.naver && (
           <div style={{ marginTop: 6, fontSize: 29, fontWeight: 800, color: "#ffffff", textAlign: "center" }}>📖 더 깊은 풀이 · {data.cta.naver}</div>
         )}
+        </div>
       </div>
+      {M && outA > 0 && (
+        <AbsoluteFill style={{ opacity: outA, background: "radial-gradient(110% 70% at 50% 35%,#ff5a3c 0%,#c40f1c 45%,#6d0716 100%)", alignItems: "center", justifyContent: "center", padding: "0 70px", textAlign: "center" }}>
+          <div style={{ fontSize: 40, fontWeight: 900, color: "#ffe9c2", marginBottom: 26 }}>{card.kicker ?? "자미두수로 보는 내 사주"}</div>
+          {card.ask2 && <div style={{ transform: `scale(${0.6 + 0.4 * outPop})`, fontSize: 66, lineHeight: 1.25, fontWeight: 900, color: "#fff", wordBreak: "keep-all", textShadow: "0 6px 0 rgba(60,0,10,0.55)" }}>{card.ask2}</div>}
+          {card.ask && <div style={{ marginTop: 44, transform: `scale(${pulse})`, fontSize: 46, fontWeight: 900, color: INK, background: GOLD, borderRadius: 99, padding: "16px 44px", boxShadow: "0 6px 0 rgba(60,0,10,0.5)" }}>{card.ask}</div>}
+          <div style={{ marginTop: 40, fontSize: 60, fontWeight: 900, color: GOLD, transform: `translateY(${6 * Math.sin(frame / 6)}px)` }}>{data.cta.site ?? ""}</div>
+          {data.cta.naver && <div style={{ marginTop: 16, fontSize: 32, fontWeight: 800, color: "#ffffff" }}>📖 더 깊은 풀이 · {data.cta.naver}</div>}
+        </AbsoluteFill>
+      )}
     </AbsoluteFill>
   );
 };
