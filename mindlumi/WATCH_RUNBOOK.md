@@ -52,7 +52,7 @@
     uplika 에 올린 그림·영상은 올린 지 이틀 뒤 만료 시각이 찍힌다. 예약 글에 붙인 뒤에도 유지되는지는 문서로 확인되지 않았다
     → 앞으로 36시간 안에 나갈 예약 유튜브 글과 인스타그램·틱톡 글, 네이버 클립 글마다: 저장소 raw URL(mindlumi/shorts/<파일>.mp4, index.json·spec 이름으로 찾는다)에서
       media_from_url 을 다시 하고 update_post 로 mediaIds 만 갈아 끼운다 (mediaIds 만 보내면 제목·설명은 그대로다)
-      ⚠️ 인스타그램·틱톡 글은 움직임 판 `<파일>-m.mp4` (16초)를 쓴다 (2026-11-17~). `-m.mp4` 가 저장소에 있으면 반드시 그것으로 갈아 끼운다. 유튜브·클립은 기존 파일 그대로
+      ⚠️ 2026-11-18~ 네 채널(유튜브 · 인스타그램·틱톡 · 네이버 클립) 모두 움직임 판 `<파일>-m.mp4` (16초)를 쓴다 (운영자 지정). `-m.mp4` 가 저장소에 있으면 반드시 그것으로 갈아 끼운다. 11초 판으로 되돌리지 않는다
     → 앞으로 36시간 안에 나갈 예약 네이버 글마다: get_post 로 본문을 읽어 media:<id> 를 전부 뽑고, 같은 순서의 그림
       (index.json 의 images 경로 + CTA 그림)을 다시 media_from_url 해서 본문의 id 를 새 id 로 바꿔 update_post 한다
       ⚠️ options 를 같이 보낼 때는 title·categoryId·layout·openType·tags·seoKeywords 를 전부 다시 보낸다(빼면 지워진다). 본문만 바꿀 때는 options 를 보내지 않는다
