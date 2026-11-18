@@ -14,7 +14,7 @@
  "cards": [
   {
    "tag": "주도권",
-   "dur": 20,
+   "dur": 26,
    "title": "👑 나는 어디서<br><b>주도권</b>을 쥘까?",
    "rows": [
     [
@@ -79,7 +79,7 @@
     ]
    ],
    "note": "설 전 출생은 전년도 줄",
-   "narration": "나는 어디서 주도권을 쥘까요? 출생연도를 찾아보세요. 실제 감명 보고서는 이렇게 나옵니다. 내 명반은 마인드루미에서 확인하세요.",
+   "narration": "나는 어디서 주도권을 쥘까요? 출생연도를 찾아보세요.",
    "pill": "👇 내 출생연도 찾기",
    "ask": "❤️ 좋아요 누르고 기운 받아가세요",
    "pop": true,
@@ -91,7 +91,9 @@
     "src": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/mindlumi/examples/iljik-02.png",
     "label": "일과 직장 보고서",
     "h": 850
-   }
+   },
+   "narration2": "실제 감명 보고서는 이렇게 나옵니다. 내 명반은 마인드루미에서 확인하세요.",
+   "narration2_at": 18.1
   }
  ]
 }

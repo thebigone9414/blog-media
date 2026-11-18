@@ -40,12 +40,17 @@ def main():
         nF = int(round(dur * FPS))
         seg = np.zeros(int(dur * sr), "float32"); st = int(LEAD * sr); n = min(len(clip), len(seg) - st)
         if n > 0: seg[st:st + n] = clip[:n]
+        # narration2 (선택): 카드 안의 특정 시각에 한 번 더 말한다. 예) 예시 장면이 뜰 때. "narration2_at" 은 카드 시작부터의 초.
+        if c.get("narration2"):
+            a2 = tts.generate(c["narration2"], sid=sid, speed=speed); clip2 = np.array(a2.samples, "float32")
+            st2 = int(float(c.get("narration2_at", max(0.0, dur - 8.0))) * sr); n2 = min(len(clip2), len(seg) - st2)
+            if n2 > 0: seg[st2:st2 + n2] = clip2[:n2]
         segs.append(seg)
         words = narr.split(); wts = [syl(w) for w in words]; tot = sum(wts) or 1; acc = 0; wl = []
         for w, wt in zip(words, wts):
             s = LEAD + (acc / tot) * Dsp; acc += wt; e = LEAD + (acc / tot) * Dsp
             wl.append({"w": w, "s": round(s, 3), "e": round(e, 3)})
-        card = {k: v for k, v in c.items() if k not in ("dur", "narration")}
+        card = {k: v for k, v in c.items() if k not in ("dur", "narration", "narration2", "narration2_at")}
         card.update({"idx": i, "startFrame": cursor, "durFrames": nF, "words": wl})
         cards.append(card); cursor += nF
 

@@ -454,7 +454,7 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
   const pulse = 1 + 0.04 * Math.sin(frame / 4);
   // motion 판 (2026-11-17): 틱톡이 「움직이지 않는 이미지」를 추천에서 뺀다. 세 장면(제목 → 표가 한 줄씩 → 마무리)으로 나누고 화면 전체가 계속 움직이게 한다.
   const M = !!card.motion; const total = card.durFrames || 330;
-  const IN0 = 40, IN1 = 60, ROW0 = M ? 62 : 5, RSTEP = M ? 5 : 2;
+  const IN0 = 34, IN1 = 52, ROW0 = M ? 54 : 5, RSTEP = M ? 3 : 2;  // 2026-11-18: 표를 빨리 다 띄우고 오래 보여 준다(운영자: 표를 볼 시간이 부족하다)
   const cl = { extrapolateLeft: "clamp" as const, extrapolateRight: "clamp" as const };
   const introY = M ? interpolate(frame, [IN0, IN1], [430, 0], { ...cl, easing: Easing.out(Easing.cubic) }) : 0;
   const introS = M ? interpolate(frame, [IN0, IN1], [1.16, 1], cl) : 1;
@@ -472,7 +472,7 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
   const exPan = exH > EXVH ? interpolate(frame, [exStart + 40, total - 96], [0, -(exH - EXVH)], cl) : 0;
   const tailA = M ? interpolate(frame, [ROW0 + rows.length * RSTEP, ROW0 + rows.length * RSTEP + 10], [0, 1], cl) : 1;
   const sweepFrom = M ? ROW0 + rows.length * RSTEP + 10 : sweepStart;
-  const hiM = frame > sweepFrom ? Math.floor((frame - sweepFrom) / 12) % rows.length : -1;
+  const hiM = frame > sweepFrom ? Math.floor((frame - sweepFrom) / 26) % rows.length : -1;  // 줄 강조는 천천히(한 줄 0.87초)
   return (
     <AbsoluteFill style={{ fontFamily: EFONT, color: T.text, background: T.bg }}>
       {M && <div style={{ position: "absolute", left: 540 + 380 * Math.cos(frame / 38) - 450, top: 760 + 520 * Math.sin(frame / 47) - 450, width: 900, height: 900, borderRadius: 999, background: `radial-gradient(circle, rgba(${T.glow},0.30) 0%, rgba(${T.glow},0) 65%)` }} />}
