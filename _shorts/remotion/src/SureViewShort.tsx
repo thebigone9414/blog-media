@@ -16,7 +16,7 @@ type Card = {
   // 찾아보기형(lookup). rows 가 있으면 카드 전체가 표 한 장이 된다 - 시청자가 자기 줄을 찾느라 멈추고 다시 본다.
   // 잘 되는 사주 숏츠(구독 수백 명 채널의 10만~30만 회)가 거의 이 형태였다(2026-11-16 벤치마크).
   // rows: [키, 값, 한마디]. note 는 표 아래 작은 주석, 자막은 띄우지 않는다(표를 가린다).
-  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; motion?: boolean; theme?: string; example?: { src: string; label?: string; h?: number }; bright?: boolean; hl?: string; faceBase?: string; ask2?: string; kicker?: string;
+  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; motion?: boolean; theme?: string; example?: { src: string; label?: string; h?: number }; bright?: boolean; hl?: string; faceBase?: string; ask2?: string; kicker?: string; blog?: { title?: string; sub?: string; name?: string; url?: string; frames?: number };
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
@@ -459,10 +459,13 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
   const introY = M ? interpolate(frame, [IN0, IN1], [430, 0], { ...cl, easing: Easing.out(Easing.cubic) }) : 0;
   const introS = M ? interpolate(frame, [IN0, IN1], [1.16, 1], cl) : 1;
   const zoom = M ? 1 + 0.035 * Math.min(1, Math.max(0, (frame - IN1) / Math.max(1, total - IN1))) : 1;
-  const outA = M ? interpolate(frame, [total - 84, total - 68], [0, 1], cl) : 0;
-  const outPop = spring({ frame: frame - (total - 80), fps, config: { damping: 10, stiffness: 140 } });
+  // blog 판 (2026-11-18 SureView 운영자 지정): 마지막 장을 블로그 안내로 쓴다. card.blog 가 없으면 예전 마무리 그대로.
+  const BL = M ? card.blog : undefined; const OUTLEN = BL ? (BL.frames ?? 126) : 84;
+  const outA = M ? interpolate(frame, [total - OUTLEN, total - OUTLEN + 16], [0, 1], cl) : 0;
+  const outPop = spring({ frame: frame - (total - OUTLEN + 4), fps, config: { damping: 10, stiffness: 140 } });
+  const blUp = spring({ frame: frame - (total - OUTLEN + 14), fps, config: { damping: 13, stiffness: 120 } });
   // 예시 장면 (2026-11-18 운영자 지정): 관심만 끄는 영상으로 끝나면 사이트로 이어지지 않는다. 사이트 「예시 보기」의 실제 보고서 화면을 표 다음에 보여 준다.
-  const EX = M ? card.example : undefined; const EXLEN = 165; const exStart = total - 84 - EXLEN;
+  const EX = M ? card.example : undefined; const EXLEN = 165; const exStart = total - OUTLEN - EXLEN;
   const exA = EX ? interpolate(frame, [exStart, exStart + 12], [0, 1], cl) : 0;
   const exUp = spring({ frame: frame - exStart - 4, fps, config: { damping: 16, stiffness: 110 } });
   const EXW = 940, EXVH = 1130; const exH = EX?.h ?? EXVH;
@@ -531,7 +534,7 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
           {card.note ? `${card.note} · ` : ""}{data.cta.site ?? ""}
         </div>
         {data.cta.naver && (
-          <div style={{ marginTop: 6, fontSize: 29, fontWeight: 800, color: T.text, textAlign: "center" }}>📖 더 깊은 풀이 · {data.cta.naver}</div>
+          <div style={{ marginTop: 6, fontSize: 29, fontWeight: 800, color: T.text, textAlign: "center" }}>{BL ? "📖 더 자세한 내용" : "📖 더 깊은 풀이"} · {data.cta.naver}</div>
         )}
         </div>
       </div>
@@ -547,7 +550,26 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
           <div style={{ position: "absolute", bottom: 150, left: 0, right: 0, textAlign: "center", fontSize: 40, fontWeight: 900, color: T.text }}>👉 내 명반으로 받아 보기</div>
         </AbsoluteFill>
       )}
-      {M && outA > 0 && (
+      {BL && outA > 0 && (
+        <AbsoluteFill style={{ opacity: outA, background: T.out, alignItems: "center", justifyContent: "center", padding: "0 64px", textAlign: "center" }}>
+          <div style={{ fontSize: 40, fontWeight: 900, color: T.sub, marginBottom: 30 }}>{card.kicker ?? ""}</div>
+          <div style={{ transform: `scale(${0.6 + 0.4 * outPop})`, fontSize: 84, lineHeight: 1.2, fontWeight: 900, letterSpacing: -2, color: T.text, wordBreak: "keep-all", textShadow: `0 6px 0 rgba(${T.sh},0.55)` }}>
+            {parseTitle(BL.title ?? "더 자세한 내용은<br><b>블로그</b>에서").map((toks, li) => (
+              <div key={li}>{toks.map((tk, ti) => <span key={ti} style={{ whiteSpace: "pre", color: tk.b ? T.hl : T.text }}>{tk.t}</span>)}</div>
+            ))}
+          </div>
+          {BL.sub && <div style={{ marginTop: 28, fontSize: 40, lineHeight: 1.35, fontWeight: 800, color: T.sub, wordBreak: "keep-all" }}>{BL.sub}</div>}
+          <div style={{ marginTop: 56, width: 900, borderRadius: 36, background: "#fffdf6", border: `6px solid ${GOLD}`, boxShadow: `0 14px 0 rgba(${T.sh},0.45)`, padding: "40px 30px 44px", opacity: blUp, transform: `translateY(${(1 - blUp) * 200}px) scale(${1 + 0.012 * Math.sin(frame / 7)})` }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 18 }}>
+              <span style={{ width: 76, height: 76, borderRadius: 18, background: "#03c75a", color: "#ffffff", fontSize: 50, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center" }}>N</span>
+              <span style={{ fontSize: 50, fontWeight: 900, color: INK, letterSpacing: -1 }}>{BL.name ?? "네이버 블로그"}</span>
+            </div>
+            <div style={{ marginTop: 24, fontSize: 52, fontWeight: 900, color: RED, letterSpacing: -1 }}>{BL.url ?? data.cta.naver ?? ""}</div>
+          </div>
+          <div style={{ marginTop: 44, fontSize: 46, fontWeight: 900, color: INK, background: GOLD, borderRadius: 99, padding: "16px 44px", boxShadow: `0 6px 0 rgba(${T.sh},0.5)`, transform: `scale(${pulse})` }}>👉 전체 글 보러 가기</div>
+        </AbsoluteFill>
+      )}
+      {M && !BL && outA > 0 && (
         <AbsoluteFill style={{ opacity: outA, background: T.out, alignItems: "center", justifyContent: "center", padding: "0 70px", textAlign: "center" }}>
           <div style={{ fontSize: 40, fontWeight: 900, color: T.sub, marginBottom: 26 }}>{card.kicker ?? "자미두수로 보는 내 사주"}</div>
           {card.ask2 && <div style={{ transform: `scale(${0.6 + 0.4 * outPop})`, fontSize: 66, lineHeight: 1.25, fontWeight: 900, color: T.text, wordBreak: "keep-all", textShadow: `0 6px 0 rgba(${T.sh},0.55)` }}>{card.ask2}</div>}
