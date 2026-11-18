@@ -53,6 +53,7 @@
     → 앞으로 36시간 안에 나갈 예약 유튜브 글과 인스타그램·틱톡 글, 네이버 클립 글마다: 저장소 raw URL(mindlumi/shorts/<파일>.mp4, index.json·spec 이름으로 찾는다)에서
       media_from_url 을 다시 하고 update_post 로 mediaIds 만 갈아 끼운다 (mediaIds 만 보내면 제목·설명은 그대로다)
       ⚠️ 2026-11-18~ 네 채널(유튜브 · 인스타그램·틱톡 · 네이버 클립) 모두 움직임 판 `<파일>-m.mp4` (16초)를 쓴다 (운영자 지정). `-m.mp4` 가 저장소에 있으면 반드시 그것으로 갈아 끼운다. 11초 판으로 되돌리지 않는다
+      ⚠️ raw.githubusercontent 는 같은 주소를 몇 분 동안 옛 파일로 돌려준다. 방금 다시 만든 파일을 올릴 때는 `git rev-parse origin/main` 의 커밋 해시를 넣은 주소(…/blog-media/<해시>/mindlumi/shorts/…)를 쓰고, media_from_url 결과의 bytes 가 저장소 파일 크기와 같은지 확인한다
     → 앞으로 36시간 안에 나갈 예약 네이버 글마다: get_post 로 본문을 읽어 media:<id> 를 전부 뽑고, 같은 순서의 그림
       (index.json 의 images 경로 + CTA 그림)을 다시 media_from_url 해서 본문의 id 를 새 id 로 바꿔 update_post 한다
       ⚠️ 본문에 감명 예시 그림(`mindlumi/examples/...`)이 들어간 글이 있다(2026-11-18~). index.json 의 images 에 본문 순서대로 적혀 있다. imagesNote 가 있으면 그 순서를 따른다.
