@@ -76,10 +76,18 @@
    "status": "scheduled",
    "scheduledAt": "2026-11-21T21:00+09:00",
    "hookType": "찾아보기형 pop",
-   "images": "mindlumi/w47/a3-*.png",
+   "images": [
+    "mindlumi/w47/a3-1.png",
+    "mindlumi/w47/a3-2.png",
+    "mindlumi/w47/a3-3.png",
+    "mindlumi/w47/a3-4.png",
+    "mindlumi/examples/sohan-01.png",
+    "mindlumi/examples/sohan-03.png"
+   ],
    "event": "신년운세",
    "angle": "D+E",
-   "example": "sohan 01·03"
+   "example": "sohan 01·03",
+   "imagesNote": "본문 순서 그대로: a3-1~4 → 예시 2장(sohan-01 · sohan-03) → CTA. 2026-11-18 본문에 「5. 실제 보고서에서는 이렇게 나온다」 추가"
   },
   {
    "logNo": "224477055499",
