@@ -14,7 +14,7 @@
  "cards": [
   {
    "tag": "2026 병오년",
-   "dur": 16,
+   "dur": 20,
    "title": "😮‍💨 올해 유독 힘들었다면<br><b>염정</b>이 여기 있습니다",
    "rows": [
     [
@@ -91,14 +91,19 @@
     ]
    ],
    "note": "2027년엔 화기가 거문으로 옮겨 갑니다",
-   "narration": "올해 유독 힘드셨나요? 병오년에는 염정에 화기가 붙습니다. 내 염정이 어느 궁에 있는지 찾아보세요.",
+   "narration": "올해 유독 힘드셨나요? 병오년에는 염정에 화기가 붙습니다. 내 염정이 어느 궁에 있는지 찾아보세요. 실제 감명 보고서는 이렇게 나옵니다. 내 명반은 마인드루미에서 확인하세요.",
    "pill": "🔥 병오년엔 염정에 화기가 붙었다",
    "ask": "👉 내 염정 자리, 무료 명반에서 확인",
    "pop": true,
    "ask2": "💬 맞았다면 내 궁을 댓글로",
    "col2W": 170,
    "motion": true,
-   "theme": "violet"
+   "theme": "violet",
+   "example": {
+    "src": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/mindlumi/examples/daehan-04.png",
+    "label": "10년 흐름 보고서",
+    "h": 985
+   }
   }
  ]
 }
