@@ -55,6 +55,8 @@
       ⚠️ 2026-11-18~ 네 채널(유튜브 · 인스타그램·틱톡 · 네이버 클립) 모두 움직임 판 `<파일>-m.mp4` (16초)를 쓴다 (운영자 지정). `-m.mp4` 가 저장소에 있으면 반드시 그것으로 갈아 끼운다. 11초 판으로 되돌리지 않는다
     → 앞으로 36시간 안에 나갈 예약 네이버 글마다: get_post 로 본문을 읽어 media:<id> 를 전부 뽑고, 같은 순서의 그림
       (index.json 의 images 경로 + CTA 그림)을 다시 media_from_url 해서 본문의 id 를 새 id 로 바꿔 update_post 한다
+      ⚠️ 본문에 감명 예시 그림(`mindlumi/examples/...`)이 들어간 글이 있다(2026-11-18~). index.json 의 images 에 본문 순서대로 적혀 있다. imagesNote 가 있으면 그 순서를 따른다.
+      본문의 media 개수와 images + CTA 개수가 다르면 원고 파일로 되돌리지 말고, alt 글자로 짝을 맞춰 id 만 바꾼다. ⛔ 본문 글자는 건드리지 않는다
       ⚠️ options 를 같이 보낼 때는 title·categoryId·layout·openType·tags·seoKeywords 를 전부 다시 보낸다(빼면 지워진다). 본문만 바꿀 때는 options 를 보내지 않는다
     글 원고는 mindlumi/w<주차>/a1.md · a2.md · a3.md 에 있다({{IMG1}}~{{IMG4}} · {{CTA}} 자리 표시)
 발행 실패(failed)
