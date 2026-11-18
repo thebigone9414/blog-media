@@ -1,0 +1,30 @@
+{
+ "product": "올해 흐름",
+ "sections": [
+  {
+   "file": "sohan-01.png",
+   "title": "1. 올해의 환경 변화 (올해)",
+   "height": 278
+  },
+  {
+   "file": "sohan-02.png",
+   "title": "2. 올해 나에게 나타나는 변화",
+   "height": 278
+  },
+  {
+   "file": "sohan-03.png",
+   "title": "3. 긍정적인 흐름",
+   "height": 317
+  },
+  {
+   "file": "sohan-04.png",
+   "title": "4. 부정적인 흐름 및 실천 가이드",
+   "height": 391
+  },
+  {
+   "file": "sohan-05.png",
+   "title": "5. 특이사항",
+   "height": 2135
+  }
+ ]
+}

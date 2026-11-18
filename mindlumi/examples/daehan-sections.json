@@ -1,0 +1,30 @@
+{
+ "product": "10년 흐름",
+ "sections": [
+  {
+   "file": "daehan-01.png",
+   "title": "1. 10년 대한에서의 환경 변화 (42~51세)",
+   "height": 307
+  },
+  {
+   "file": "daehan-02.png",
+   "title": "2. 나에게 나타나는 변화",
+   "height": 396
+  },
+  {
+   "file": "daehan-03.png",
+   "title": "3. 긍정적인 흐름",
+   "height": 317
+  },
+  {
+   "file": "daehan-04.png",
+   "title": "4. 부정적인 흐름 및 실천 가이드",
+   "height": 417
+  },
+  {
+   "file": "daehan-05.png",
+   "title": "5. 특이사항",
+   "height": 2374
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "product": "사랑과 배우자",
+ "sections": [
+  {
+   "file": "iseong-01.png",
+   "title": "1. 사랑을 대하는 방식",
+   "height": 392
+  },
+  {
+   "file": "iseong-02.png",
+   "title": "2. 배우자는 어떤 사람인가",
+   "height": 564
+  },
+  {
+   "file": "iseong-03.png",
+   "title": "3. 만남의 방식과 시기",
+   "height": 227
+  },
+  {
+   "file": "iseong-04.png",
+   "title": "4. 관계에서의 과제",
+   "height": 487
+  },
+  {
+   "file": "iseong-05.png",
+   "title": "5. 올해부터 4년 인연 전망",
+   "height": 999
+  },
+  {
+   "file": "iseong-06.png",
+   "title": "6. 맺음",
+   "height": 40
+  }
+ ]
+}

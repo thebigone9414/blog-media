@@ -1,0 +1,40 @@
+{
+ "product": "돈과 재물",
+ "sections": [
+  {
+   "file": "jaemul-01.png",
+   "title": "1. 돈을 대하는 태도",
+   "height": 461
+  },
+  {
+   "file": "jaemul-02.png",
+   "title": "2. 버는 힘과 그 방식",
+   "height": 441
+  },
+  {
+   "file": "jaemul-03.png",
+   "title": "3. 쌓이는가 흐르는가",
+   "height": 602
+  },
+  {
+   "file": "jaemul-04.png",
+   "title": "4. 직업과 재물의 연결",
+   "height": 629
+  },
+  {
+   "file": "jaemul-05.png",
+   "title": "5. 쓰는 방식과 투자",
+   "height": 388
+  },
+  {
+   "file": "jaemul-06.png",
+   "title": "6. 올해부터 4년 재물 전망",
+   "height": 1092
+  },
+  {
+   "file": "jaemul-07.png",
+   "title": "7. 맺음",
+   "height": 40
+  }
+ ]
+}

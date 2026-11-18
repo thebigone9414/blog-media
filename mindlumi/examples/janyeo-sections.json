@@ -1,0 +1,40 @@
+{
+ "product": "자녀",
+ "sections": [
+  {
+   "file": "janyeo-01.png",
+   "title": "1. 자녀와의 인연",
+   "height": 510
+  },
+  {
+   "file": "janyeo-02.png",
+   "title": "2. 자녀는 어떤 기질인가",
+   "height": 344
+  },
+  {
+   "file": "janyeo-03.png",
+   "title": "3. 공부와 학업",
+   "height": 838
+  },
+  {
+   "file": "janyeo-04.png",
+   "title": "4. 적성과 재능",
+   "height": 455
+  },
+  {
+   "file": "janyeo-05.png",
+   "title": "5. 가정이라는 터전",
+   "height": 346
+  },
+  {
+   "file": "janyeo-06.png",
+   "title": "6. 올해부터 4년 자녀 전망",
+   "height": 1421
+  },
+  {
+   "file": "janyeo-07.png",
+   "title": "7. 맺음",
+   "height": 40
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "product": "인생 전체 흐름",
+ "sections": [
+  {
+   "file": "consulting-01.png",
+   "title": "1. 고객님의 인생 전체 흐름",
+   "height": 316
+  },
+  {
+   "file": "consulting-02.png",
+   "title": "2. 나 자신의 특성",
+   "height": 528
+  },
+  {
+   "file": "consulting-03.png",
+   "title": "3. 인생을 이루는 긍정적인 사항과 실천 가이드",
+   "height": 2578
+  },
+  {
+   "file": "consulting-04.png",
+   "title": "4. 평생 관심 영역",
+   "height": 227
+  },
+  {
+   "file": "consulting-05.png",
+   "title": "5. 타고난 적성 영역",
+   "height": 321
+  },
+  {
+   "file": "consulting-06.png",
+   "title": "6. 인생에서 경계해야 하는 사항과 실천 가이드",
+   "height": 1068
+  },
+  {
+   "file": "consulting-07.png",
+   "title": "7. 삶의 영역별 특성",
+   "height": 2360
+  },
+  {
+   "file": "consulting-08.png",
+   "title": "8. 마무리 인사",
+   "height": 178
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "product": "일과 직장",
+ "sections": [
+  {
+   "file": "iljik-01.png",
+   "title": "1. 일을 대하는 자세",
+   "height": 342
+  },
+  {
+   "file": "iljik-02.png",
+   "title": "2. 적성과 성취의 방식",
+   "height": 389
+  },
+  {
+   "file": "iljik-03.png",
+   "title": "3. 윗사람과의 관계",
+   "height": 342
+  },
+  {
+   "file": "iljik-04.png",
+   "title": "4. 동료·아랫사람과의 관계",
+   "height": 415
+  },
+  {
+   "file": "iljik-05.png",
+   "title": "5. 강점과 과제",
+   "height": 362
+  },
+  {
+   "file": "iljik-06.png",
+   "title": "6. 올해부터 4년 직업 전망",
+   "height": 1023
+  },
+  {
+   "file": "iljik-07.png",
+   "title": "7. 맺음",
+   "height": 40
+  }
+ ]
+}
