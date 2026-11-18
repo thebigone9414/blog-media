@@ -1,6 +1,6 @@
 # MindLumi 주간 제작 절차서
 
-예약 작업 「MindLumi 주간 제작」(월 04:10 - 2026-11-18 변경, 06:00 전에 끝낸다)과 「MindLumi 자동화 점검」(보수할 때)이 이 문서를 읽고 그대로 수행한다.
+예약 작업 「MindLumi 주간 제작」(월 03:40 - 2026-11-18 변경, 06:00 전에 끝낸다)과 「MindLumi 자동화 점검」(보수할 때)이 이 문서를 읽고 그대로 수행한다.
 한 번에 그 주 글 3편(화·목·토)과 숏츠 7편(매일 1편, 화요일부터 다음 주 월요일까지)을 만들어 예약한다.
 
 ★완전 자동이다. 운영자가 모든 단계를 사전 승인했다. 질문하지 않는다. 승인 창이 뜨는 도구는 쓰지 않는다.
@@ -114,7 +114,7 @@ Star-Chart 저장소(add_repo read 또는 공개 clone)의 `src/components/Publi
 
 ```
 publish  accountIds ["conn_1454e4b39c72db9a"]  workspaceId "ws_f7979700dc84fc70"
-         scheduledAt  화 06:00 · 목 06:00 · 토 21:00 (+09:00)  ★주중은 06:00 (2026-11-18 운영자 지정: 주중 실행은 오전 7시 전)   ⛔ 심야 금지
+         scheduledAt  화 05:40 · 목 05:40 · 토 21:00 (+09:00)  ★주중은 05:40 (2026-11-18 운영자 지정: 주중 실행은 오전 7시 전)   ⛔ 심야 금지
          options.naver_blog { title, categoryId(명반 해석 21 · 자미두수 기본 20 · 전서 12 · 서비스 22),
                               layout "as-is", openType "public", tags 10~15, seoKeywords }
 확장이 offline 이어도 예약은 그대로 건다. 글은 확장이 돌아오면 나간다(최대 7일)
@@ -163,7 +163,7 @@ publish  accountIds ["conn_1454e4b39c72db9a"]  workspaceId "ws_f7979700dc84fc70"
 ```
 mp4 → mindlumi/shorts/<YYYYMMDD>-<slug>.mp4 커밋·푸시 → raw URL → media_from_url
 publish  accountIds ["conn_40c47188dd302b4b"]  workspaceId "ws_f7979700dc84fc70"
-         scheduledAt  주중(월~금)은 전부 06:00 (글이 나가는 화·목도 글과 같은 06:00). 토 21:30 · 일 08:00
+         scheduledAt  주중(월~금)은 전부 05:40 (글이 나가는 화·목도 글과 같은 05:40. 06:15 점검 전에 발행이 끝나야 한다). 토 21:30 · 일 08:00
          content  2~3줄 + 「내 ○○는? 댓글로」 + "내 원반과 제2명반 무료로 보기" + https://mindlumi.ai/?ref=shorts + 해시태그(끝에 #Shorts)
          options.youtube { title(훅 질문 + 이모지. 예: 「내가 타고난 복의 별은? 🧧 내 출생연도 찾기 #신년운세 #자미두수」), tags 10,
                            categoryId "22", privacyStatus "public", defaultLanguage "ko",
@@ -192,6 +192,11 @@ publish  accountIds ["conn_5f606a836d079e9b", "conn_1f570c2f58545378"]   (인스
 세 장면이다: 제목만 크게(1.3초) → 표가 한 줄씩 들어옴 → 마무리 화면(댓글 질문 · 주소). 배경과 화면 전체가 계속 움직인다.
 ★2026-11-18 운영자 지정: 유튜브·네이버 클립도 같은 움직임 판을 쓴다(「처음에 훅으로 관심을 끌고 그다음 내용이 나오는 형태가 좋다」). 11초 판은 더 만들지 않는다. 숏츠는 처음부터 motion 판 하나만 만든다.
 글에 주소(URL)와 QR 을 넣지 않는다(같은 부적격 사유에 QR 이 들어 있고, 7월 영상 글에는 블로그 주소가 있었다).
+
+### [9-2] 배경색 (2026-11-18)
+
+운영자 의견: 붉은 배경이 보기 불편하다. pop 카드에 `"theme": "violet"` 을 넣는다(보라 바탕 + 금색 강조. 자미(紫微)의 보라). 엔진에 red · violet · teal · cream 이 있고 기본값은 red 다.
+운영자가 다른 색을 고르면 이 줄과 `mindlumi/DESIGN_POLICY.md` §3 을 그 색으로 고친다. 한 주 안에서 색을 섞지 않는다.
 
 ### [9-2] 보충 - 인스타 글 규칙 (2026-11-17, 공개 스킬 묶음 instagram-agent-skill 을 읽고 쓸 것만 옮김. MIT)
 

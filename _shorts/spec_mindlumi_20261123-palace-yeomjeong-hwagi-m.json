@@ -97,7 +97,8 @@
    "pop": true,
    "ask2": "💬 맞았다면 내 궁을 댓글로",
    "col2W": 170,
-   "motion": true
+   "motion": true,
+   "theme": "violet"
   }
  ]
 }
