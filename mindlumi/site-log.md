@@ -41,3 +41,6 @@
              유료 보고서와 같이 쓰는 렌더러(ReportCardView)라 자동으로 고치지 않았다. 맛보기에서만 번호를 빼는 선택지를 다음 회차 후보로 둔다.
           3) CLAUDE.md 게이트 표는 기록 목록을 `{isAdmin && <RecordList .../>}` 로 적고 있으나 main 의 실제 코드는 `(isLoggedIn || isAdmin)` 이다
              (ZiWeiChartPage.tsx 1020행 부근, 이번 회차 이전부터). 의도한 변경인지 확인 필요. 손대지 않았다.
+
+## 2026-11-20 거문 캐릭터 교체
+바꾼 것   PR #128 · public/stars/10-geomun.webp 를 여성(마천금) 그림으로, 캐시 버전 v=3. 운영자 지정. 빌드 success
