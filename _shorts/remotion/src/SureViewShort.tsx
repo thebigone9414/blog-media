@@ -454,7 +454,7 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
   const pulse = 1 + 0.04 * Math.sin(frame / 4);
   // motion 판 (2026-11-17): 틱톡이 「움직이지 않는 이미지」를 추천에서 뺀다. 세 장면(제목 → 표가 한 줄씩 → 마무리)으로 나누고 화면 전체가 계속 움직이게 한다.
   const M = !!card.motion; const total = card.durFrames || 330;
-  const IN0 = 34, IN1 = 52, ROW0 = M ? 54 : 5, RSTEP = M ? 3 : 2;  // 2026-11-18: 표를 빨리 다 띄우고 오래 보여 준다(운영자: 표를 볼 시간이 부족하다)
+  const IN0 = 28, IN1 = 44, ROW0 = M ? 46 : 5, RSTEP = M ? 3 : 2;  // 2026-11-18: 표를 빨리 다 띄우고 오래 보여 준다(운영자: 표를 볼 시간이 부족하다)
   const cl = { extrapolateLeft: "clamp" as const, extrapolateRight: "clamp" as const };
   const introY = M ? interpolate(frame, [IN0, IN1], [430, 0], { ...cl, easing: Easing.out(Easing.cubic) }) : 0;
   const introS = M ? interpolate(frame, [IN0, IN1], [1.16, 1], cl) : 1;
@@ -465,7 +465,7 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
   const outPop = spring({ frame: frame - (total - OUTLEN + 4), fps, config: { damping: 10, stiffness: 140 } });
   const blUp = spring({ frame: frame - (total - OUTLEN + 14), fps, config: { damping: 13, stiffness: 120 } });
   // 예시 장면 (2026-11-18 운영자 지정): 관심만 끄는 영상으로 끝나면 사이트로 이어지지 않는다. 사이트 「예시 보기」의 실제 보고서 화면을 표 다음에 보여 준다.
-  const EX = M ? card.example : undefined; const EXLEN = 165; const exStart = total - OUTLEN - EXLEN;
+  const EX = M ? card.example : undefined; const EXLEN = 135;  // 2026-11-20: 전체 20초로 줄임(운영자: 26초는 너무 길다) const exStart = total - OUTLEN - EXLEN;
   const exA = EX ? interpolate(frame, [exStart, exStart + 12], [0, 1], cl) : 0;
   const exUp = spring({ frame: frame - exStart - 4, fps, config: { damping: 16, stiffness: 110 } });
   const EXW = 940, EXVH = 1130; const exH = EX?.h ?? EXVH;

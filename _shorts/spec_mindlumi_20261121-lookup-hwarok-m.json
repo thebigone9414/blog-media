@@ -14,7 +14,7 @@
  "cards": [
   {
    "tag": "신년운세",
-   "dur": 26,
+   "dur": 20,
    "title": "🧧 내가 타고난<br><b>복의 별</b>은?",
    "rows": [
     [
@@ -88,12 +88,12 @@
    "motion": true,
    "theme": "violet",
    "example": {
-    "src": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/mindlumi/examples/jaemul-06.png",
+    "src": "https://raw.githubusercontent.com/thebigone9414/blog-media/52a8f325d67fe413ef7d8ac3c3f3e81efae89d45/mindlumi/examples/jaemul-06a.png",
     "label": "돈과 재물 보고서",
-    "h": 2387
+    "h": 1115
    },
    "narration2": "실제 감명 보고서는 이렇게 나옵니다. 내 명반은 마인드루미에서 확인하세요.",
-   "narration2_at": 18.1
+   "narration2_at": 13.1
   }
  ]
 }
