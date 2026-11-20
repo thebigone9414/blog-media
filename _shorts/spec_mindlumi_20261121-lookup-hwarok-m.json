@@ -83,12 +83,12 @@
    "pill": "👇 내 출생연도 찾기",
    "ask": "❤️ 좋아요 누르고 복 받아가세요",
    "pop": true,
-   "faceBase": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/face/",
+   "faceBase": "https://raw.githubusercontent.com/thebigone9414/blog-media/6fbc99473c33090cde4676e93b7ddc3d08bb5102/_shorts/assets/mindlumi/face/",
    "ask2": "💬 내 별, 댓글로 남기기",
    "motion": true,
    "theme": "violet",
    "example": {
-    "src": "https://raw.githubusercontent.com/thebigone9414/blog-media/52a8f325d67fe413ef7d8ac3c3f3e81efae89d45/mindlumi/examples/jaemul-06a.png",
+    "src": "https://raw.githubusercontent.com/thebigone9414/blog-media/6fbc99473c33090cde4676e93b7ddc3d08bb5102/mindlumi/examples/jaemul-06a.png",
     "label": "돈과 재물 보고서",
     "h": 1115
    },
