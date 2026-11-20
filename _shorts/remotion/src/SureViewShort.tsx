@@ -16,7 +16,7 @@ type Card = {
   // 찾아보기형(lookup). rows 가 있으면 카드 전체가 표 한 장이 된다 - 시청자가 자기 줄을 찾느라 멈추고 다시 본다.
   // 잘 되는 사주 숏츠(구독 수백 명 채널의 10만~30만 회)가 거의 이 형태였다(2026-11-16 벤치마크).
   // rows: [키, 값, 한마디]. note 는 표 아래 작은 주석, 자막은 띄우지 않는다(표를 가린다).
-  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; motion?: boolean; theme?: string; example?: { src: string; label?: string; h?: number }; bright?: boolean; hl?: string; faceBase?: string; ask2?: string; kicker?: string; blog?: { title?: string; sub?: string; name?: string; url?: string; frames?: number };
+  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; motion?: boolean; theme?: string; example?: { src: string; label?: string; h?: number }; hero?: string; bright?: boolean; hl?: string; faceBase?: string; ask2?: string; kicker?: string; blog?: { title?: string; sub?: string; name?: string; url?: string; frames?: number };
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
@@ -487,6 +487,11 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
         <span style={{ fontSize: 31, fontWeight: 900, color: T.text, borderLeft: `3px solid ${T.sub}`, paddingLeft: 14, marginLeft: 4 }}>{card.kicker ?? "자미두수로 보는 내 사주"}</span>
         <span style={{ marginLeft: "auto", fontSize: 26, fontWeight: 900, color: RED, background: GOLD, borderRadius: 99, padding: "4px 20px" }}>{card.tag}</span>
       </div>
+      {M && card.hero && frame < IN0 + 12 && (
+        <div style={{ position: "absolute", left: 0, right: 0, top: 176, display: "flex", justifyContent: "center", opacity: interpolate(frame, [IN0 - 2, IN0 + 10], [1, 0], cl), transform: `scale(${0.6 + 0.4 * spring({ frame, fps, config: { damping: 11, stiffness: 150 } })}) translateY(${interpolate(frame, [IN0, IN0 + 12], [0, -120], cl)}px)` }}>
+          <Img src={card.hero} style={{ width: 400, height: 400, borderRadius: 48, objectFit: "cover", border: `8px solid ${GOLD}`, boxShadow: `0 14px 0 rgba(${T.sh},0.45), 0 0 60px rgba(255,216,74,0.45)` }} />
+        </div>
+      )}
       <div style={{ position: "absolute", left: 56, right: 56, top: 150, transform: `translateY(${introY}px) scale(${zoom})`, transformOrigin: "50% 30%" }}>
         <div style={{ transform: `scale(${(0.7 + 0.3 * pop) * introS})`, fontSize: 92, lineHeight: 1.14, fontWeight: 900, letterSpacing: -2.5, textAlign: "center", textShadow: `0 6px 0 rgba(${T.sh},0.55), 0 0 28px rgba(255,200,80,0.35)` }}>
           {lines.map((toks, li) => (
