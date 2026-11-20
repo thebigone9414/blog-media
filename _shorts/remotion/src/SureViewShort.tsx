@@ -465,7 +465,7 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
   const outPop = spring({ frame: frame - (total - OUTLEN + 4), fps, config: { damping: 10, stiffness: 140 } });
   const blUp = spring({ frame: frame - (total - OUTLEN + 14), fps, config: { damping: 13, stiffness: 120 } });
   // 예시 장면 (2026-11-18 운영자 지정): 관심만 끄는 영상으로 끝나면 사이트로 이어지지 않는다. 사이트 「예시 보기」의 실제 보고서 화면을 표 다음에 보여 준다.
-  const EX = M ? card.example : undefined; const EXLEN = 135;  // 2026-11-20: 전체 20초로 줄임(운영자: 26초는 너무 길다) const exStart = total - OUTLEN - EXLEN;
+  const EX = M ? card.example : undefined; const EXLEN = 135; const exStart = total - OUTLEN - EXLEN;  // EXLEN 135 = 2026-11-20 전체 20초로 줄임(운영자: 26초는 너무 길다)
   const exA = EX ? interpolate(frame, [exStart, exStart + 12], [0, 1], cl) : 0;
   const exUp = spring({ frame: frame - exStart - 4, fps, config: { damping: 16, stiffness: 110 } });
   const EXW = 940, EXVH = 1130; const exH = EX?.h ?? EXVH;
