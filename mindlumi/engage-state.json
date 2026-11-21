@@ -36,10 +36,10 @@
   "checkedAt": "2026-11-21 10:33 KST"
  },
  "https://www.youtube.com/watch?v=-MRVqCXs5lI": {
-  "replies": 1,
+  "replies": 2,
   "outside": 1,
-  "answered": 0,
-  "checkedAt": "2026-11-21 10:33 KST"
+  "answered": 1,
+  "checkedAt": "2026-11-21 22:40 KST"
  },
  "https://www.youtube.com/watch?v=9JmBhjc0VcI": {
   "replies": 0,
@@ -350,10 +350,10 @@
   "checkedAt": "2026-11-21 10:33 KST"
  },
  "https://blog.naver.com/sweetspring978/224455319926": {
-  "replies": 1,
+  "replies": 2,
   "outside": 1,
-  "answered": 0,
-  "checkedAt": "2026-11-21 10:33 KST"
+  "answered": 1,
+  "checkedAt": "2026-11-21 22:40 KST"
  },
  "https://blog.naver.com/sweetspring978/224455163956": {
   "replies": 0,
@@ -452,10 +452,10 @@
   "checkedAt": "2026-11-21 10:33 KST"
  },
  "https://blog.naver.com/sweetspring978/224423958030": {
-  "replies": 1,
+  "replies": 2,
   "outside": 1,
-  "answered": 0,
-  "checkedAt": "2026-11-21 10:33 KST"
+  "answered": 1,
+  "checkedAt": "2026-11-21 22:40 KST"
  },
  "https://blog.naver.com/sweetspring978/224423339909": {
   "replies": 0,
@@ -492,5 +492,23 @@
   "outside": 0,
   "answered": 0,
   "checkedAt": "2026-11-21 10:33 KST"
+ },
+ "https://www.youtube.com/watch?v=iiSB5ptvXms": {
+  "replies": 1,
+  "outside": 0,
+  "answered": 0,
+  "checkedAt": "2026-11-21 22:40 KST"
+ },
+ "https://www.instagram.com/reel/DgAPET0DUDP/": {
+  "replies": 1,
+  "outside": 0,
+  "answered": 0,
+  "checkedAt": "2026-11-21 22:40 KST"
+ },
+ "https://blog.naver.com/sweetspring978/224486317269": {
+  "replies": 1,
+  "outside": 0,
+  "answered": 0,
+  "checkedAt": "2026-11-21 22:40 KST"
  }
 }

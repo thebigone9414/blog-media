@@ -97,7 +97,7 @@
    "naverPostId": "post_9242c86a3c9dfc19",
    "youtubePostId": "post_3acc1ca478be225a",
    "youtubeTitle": "내가 타고난 복의 별은? 내 출생연도 찾기",
-   "status": "scheduled",
+   "status": "published",
    "scheduledAt": "2026-11-21T21:00+09:00",
    "hookType": "찾아보기형 pop",
    "images": [
@@ -111,7 +111,15 @@
    "event": "신년운세",
    "angle": "D+E",
    "example": "sohan 01·03",
-   "imagesNote": "본문 순서 그대로: a3-1~4 → 예시 2장(sohan-01 · sohan-03) → CTA. 2026-11-18 본문에 「5. 실제 보고서에서는 이렇게 나온다」 추가"
+   "imagesNote": "본문 순서 그대로: a3-1~4 → 예시 2장(sohan-01 · sohan-03) → CTA. 2026-11-18 본문에 「5. 실제 보고서에서는 이렇게 나온다」 추가",
+   "publishedAt": "2026-11-21T21:01+09:00",
+   "url": "https://blog.naver.com/sweetspring978/224486317269",
+   "youtubeUrl": "https://www.youtube.com/watch?v=iiSB5ptvXms",
+   "snsPostId": "post_78461df0b3057682",
+   "clipPostId": "post_d28b6d1eaa56f030",
+   "instagramUrl": "https://www.instagram.com/reel/DgAPET0DUDP/",
+   "clipUrl": "https://clip.naver.com/contents?serviceType=CLIP&seedMediaId=658F226CEB35BA838223D2A0111826C28D30",
+   "playlist": ""
   },
   {
    "logNo": "224477055499",

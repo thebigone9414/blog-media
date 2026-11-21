@@ -2,6 +2,23 @@
 
 최신 회차가 맨 위. 예약 작업의 success 표시가 아니라 결과물로 확인한 것만 적는다.
 
+## 2026-11-21 22:40
+확인    지나간 칸 2개(토 21:00 네이버 글 1 · 21:30 숏츠 4) - 나간 것 4 / 안 나간 것 1
+        네이버 글(신년운세) - success, 21:01:49 발행 https://blog.naver.com/sweetspring978/224486317269
+        유튜브(화록편) - success, 21:31:01 발행 https://www.youtube.com/watch?v=iiSB5ptvXms
+        인스타그램 릴스 - success, 21:31:38 발행 https://www.instagram.com/reel/DgAPET0DUDP/
+        네이버 클립 - success, 21:31:27 발행
+        틱톡 - failure 1건. errorCode tiktok_creator_cap(알려진 한계). uplika 가 11-22 09:30 까지 매시간 스스로 다시 올린다. retry_post 안 함
+        남은 예약 6건 중 scheduled 6건 · publishing 0건 - 11-22 08:00 숏츠 3 · 11-23 05:40 숏츠 3
+연결    네이버 확장 online, state online(블로그 · 클립, 확장 0.7.59, 대기 0건, holds 0건) · 유튜브 ok · 인스타그램 ok(만료까지 59일) · 틱톡 ok
+조치    미디어 만료 대비 - 11-23 05:40 숏츠 3건(유튜브 · 인스타그램·틱톡 · 클립)을 20261123-palace-yeomjeong-hwagi-m.mp4 로 다시 올려 교체, 3건 success / failure 0건
+        새 id med_d747c4db64b28987, bytes 11114989(저장소 파일과 같음), 만료 2026-11-23 22:26 KST
+        11-22 08:00 숏츠 3건(med_d4fb0d77e07c1da4, 만료 예상 11-22 17:02)은 발행이 먼저라 교체하지 않음
+        index.json 11-21 항목에 주소 4개 채우고 status published(틱톡 주소 없음, playlist 빈칸)
+        댓글 - 첫 댓글 3(유튜브 · 인스타 · 블로그, 달기 전 0건 확인) · 답글 0 · 넘긴 것 0
+미해결  틱톡 화록편 - 11-22 09:30 까지 자동 재시도. 08:25 · 10:25 회차가 주소를 확인
+        유튜브 화록편(iiSB5ptvXms)을 재생목록 「출생연도 · 띠」에 넣기 - 클라우드 회차는 운영자 PC 크롬에 닿지 않아 못 함. 장부 18번
+
 ## 2026-11-21 10:33
 확인    지나간 칸 0개(08:27 점검 뒤 새 칸 없음. 오늘 첫 칸은 21:00) - 나간 것 0 / 안 나간 것 0
         남은 예약 10건 중 scheduled 10건 · failed 0건 · partial 0건 · publishing 0건
