@@ -1,5 +1,8 @@
 # SureView 숏츠 실행 기록
 
+## 2026-11-21 15:12 KST 회차
+- S0 저장소 준비 성공 (작업 폴더에 clone 되어 있음, origin/main 834b8c8 동기화. add_repo 도구는 이 세션에 없음)
+
 ## 2026-11-21 12:45 KST 엔진 시험
 - T0 저장소 준비 성공 (작업 폴더에 있음, origin/main 5594cef 동기화)
 - T1 설치 성공 - sherpa-onnx 2.0.2 (pip 2초), npm install rc=0 (172 패키지, 14초)
