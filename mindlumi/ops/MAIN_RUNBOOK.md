@@ -54,6 +54,27 @@
 바깥 프로그램 설치·실행 / 댓글 삭제·숨김·차단 / 남의 글에 댓글 / 예약 작업 삭제 / 강제 푸시·reset --hard /
 SureView 쪽 전부 / 운영자가 보던 브라우저 탭 / 실고객 이름·이메일·생년월일시.
 
+## [3-2] 주간 성과 판정 - 토요일 15:25 회차 (2026-11-21)
+임무는 mindlumi.ai 를 살리는 것이다. 조회수가 아니라 아래 줄로 잰다: 방문 → 맛보기 생성 → CTA 클릭 → 주문 생성 → 결제.
+
+```
+읽는 법  Supabase 커넥터(프로젝트 ypzlxfgoodirjtdwwzhd)가 있으면 audit_log 와 orders 를 건수로만 센다. 읽기 전용, select count 만.
+         ⛔ orders 의 birth_* · consult_question · pg_* 열과 details 안의 개인 값은 고르지 않는다. 날짜 · 상태 · 상품 종류 · 건수만.
+         커넥터가 없는 회차는 site-log 의 최근 수치를 쓴다.
+         방문     audit_log where event_type='visit' , details->>'ref' 로 채널을 나눈다(direct · blog · yt · insta · tiktok)
+         맛보기   event_type='preview_generated' (+ preview_cache_hit)
+         CTA      event_type='preview_cta_click'
+         주문     event_type='preview_to_order' 와 orders 건수 (status 별)
+         ⚠️ order_form_enter 는 맛보기가 뜨면 같이 찍힌다. 의도 지표로 쓰지 않는다
+볼 것    지난 7일과 그 전 7일. 채널별로 방문 대비 맛보기, 맛보기 대비 주문. 분모가 30 미만이면 그렇게 적는다
+할 일    가장 많이 새는 단계 하나를 정해 그 단계를 맡은 쪽에 넘긴다 - 사이트면 site-log 의 「다음 회차 우선순위」를 고쳐 쓰고,
+         글이면 WEEKLY_RUNBOOK [2-2], 숏츠면 [7-2] 를 고친다. 지난주에 넘긴 것이 수치를 움직였는지 먼저 판정한다
+         결제가 7일 넘게 0건이면 보고의 맨 윗줄에 쓴다
+```
+
+## [3-3] 엔진을 고쳤으면
+`_shorts/remotion/src` 나 `make_remotion.py` 를 고쳤으면 커밋 전에 `bash _shorts/smoke.sh` 가 success 두 줄을 내야 한다. 그 뒤 장면을 떠서 눈으로 본다. SureView 도 같은 엔진을 쓴다.
+
 ## [4] 장부와 기록
 - `ops/open-items.md` 를 고쳐 쓴다: 「마지막 수거」 시각, 열린 항목, 이번에 닫은 항목(닫은 것은 14일 뒤 지운다).
 - 읽은 보고함 파일은 지우지 않는다. 30일 지난 것만 지운다.
