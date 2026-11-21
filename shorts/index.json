@@ -1,5 +1,78 @@
 [
- {"date":"2026-11-14","series":"감리사로 가는 길","postId":"post_f2f5cd59ca67090c","naverUrl":"https://blog.naver.com/sureview26/224425291931","mp4Url":"https://raw.githubusercontent.com/thebigone9414/blog-media/main/shorts/gamli/20261114.mp4","youtubeUrl":"https://www.youtube.com/watch?v=nUAsR0p6jiE","hookType":"question","title":"감사가 아니라 감리다"},
- {"date":"2026-11-14","series":"주간 AI","postId":"post_4cc1a750ae38c0ef","naverUrl":"https://blog.naver.com/sureview26/224476752278","mp4Url":"https://raw.githubusercontent.com/thebigone9414/blog-media/main/shorts/ai/20261114.mp4","youtubeUrl":"https://www.youtube.com/watch?v=oF4E33jRmT4","hookType":"stat","title":"소프트뱅크 71억 달러 적자"},
- {"date":"2026-11-14","series":"주간 시황","postId":"post_29ff3f1130b97bec","naverUrl":"https://blog.naver.com/sureview26/224476768684","mp4Url":"https://raw.githubusercontent.com/thebigone9414/blog-media/main/shorts/market/20261114.mp4","youtubeUrl":"https://www.youtube.com/watch?v=3apjR0TEU_A","hookType":"question","title":"코스피 +4.56% 반등 누가 샀나"}
+ {
+  "date": "2026-11-14",
+  "series": "감리사로 가는 길",
+  "postId": "post_f2f5cd59ca67090c",
+  "naverUrl": "https://blog.naver.com/sureview26/224425291931",
+  "mp4Url": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/shorts/gamli/20261114.mp4",
+  "youtubeUrl": "https://www.youtube.com/watch?v=nUAsR0p6jiE",
+  "hookType": "question",
+  "title": "감사가 아니라 감리다"
+ },
+ {
+  "date": "2026-11-14",
+  "series": "주간 AI",
+  "postId": "post_4cc1a750ae38c0ef",
+  "naverUrl": "https://blog.naver.com/sureview26/224476752278",
+  "mp4Url": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/shorts/ai/20261114.mp4",
+  "youtubeUrl": "https://www.youtube.com/watch?v=oF4E33jRmT4",
+  "hookType": "stat",
+  "title": "소프트뱅크 71억 달러 적자"
+ },
+ {
+  "date": "2026-11-14",
+  "series": "주간 시황",
+  "postId": "post_29ff3f1130b97bec",
+  "naverUrl": "https://blog.naver.com/sureview26/224476768684",
+  "mp4Url": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/shorts/market/20261114.mp4",
+  "youtubeUrl": "https://www.youtube.com/watch?v=3apjR0TEU_A",
+  "hookType": "question",
+  "title": "코스피 +4.56% 반등 누가 샀나"
+ },
+ {
+  "date": "2026-11-21",
+  "series": "감리사로 가는 길",
+  "postId": "post_93bca90c8eb379f3",
+  "naverUrl": "https://blog.naver.com/sureview26/224485739188",
+  "mp4Url": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/shorts/gamli/20261121.mp4",
+  "youtubeUrl": "https://www.youtube.com/watch?v=64VUavbBsKg",
+  "reelsUrl": "https://www.instagram.com/reel/Df_NKlgC_Kz/",
+  "tiktokUrl": "예약 post_5b3d04bf33a0fae6 (틱톡 발행 한도, uplika 가 매시간 재시도)",
+  "clipUrl": "https://clip.naver.com/contents?recType=CLIP_PC&recId=%7B%22targetProfileId%22%3A%22vs985wj0nV2StPtXfoYC%22%2C%22open%22%3Atrue%7D&serviceType=CLIP&seedMediaId=2EDFD5A27E49AE5F8E3B9B5051667AA86F18",
+  "hookType": "question",
+  "title": "정보시스템감리 지적은 다 같은 무게?",
+  "ask": "가장 무거운 유형은?",
+  "format": "violet-3scene"
+ },
+ {
+  "date": "2026-11-21",
+  "series": "주간 AI",
+  "postId": "post_3e1f806a97c46f4d",
+  "naverUrl": "https://blog.naver.com/sureview26/224485737538",
+  "mp4Url": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/shorts/ai/20261121.mp4",
+  "youtubeUrl": "https://www.youtube.com/watch?v=-gD2cQ5zEtk",
+  "reelsUrl": "https://www.instagram.com/reel/Df_NcwjBr2f/",
+  "tiktokUrl": "예약 post_3906f44c52f99e7d (틱톡 발행 한도, uplika 가 매시간 재시도)",
+  "clipUrl": "https://clip.naver.com/contents?recType=CLIP_PC&recId=%7B%22targetProfileId%22%3A%22vs985wj0nV2StPtXfoYC%22%2C%22open%22%3Atrue%7D&serviceType=CLIP&seedMediaId=F9326B022C21CA6FC5817A72E6B37239A72B",
+  "hookType": "list",
+  "title": "이번 주 AI, 6가지로 정리",
+  "ask": "가장 놀란 소식은?",
+  "format": "violet-3scene"
+ },
+ {
+  "date": "2026-11-21",
+  "series": "주간 시황",
+  "postId": "post_9cf80464eef5d8f2",
+  "naverUrl": "https://blog.naver.com/sureview26/224485738463",
+  "mp4Url": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/shorts/market/20261121.mp4",
+  "youtubeUrl": "https://www.youtube.com/watch?v=Oc1ffQPygyQ",
+  "reelsUrl": "https://www.instagram.com/reel/Df_NVRUTf97/",
+  "tiktokUrl": "예약 post_fa6bd78cf3119c6c (틱톡 발행 한도, uplika 가 매시간 재시도)",
+  "clipUrl": "https://clip.naver.com/contents?recType=CLIP_PC&recId=%7B%22targetProfileId%22%3A%22vs985wj0nV2StPtXfoYC%22%2C%22open%22%3Atrue%7D&serviceType=CLIP&seedMediaId=BD87FAA1ABDE313A8F5619E3EE1BB08EFD89",
+  "hookType": "stat",
+  "title": "코스피 -7.95%, 누가 팔았나?",
+  "ask": "다음 주 가장 궁금한 일정은?",
+  "format": "violet-3scene",
+  "note": "클립은 블로그 글 연결(contentLink) 선택 실패로 연결 없이 다시 올림"
+ }
 ]
