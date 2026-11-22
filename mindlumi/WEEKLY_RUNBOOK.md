@@ -163,6 +163,12 @@ index.json 에 있는 주제는 다시 쓰지 않는다
 ⑤ 잰 값과 고른 까닭을 index.json 의 그 글 항목에 `keyword` · `volume` 으로 남긴다. 4주 뒤 get_naver_visibility 로 그 말에 우리 글이 뜨는지 본다
 ```
 
+## [2-3] 원전 · 사실 대조는 본 작업이 따로 돌린다 (2026-11-23 주간 제작)
+
+갈래(fork) 작업자에게는 WebFetch 가 없어 검색 결과의 주소만 받는다. 원고를 받은 뒤 본 작업이 general-purpose 하위 작업자(sonnet 이상)에게 「실제로 읽은 구절만」 으로 대조를 맡긴다.
+zh.wikisource 는 이 환경에서 열리지 않는다. 봉신연의 회차 원문은 대기원 전재(40회 epochtimes.com/b5/7/3/18/n1649946.htm · 92회 gb/7/5/10/n1706251.htm · 99회 n1713743 · 100회 n1713742)와 「濤哥侃封神」 회차 해설이 열린다.
+[막판 집계] uplika list_posts 의 since/until 은 UTC 날짜로 잘린다. 화 05:40(KST) 예약분을 세려면 since 를 월요일 날짜로 잡는다.
+
 ## [3] 명반 근거는 실제 계산으로
 
 Star-Chart 저장소(add_repo read 또는 공개 clone)의 `src/components/PublicChartView.tsx` `buildPublicChart(...)` 를 vitest/tsx 로 불러 원반·제2명반을 덤프한다. 소한·대한은 `src/engine/ChronologyEngine.ts`, 사화표는 `src/engine/unhan/UnhanTypes.ts` 의 SIHUA_MAP.
