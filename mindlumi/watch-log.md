@@ -10,6 +10,7 @@
 연결    네이버 확장 online, state online(블로그 · 클립, 확장 0.7.59, 대기 0건) · 유튜브 ok · 인스타그램 ok(만료까지 59일) · 틱톡 ok
         holds 1건(nb_eb5f... 로그인 대기)은 그대로. 이번 회차 블로그 댓글 읽기 32건 success 32 라 막힌 것 없음. 장부 19번
 조치    틱톡 화록편을 틱톡만 새로 예약 - post_ed3d32c48f6a5404, 10:44 예약(예약 글이라 한도에 걸려도 22:44 까지 매시간 자동 재시도)
+        10:45 첫 시도 - failure(tiktok_creator_cap). 22:44 까지 매시간 자동 재시도, retry_post 안 함
         영상은 저장소 20261121-lookup-hwarok-m.mp4 를 커밋 해시 주소로 다시 올림. med_63e4d36d7522e10e, bytes 12436250(저장소 파일과 같음)
         댓글 전체 훑기 87건(success 85 / failure 2) · 답글 1(유튜브 자미 명궁편). engage-state.json checkedAt 갱신
         WATCH_RUNBOOK [2] 에 「틱톡 한도로 12시간 재시도가 끝난 뒤」 줄, ENGAGE_RUNBOOK [2] 에 대상 찾기 주의 2줄 추가
