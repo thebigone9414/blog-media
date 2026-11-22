@@ -94,6 +94,16 @@ SureView 쪽 전부 / 운영자가 보던 브라우저 탭 / 실고객 이름·�
          mindlumi.ai 화면도 클라우드 회차에서는 열리지 않는다(11-21). 화면 확인은 일 20:20 사이트 점검 몫으로 넘기고, 여기서는 PR 머지와 Deploy success 만 센다
 ```
 
+## [3-5] 품질 판정(report_diag) 읽기 (2026-11-22)
+판정 메일은 꺼져 있다(PR #132). 메인이 주중 06:15 에 Supabase 로 전날 행의 overall 을 건수로 센다. ⛔ birth_raw 열은 고르지 않는다. 주문번호는 앞 8자리만.
+- consulting · report 의 FAIL 중 소실 목록이 §6 흉격 이름 · `⟨약지⟩` 토큰뿐인 것은 오탐이다(판정식이 가려진 이름을 본문에서 찾는다). Star-Chart 가지 `claude/diag-evidence-masked-fp` 가 머지되면 사라진다. 장부 「운영자 요청 중」.
+- 그 밖의 토큰(길격 이름 · 명궁 별)이 소실로 찍힌 FAIL 은 진짜일 수 있다. 맛보기(preview)의 명궁 별 소실은 11-02 ~ 11-20 에 4건(83건 중)이고 그중 2건은 문안 없는 별(천곡 · 천희)이 첫 별이라 생긴 오탐, 2건(탐랑 · 태양)은 근거 줄이 실제로 빠진 것으로 보인다.
+- `src/engine/` 과 `supabase/functions/` 는 메인이 main 에 머지하지 않는다(main 머지는 결제 함수까지 다시 배포한다). 가지에 올리고 장부 「운영자 요청 중」에 한 줄.
+
+## [3-6] 이미 나간 유튜브 영상의 제목만 고칠 때 (2026-11-22)
+update_post 의 options 는 통째로 바뀐다. uplika 로 올린 영상은 먼저 get_post 로 options.youtube 를 읽어 title 만 바꾼 전체(privacyStatus "public" · tags · categoryId · madeForKids · containsSyntheticMedia · defaultLanguage)를 보낸다.
+제목만 보내면 나머지가 지워진다(11-22 젠슨 황 편에서 12초 동안 그랬다). 주소(watch?v=)로 불러도 uplika 로 올린 영상이면 같다. 유튜브에서 직접 올린 영상은 설명이 5,000바이트를 넘게 읽혀 거절될 수 있다 - 그때는 손대지 않는다.
+
 ## [4] 장부와 기록
 - `ops/open-items.md` 를 고쳐 쓴다: 「마지막 수거」 시각, 열린 항목, 이번에 닫은 항목(닫은 것은 14일 뒤 지운다).
 - 읽은 보고함 파일은 지우지 않는다. 30일 지난 것만 지운다.

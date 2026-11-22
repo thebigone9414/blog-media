@@ -119,7 +119,14 @@
    "clipPostId": "post_d28b6d1eaa56f030",
    "instagramUrl": "https://www.instagram.com/reel/DgAPET0DUDP/",
    "clipUrl": "https://clip.naver.com/contents?serviceType=CLIP&seedMediaId=658F226CEB35BA838223D2A0111826C28D30",
-   "playlist": ""
+   "playlist": "",
+   "tiktokUrl": "https://www.tiktok.com/@mindlumi_ai/video/7710836791099608338",
+   "tiktokPostId": "post_ed3d32c48f6a5404",
+   "views24h": {
+    "youtube": 402,
+    "measuredAt": "2026-11-22T15:30+09:00",
+    "note": "발행 27시간 뒤"
+   }
   },
   {
    "date": "2026-11-22",
@@ -135,7 +142,9 @@
    "instagramUrl": "https://www.instagram.com/reel/DgBXKokjEC7/",
    "clipUrl": "https://clip.naver.com/contents?serviceType=CLIP&seedMediaId=4FB22AE9E06516F55AD14942ABB4CE7E0336",
    "hookType": "찾아보기형 pop",
-   "playlist": ""
+   "playlist": "",
+   "tiktokUrl": "https://www.tiktok.com/@mindlumi_ai/video/7710825159367642369",
+   "viewsNote": "11-22 15:30 유튜브 406(발행 7시간 반 뒤). 24시간 값은 11-23 06:15 에"
   },
   {
    "logNo": "224477055499",
