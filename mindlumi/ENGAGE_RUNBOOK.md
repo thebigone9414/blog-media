@@ -26,6 +26,9 @@
 대상 찾기   채널마다 list_channel_posts(accountId, limit 100)로 지금 올라가 있는 것을 전부 받는다. 더 있으면 끝까지 넘겨 받는다
             유튜브 conn_40c47188dd302b4b · 인스타그램 conn_5f606a836d079e9b · 네이버 블로그 conn_1454e4b39c72db9a
             (틱톡은 댓글을 읽을 수 없고 네이버 클립은 댓글 쓰기가 안 된다 - 「못 읽음」으로 적고, 운영자가 앱에서 볼 것으로 보고에 건수 대신 그 사실을 남긴다)
+            ⚠️ list_channel_posts limit 100 은 본문이 통째로 와서 한 채널에 5만 자가 넘는다(11-22). 전체 훑기는 engage-state.json 의 주소로 list_replies 를 돌리고,
+               새 글 찾기는 list_posts(우리가 올린 것)와 index.json 으로 한다. list_channel_posts 는 달마다 한 번, 빠진 옛 글을 찾을 때만 쓴다
+            ⚠️ 유튜브 · 인스타그램은 list_replies 의 mine 값이 우리 댓글에도 false 다. 계정 이름(MindLumi_ai · mindlumi2026)으로 우리 것을 가린다
 읽기        각 글·영상에 list_replies. 우리 계정이 아직 답하지 않은 바깥 댓글을 전부 모은다
 답하기      reply 의 replyTo 로 답한다. 아래 금지선을 지킨다. 오래된 댓글(한 달 넘음)에도 답하되 「늦게 봤습니다」 한마디를 앞에 붙인다
 기록        mindlumi/engage-state.json 에 { 글 주소: { replies: 본 댓글 수, answered: 답한 수, checkedAt } } 를 적는다.

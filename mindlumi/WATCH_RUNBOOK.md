@@ -64,6 +64,10 @@
     글 원고는 mindlumi/w<주차>/a1.md · a2.md · a3.md 에 있다({{IMG1}}~{{IMG4}} · {{CTA}} 자리 표시)
 발행 실패(failed)
     → get_help 로 원인 확인 후 retry_post 1회. 또 실패하면 같은 내용을 새 publish 로 한 번. 그래도 안 되면 미해결로 적는다
+틱톡이 tiktok_creator_cap 으로 failed 이고 예약 시각에서 12시간이 지남 (자동 재시도 끝, 2026-11-22)
+    → 틱톡 채널 목록(list_channel_posts accountId 틱톡, limit 10)에 그 영상이 없는지 먼저 본다. 없으면 저장소 `-m.mp4` 를 media_from_url 로 다시 올려
+      틱톡 계정만 넣은 새 publish 를 10여 분 뒤 scheduledAt 으로 건다(예약 글이어야 12시간 자동 재시도가 다시 붙는다). 본문 · options 는 원래 글 그대로.
+      12시간이 지나기 전에는 손대지 않는다. 한 영상에 새 예약은 한 번만. 그것도 failed 로 끝나면 장부에 올리고 더 걸지 않는다
 네이버 글이 예약 시각을 1시간 넘겼는데 안 나감 (확장 offline)
     → 글은 확장이 돌아오면 나간다. 기다린다. 6시간 넘으면 미해결(운영자가 Chrome 을 봐야 함)
 발행된 글·영상의 주소가 index.json 에 없음
