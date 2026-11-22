@@ -1,0 +1,112 @@
+{
+ "series": "MindLumi",
+ "accent": "#a855f7",
+ "accent2": "#f5c542",
+ "footer_brand": "MindLumi",
+ "cta": {
+  "naver": "blog.naver.com/sweetspring978",
+  "tistory": "mindlumi.tistory.com",
+  "site": "mindlumi.ai",
+  "siteLabel": "내 원반과 제2명반 무료로 보기"
+ },
+ "voice_sid": 8,
+ "voice_speed": 1.1,
+ "cards": [
+  {
+   "dur": 20,
+   "pop": true,
+   "motion": true,
+   "theme": "violet",
+   "narration2": "내 명반에서는 어떻게 나올까요? 네이버에서 마인드루미를 검색해 무료로 확인하세요.",
+   "narration2_at": 12.3,
+   "tag": "2027 정미년",
+   "title": "💪 내년엔 <b>내 뜻대로</b><br>하고 싶은가요?",
+   "rows": [
+    [
+     "🙍",
+     "명궁",
+     "내 방식대로",
+     "내 속도로 정하고 간다"
+    ],
+    [
+     "💼",
+     "관록궁",
+     "일의 결정권",
+     "맡은 일에서 말이 통한다"
+    ],
+    [
+     "💰",
+     "재백궁",
+     "돈의 결정권",
+     "벌고 쓰는 일을 내가 쥔다"
+    ],
+    [
+     "💑",
+     "부처궁",
+     "관계의 중심",
+     "짝과의 일을 내가 이끈다"
+    ],
+    [
+     "🚗",
+     "천이궁",
+     "밖에서 주도",
+     "나가서 내 자리를 넓힌다"
+    ],
+    [
+     "🤝",
+     "노복궁",
+     "사람 이끌기",
+     "모임과 팀의 중심이 된다"
+    ],
+    [
+     "🏠",
+     "전택궁",
+     "집안의 결정",
+     "집과 살림을 내가 꾸린다"
+    ],
+    [
+     "🌙",
+     "복덕궁",
+     "마음의 여유",
+     "쉬는 법을 내가 정한다"
+    ],
+    [
+     "👫",
+     "형제궁",
+     "동료의 중심",
+     "가까운 사이에서 말이 선다"
+    ],
+    [
+     "👶",
+     "자녀궁",
+     "챙기는 자리",
+     "아랫사람 일에 힘이 실린다"
+    ],
+    [
+     "🩺",
+     "질액궁",
+     "생활 리듬",
+     "하루의 리듬을 내가 잡는다"
+    ],
+    [
+     "👴",
+     "부모궁",
+     "윗사람·문서",
+     "어른 일에서 내 말이 선다"
+    ]
+   ],
+   "col2W": 170,
+   "note": "내 명반을 모르면 마인드루미에서 무료",
+   "narration": "내년엔 내 뜻대로 하고 싶은가요? 내 명반을 모르면 마인드루미에서 무료입니다. 내 천동이 어느 궁에 있는지 찾아보세요.",
+   "pill": "🔥 2027년엔 천동에 화권이 붙는다",
+   "ask": "👉 내 천동 자리, 무료 명반에서 확인",
+   "ask2": "💬 내 천동은 어느 궁? 댓글로",
+   "hero": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/char/square/천동.jpg",
+   "example": {
+    "src": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/mindlumi/examples/sohan-03.png",
+    "label": "올해 흐름 보고서",
+    "h": 746
+   }
+  }
+ ]
+}

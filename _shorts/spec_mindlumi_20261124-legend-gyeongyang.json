@@ -1,0 +1,75 @@
+{
+ "series": "MindLumi",
+ "accent": "#a855f7",
+ "accent2": "#f5c542",
+ "footer_brand": "MindLumi",
+ "cta": {
+  "naver": "blog.naver.com/sweetspring978",
+  "tistory": "mindlumi.ai",
+  "site": "mindlumi.ai",
+  "siteLabel": "내 원반과 제2명반 무료로 보기"
+ },
+ "voice_sid": 8,
+ "voice_speed": 1.1,
+ "cards": [
+  {
+   "tag": "자미두수 전설",
+   "dur": 5,
+   "title": "괴물에게 삼켜진 도사가<br><b>칼의 별</b>이 됐다",
+   "sub": "경양(擎羊) · 양전",
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/char/square/경양.jpg",
+   "narration": "괴물에게 삼켜진 도사가 칼의 별이 됐습니다. 봉신연의의 양전입니다."
+  },
+  {
+   "tag": "봉신연의",
+   "dur": 5,
+   "title": "포위된 성,<br>사람을 삼키는 <b>짐승</b>",
+   "sub": "모두 그가 죽었다고 여겼다",
+   "flow": [
+    "네 장수가 성을 에워쌌다",
+    "양전이 짐승에게 삼켜졌다"
+   ],
+   "narration": "성이 포위됐을 때 양전은 사람을 삼키는 짐승에게 삼켜졌습니다. 모두 죽었다고 여겼죠."
+  },
+  {
+   "tag": "일흔두 가지 변화",
+   "dur": 6,
+   "title": "삼켜진 게 아니라<br><b>들어간 것</b>",
+   "sub": "적의 모습으로 바뀌어 돌아갔다",
+   "flow": [
+    "안에서 짐승을 처리",
+    "그 짐승으로 변신",
+    "적진의 보물을 들고 나옴"
+   ],
+   "narration": "하지만 그는 안에서 일을 끝냈습니다. 그 짐승으로 변해 적진에 들어가 보물까지 들고 나왔죠."
+  },
+  {
+   "tag": "경양",
+   "dur": 5,
+   "title": "경양은<br><b>결단</b>의 별",
+   "sub": "미루지 않고 매듭짓는 힘",
+   "grid": [
+    "좋게 쓰이면\n맺고 끊음",
+    "거칠게 쓰이면\n부딪힘"
+   ],
+   "narration": "그래서 경양은 결단의 별입니다. 미루지 않고 매듭짓는 힘이죠."
+  },
+  {
+   "tag": "내 명반",
+   "dur": 5,
+   "title": "내 <b>경양</b>은<br>어느 궁에?",
+   "sub": "명궁이면 나 · 재백궁이면 돈 · 관록궁이면 일",
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/char/square/경양.jpg",
+   "caption": "앉은 궁에 따라 칼 쓰는 곳이 다르다",
+   "narration": "이 칼이 일에 있는지 돈에 있는지는 내 명반의 궁이 정합니다."
+  },
+  {
+   "tag": "MindLumi",
+   "dur": 6,
+   "title": "내 원반과 제2명반",
+   "sub": "결제 없이 바로 확인",
+   "cta": true,
+   "narration": "내 명반에서는 어디에 있을까요? 네이버에서 마인드루미를 검색해 무료로 확인하세요."
+  }
+ ]
+}

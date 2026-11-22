@@ -1,0 +1,86 @@
+{
+ "title": "2027년 삼재띠 돼지 토끼 양 - 날삼재, 자미두수에서는 이렇게 본다",
+ "categoryId": "20",
+ "tags": [
+  "2027년삼재띠",
+  "2027년삼재",
+  "날삼재",
+  "삼재띠",
+  "돼지띠삼재",
+  "토끼띠삼재",
+  "양띠삼재",
+  "2027년운세",
+  "2027년신년운세",
+  "정미년",
+  "자미두수",
+  "자미두수소한",
+  "거문화기",
+  "태음화록",
+  "마인드루미"
+ ],
+ "seoKeywords": {
+  "main": "2027년 삼재띠",
+  "subs": [
+   "2027년 삼재",
+   "날삼재",
+   "삼재띠",
+   "2027년 운세",
+   "자미두수"
+  ],
+  "measuredAt": "2026-11-22"
+ },
+ "keyword": "2027년 삼재띠",
+ "volume": 26360,
+ "event": "신년운세",
+ "angle": "G+E",
+ "example": "sohan 02·04",
+ "scheduledAt": "2026-11-28T21:00:00+09:00",
+ "images": [
+  {
+   "ph": "IMG1",
+   "path": "mindlumi/w48/a3-1.png",
+   "alt": "2027년 삼재띠는 돼지 토끼 양이고 2025년 들삼재, 2026년 눌삼재, 2027년 날삼재 순서다"
+  },
+  {
+   "ph": "IMG2",
+   "path": "mindlumi/w48/a3-2.png",
+   "alt": "띠별 삼재는 돼지 토끼 양 2025~2027년, 호랑이 말 개 2028~2030년, 뱀 닭 소 2031~2033년, 원숭이 쥐 용 2034~2036년이다"
+  },
+  {
+   "ph": "IMG3",
+   "path": "mindlumi/w48/a3-3.png",
+   "alt": "삼재는 띠 하나로 12년 중 3년을 세고 자미두수는 생년월일시로 세운 명반에서 소한과 그 해 사화를 본다"
+  },
+  {
+   "ph": "IMG4",
+   "path": "mindlumi/w48/a3-4.png",
+   "alt": "표본 명반의 2027년 소한은 천이궁이고 태음 화록은 재백궁, 거문 화기는 부처궁에 놓인다"
+  },
+  {
+   "ph": "EX1",
+   "path": "mindlumi/examples/sohan-02.png",
+   "alt": "올해 흐름 예시 보고서의 올해 나에게 나타나는 변화 칸"
+  },
+  {
+   "ph": "EX2",
+   "path": "mindlumi/examples/sohan-04.png",
+   "alt": "올해 흐름 예시 보고서의 부정적인 흐름 및 실천 가이드 칸"
+  },
+  {
+   "ph": "CTA",
+   "path": "mindlumi/jensen-4-cta.png",
+   "alt": "내 원반과 제2명반 나란히 무료로 보기 - mindlumi.ai",
+   "link": "https://mindlumi.ai/?ref=blog"
+  }
+ ],
+ "chartBasis": "표본 명반(scratchpad dump.json samples[1]): 토5국, 명궁 해궁 천량, 경오년생. 원반 태음 재백궁(미) · 거문·천기 부처궁(유) · 천동 천이궁(사). computeSohan: 37세(2026) 노복궁 → 38세(2027) 천이궁. SIHUA_MAP 정: 태음 록 · 천동 권 · 천기 과 · 거문 기",
+ "sources": [
+  "https://sajuran.com/ko/guide/2027-samjae",
+  "https://sajutoy.com/blog/sinnyeon/samjae/",
+  "https://superkts.com/cal/samj/year/2027",
+  "https://encykorea.aks.ac.kr/Article/E0026787",
+  "https://datedb.net/calendar/day/20270207/",
+  "https://astro.kasi.re.kr/life/post/calendarData?year=2027",
+  "lunar-javascript: 2027 입춘 2027-02-04"
+ ]
+}

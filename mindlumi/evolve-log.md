@@ -2,6 +2,13 @@
 
 최신이 맨 위. 절차는 `WEEKLY_RUNBOOK.md` [1-4].
 
+## 2026-11-23
+출처      후보만 찾음: vyralcontent/content-skills(viral-youtube-shorts · viral-short-form) · jscraik/Agent-Skills(youtube-hooks-scripts) · nicepkg/ai-workflow(video-hook-generator)
+읽은 것   본문을 읽지 못했다(이 회차의 갈래 작업자에게 글을 받아 오는 도구가 없었다). 라이선스 미확인
+옮긴 것   없음. 읽지 않은 문서에서 규칙을 옮기지 않는다
+다음      11-30 회차에 위 세 곳의 README · SKILL.md 를 읽고 1~2줄만 옮긴다. 설치 · 실행은 하지 않는다
+지난 것   11-17 인스타 해시태그 5개 · 첫 125자: 판정일 12-01. 중간값 못 읽음(uplika 가 인스타 조회를 0 으로 돌려준다. 도달 · 프로필 방문은 앱 인사이트에서만 보인다)
+
 ## 2026-11-17
 출처      github.com/Jakeschincariol/instagram-agent-skill (MIT, 스킬 13개 + 파이썬 보조 6개. 외부 접속·명령 실행 없음. 읽기만 함)
 옮긴 것   ① 인스타 해시태그 5개 이하 (2025-12-18 제한, 뉴스로 재확인) - 예약 6편 수정

@@ -1,0 +1,67 @@
+{
+ "2026-11-23": {
+  "measuredAt": "2026-11-23T03:50+09:00",
+  "source": "uplika get_insights",
+  "youtube": {
+   "11-17 홍란 띠": {
+    "views": 1551,
+    "likes": 4,
+    "comments": 2
+   },
+   "11-18 태음화록 궁": {
+    "views": 668,
+    "likes": 0,
+    "comments": 1
+   },
+   "11-19 화과 끝자리": {
+    "views": 363,
+    "likes": 0,
+    "comments": 1
+   },
+   "11-20 거문화기 궁": {
+    "views": 254,
+    "likes": 0,
+    "comments": 1
+   },
+   "11-21 화록 끝자리": {
+    "views": 405,
+    "likes": 0,
+    "comments": 1
+   },
+   "11-22 화권 끝자리": {
+    "views": 408,
+    "likes": 2,
+    "comments": 1
+   },
+   "11-23 염정화기 궁": "05:40 예약 상태(미발행)"
+  },
+  "naver_blog": {
+   "11-17 결혼운": {
+    "views": 73,
+    "likes": 1,
+    "comments": 2
+   },
+   "11-19 시험운": {
+    "views": 59,
+    "likes": 0,
+    "comments": 1
+   },
+   "11-21 신년운세": {
+    "views": 1,
+    "likes": 1,
+    "comments": 1,
+    "note": "조회 1은 읽힌 값 그대로. 발행 하루 반이라 집계 지연 가능"
+   }
+  },
+  "instagram": "5편(11-18~11-22) 모두 views 0 · likes 0 · 댓글 1(우리 첫 댓글) · shares 0 로 읽힘. 조회 0은 미집계로 보임 - 못 읽음으로 취급",
+  "tiktok": "2편 읽음: views 0, likes 0~1. 조회 미집계 - 못 읽음으로 취급",
+  "naver_clip": {
+   "11-18 태음화록": {
+    "views": 24,
+    "likes": 0
+   }
+  },
+  "site": "11-16~11-22 방문 99 (blog 52 · direct 43 · insta 2 · yt 1 · 기타 1) · 맛보기 50+캐시 28 · CTA 8 · 주문 생성 2 (site-log, 메인 11-22 DB 건수)",
+  "note": "유튜브 댓글 수에는 우리 첫 댓글이 들어 있다. 바깥 댓글은 홍란편 1건뿐(engage-log)"
+ }
+}

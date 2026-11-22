@@ -1,0 +1,95 @@
+{
+ "title": "[자미두수 전설] 18화 - 경양(擎羊), 양전",
+ "date": "2026-11-24",
+ "scheduledAt": "2026-11-24T05:40:00+09:00",
+ "type": "legend",
+ "episode": 18,
+ "categoryId": "20",
+ "tags": [
+  "자미두수",
+  "자미두수전설",
+  "경양",
+  "양전",
+  "봉신연의",
+  "이랑신",
+  "칠십이변화",
+  "결단",
+  "맺고끊음",
+  "록존",
+  "타라",
+  "부처궁",
+  "자미두수명반",
+  "무료명반"
+ ],
+ "seoKeywords": {
+  "main": "자미두수",
+  "subs": [
+   "경양",
+   "양전",
+   "봉신연의",
+   "자미두수 명반"
+  ]
+ },
+ "images": [
+  {
+   "ph": "IMG1",
+   "path": "_shorts/assets/mindlumi/char/wide/경양.jpg",
+   "alt": "칼을 든 경양 캐릭터. 양어깨에 양 머리 장식을 단 갑옷을 입었다",
+   "aiGenerated": true
+  },
+  {
+   "ph": "IMG2",
+   "path": "mindlumi/w48/a1-2.png",
+   "alt": "양전이 나서는 세 장면. 서기의 포위, 일흔두 가지 변화, 매산의 흰 원숭이"
+  },
+  {
+   "ph": "IMG3",
+   "path": "mindlumi/w48/a1-3.png",
+   "alt": "경양이 놓이는 자리. 표본 명반에서 록존은 신궁에, 경양은 그다음 칸인 유궁 부처궁에 있다"
+  },
+  {
+   "ph": "CTA",
+   "path": "mindlumi/jensen-4-cta.png",
+   "alt": "내 원반과 제2명반 나란히 무료로 보기 - mindlumi.ai",
+   "link": "https://mindlumi.ai/?ref=blog"
+  }
+ ],
+ "links": [
+  "224446923893",
+  "224456430742",
+  "224426330397",
+  "224468318741",
+  "224486317269"
+ ],
+ "sample": "dump.json samples[1] 토5국 명궁 해궁 천량. 록존 신궁(자녀궁: 탐랑 록존 천마), 경양 유궁(부처궁: 천기 거문 경양 홍란)",
+ "sources": [
+  "본문 대조는 하지 못했다(갈래 작업자에게 WebFetch 가 없고 WebSearch 는 주소만 돌려줌). 아래는 확인할 주소다",
+  "40회(양전 첫 등장 · 면전패 · 화호초 · 보물 훔침) https://zh.wikisource.org/wiki/封神演義/卷040",
+  "92회 楊戩哪吒收七怪(매산칠괴 · 원홍 · 여와의 산하사직도) https://www.epochtimes.com/gb/7/5/10/n1706251.htm · https://zh.wikisource.org/wiki/封神演義/卷092",
+  "100회(육신성성 일곱) https://zh.wikisource.org/wiki/封神演義/卷100",
+  "세 번째 눈 https://ko.wikipedia.org/wiki/이랑진군 · https://namu.wiki/w/양전(봉신연의)",
+  "경양 = 양전 전승: mindlumi/legend/REVIEW.md 대조표"
+ ],
+ "factsNotConfirmed": [
+  "원문 본문과 직접 대조하지 못한 채 쓴 대목(발행 전 web-fetch 로 확인 필요): ① 양전이 와서 면전패를 내리게 함(40회) ② 화호초가 흰 쥐 모습이라는 것과 삼켜진 뒤 안에서 처리, 화호초로 변해 보물 하나를 훔쳐 나옴(40회) ③ 원홍을 여와의 산하사직도로 잡음(92회) ④ 육신성성 일곱 명단(100회) ⑤ 봉신연의 원문에 양전의 세 번째 눈 묘사가 없다는 것",
+  "일부러 뺀 것: 효천견 이름과 활약 회차, 구전원공/팔구현공 용어, 황천화가 네 장수를 끝낸 대목(19화 몫), 원홍의 최후"
+ ],
+ "check": {
+  "honorific": 0,
+  "zwsp": 0,
+  "bold": 0,
+  "dash": 0,
+  "heading": 0,
+  "table": 0,
+  "disclaimer": 0,
+  "images": 4,
+  "subheads": 6,
+  "dividers": 7,
+  "highlight": 1,
+  "singleSentenceParas": 1,
+  "narrParas": 23,
+  "avgLen": 99.4,
+  "maxLen": 135,
+  "chars": 2819
+ }
+}
