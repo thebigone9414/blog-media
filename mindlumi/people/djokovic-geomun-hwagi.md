@@ -16,6 +16,7 @@ C3. 유양 또는 유타가 원명반의 거문 자리에 든다
 판정: 뚜렷함 = 사건 해 둘 다 기준 2개 이상, 대조 해는 1개 이하에서만 2개 이상 / 약함 = 사건 해에 맞지만 대조 해 절반 가까이도 그만큼 맞음 / 없음 = 사건 해에 2개 이상 맞는 해가 없음
 
 ## 확인 (2026-11-23)
+- ★생시 등급: astro.com/astro-databank/Djokovic,_Novak 직접 확인. born on 22 May 1987 at 23:25, Belgrade. Timezone MEDT h2e (is daylight saving time). Data source: Quoted BC/BR, Rodden Rating AA, Collector Astrodienst. Source Notes: 베오그라드 출생등록부의 출생증명 기록으로 23:25 가 확인돼 2013년 9월 AA 로 올림(그 전에 11:00 am 이라는 다른 인용이 있었다)
 - 서머타임: 세르비아는 1983년부터 시행, 1987년도 시행(timeanddate serbia 1987). 5월 22일은 기간 안 → 23:25 를 22:25 로, 해시
 - 사건 날짜: 2020-09-06 US오픈 16강에서 선심이 공에 맞아 실격(PBS · NPR · ESPN) / 2022-01-16 호주 연방법원이 비자 취소를 유지, 같은 날 출국(NPR · PBS · UPI). 2022-01-16 은 음력 설(2022-02-01) 전이라 신축년
 
