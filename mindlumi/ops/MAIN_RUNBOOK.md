@@ -105,3 +105,8 @@ SureView 쪽 전부 / 운영자가 보던 브라우저 탭 / 실고객 이름·�
 `C:\Users\thebigone\OneDrive\work\0. 감천 법인\5. MindLumi\99. MindLumi 사업 관련 작업\` 아래에 종류별 하위 폴더(인물편\<날짜-인물> · 전설 · 점검 등)를 만들어 넣고, 파일 이름은 한글로 알아보기 쉽게.
 방법: 파일을 /mnt/user-data/outputs 에 두고 device_commit_files 로 쓴다. 폴더 접근은 대화마다 한 번 허락을 받아야 한다(device_request_folder_access).
 운영자 PC 가 붙지 않은 예약 회차에서는 저장할 수 없으므로 저장소에 두고, 보고에 「원드라이브에 아직 안 넣음」 이라고 적는다. PC 가 붙은 다음 대화에서 옮긴다.
+
+## [3-7] 월요일 메인은 08:50 (2026-11-23)
+11-23 월 06:15 메인 회차가 「사용량 한도」 로 시작하지 못했다(03:40 주간 제작이 사용량을 많이 쓴 직후). 승인 문제가 아니다.
+그래서 메인을 둘로 나눴다: 화~금 06:15(trig_01RWfPiLMHA2vTQnyrXQ2MUX) / 월 08:50(trig_01Kq2iYT2kZPyA4HtKF4UVUj). 월요일 05:40 숏츠는 주간 제작이 전주에 예약해 둔 것이라 메인 없이도 나간다.
+메인 회차가 다시 한도로 실패하면(list_triggers 의 last_run.failure_reason = USAGE_LIMIT_REACHED) 그 요일의 앞 작업과 시간을 더 벌린다.
