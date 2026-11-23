@@ -31,8 +31,15 @@ def main():
     tts = load_tts(mdir)
 
     cards = []; segs = []; sr = 24000; cursor = 0
+    # 읽는 말과 보이는 글을 따로: narration 안에 {보이는 글|읽는 말} 로 쓴다. 예) "제{2|이}명반", "{2027년|이천이십칠년}"
+    #   음성은 오른쪽으로 읽고, 자막에는 왼쪽(숫자)이 뜬다. 중괄호가 없으면 예전과 똑같이 동작한다.
+    PAIR = re.compile(r"\{([^|{}]*)\|([^{}]*)\}")
+    shown = lambda t: PAIR.sub(lambda m: m.group(1), t)
+    said = lambda t: PAIR.sub(lambda m: m.group(2), t)
+    roomy = spec.get("layout") == "roomy"
     for i, c in enumerate(spec["cards"]):
-        narr = narration_for(c)
+        narr_raw = narration_for(c); narr = said(narr_raw); narr_show = shown(narr_raw)
+        if c.get("narration2"): c = dict(c, narration2=said(c["narration2"]))
         a = tts.generate(narr, sid=sid, speed=speed)
         clip = np.array(a.samples, "float32"); sr = a.sample_rate
         Dsp = len(clip) / sr
@@ -46,11 +53,16 @@ def main():
             st2 = int(float(c.get("narration2_at", max(0.0, dur - 8.0))) * sr); n2 = min(len(clip2), len(seg) - st2)
             if n2 > 0: seg[st2:st2 + n2] = clip2[:n2]
         segs.append(seg)
-        words = narr.split(); wts = [syl(w) for w in words]; tot = sum(wts) or 1; acc = 0; wl = []
+        # 낱말 수가 같게 쓰려고 쌍 안의 띄어쓰기는 붙여 센다. 시간 배분은 읽는 말의 글자 수로.
+        spk = [said(w) for w in narr_raw.replace("| ", "|").split()] if PAIR.search(narr_raw) else narr.split()
+        words = [shown(w) for w in narr_raw.split()] if PAIR.search(narr_raw) else narr.split()
+        if len(spk) != len(words): spk = words
+        wts = [syl(w) for w in spk]; tot = sum(wts) or 1; acc = 0; wl = []
         for w, wt in zip(words, wts):
             s = LEAD + (acc / tot) * Dsp; acc += wt; e = LEAD + (acc / tot) * Dsp
             wl.append({"w": w, "s": round(s, 3), "e": round(e, 3)})
         card = {k: v for k, v in c.items() if k not in ("dur", "narration", "narration2", "narration2_at")}
+        if roomy: card["roomy"] = True
         card.update({"idx": i, "startFrame": cursor, "durFrames": nF, "words": wl})
         cards.append(card); cursor += nF
 

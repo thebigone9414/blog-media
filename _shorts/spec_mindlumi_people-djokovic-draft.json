@@ -19,7 +19,7 @@
    "sub": "거문에 화기가 붙는 해에 태어났다",
    "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/423e532a4c02fab32ff7c619d4cd89875077f883/_shorts/assets/mindlumi/char/square/거문.jpg",
    "caption": "말의 별, 거문",
-   "narration": "끝자리 칠 년생은 구설의 별, 거문화기를 타고납니다."
+   "narration": "끝자리 {7년생은|칠년생은} 구설의 별, 거문화기를 타고납니다."
   },
   {
    "tag": "1987년생",
@@ -27,7 +27,7 @@
    "title": "테니스의<br><b>조코비치</b>",
    "sub": "생시 확인 · Astro-Databank AA 등급",
    "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/423e532a4c02fab32ff7c619d4cd89875077f883/mindlumi/people/assets/djokovic-tennis.png",
-   "narration": "천구백팔십칠년생 테니스 선수 조코비치입니다."
+   "narration": "{1987년생|천구백팔십칠년생} 테니스 선수 조코비치입니다."
   },
   {
    "tag": "원명반",
@@ -43,7 +43,7 @@
    "title": "겹쳐 보면<br><b>윗사람 자리</b>로",
    "sub": "부모궁 - 윗사람 · 기관 · 규정",
    "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/423e532a4c02fab32ff7c619d4cd89875077f883/mindlumi/people/assets/djokovic-second.png",
-   "narration": "제이명반을 겹치면 거문화기가 윗사람과 규정의 자리로 갑니다."
+   "narration": "{제2명반을|제이명반을} 겹치면 거문화기가 윗사람과 규정의 자리로 갑니다."
   },
   {
    "tag": "실제로",
@@ -54,7 +54,7 @@
     "2020 US오픈 실격",
     "2022 호주 입국 취소"
    ],
-   "narration": "유에스오픈 실격, 호주 입국 취소. 두 번 다 상대는 심판과 당국이었습니다."
+   "narration": "{US오픈|유에스오픈} 실격, 호주 입국 취소. 두 번 다 상대는 심판과 당국이었습니다."
   },
   {
    "tag": "2027 정미년",
@@ -62,7 +62,8 @@
    "title": "내 <b>거문</b>은<br>어느 궁에?",
    "sub": "결제 없이 바로 확인",
    "cta": true,
-   "narration": "이천이십칠년은 모두에게 거문화기의 해입니다. 내 거문은 어디에 있을까요? 네이버에서 마인드루미를 검색해 확인하세요."
+   "narration": "{2027년은|이천이십칠년은} 모두에게 거문화기의 해입니다. 내 거문은 어디에 있을까요? 네이버에서 마인드루미를 검색해 확인하세요."
   }
- ]
+ ],
+ "layout": "roomy"
 }

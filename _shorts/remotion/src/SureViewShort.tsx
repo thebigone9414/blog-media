@@ -16,7 +16,7 @@ type Card = {
   // 찾아보기형(lookup). rows 가 있으면 카드 전체가 표 한 장이 된다 - 시청자가 자기 줄을 찾느라 멈추고 다시 본다.
   // 잘 되는 사주 숏츠(구독 수백 명 채널의 10만~30만 회)가 거의 이 형태였다(2026-11-16 벤치마크).
   // rows: [키, 값, 한마디]. note 는 표 아래 작은 주석, 자막은 띄우지 않는다(표를 가린다).
-  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; motion?: boolean; theme?: string; example?: { src: string; label?: string; h?: number }; hero?: string; bright?: boolean; hl?: string; faceBase?: string; ask2?: string; kicker?: string; blog?: { title?: string; sub?: string; name?: string; url?: string; frames?: number };
+  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; motion?: boolean; theme?: string; example?: { src: string; label?: string; h?: number }; hero?: string; roomy?: boolean; bright?: boolean; hl?: string; faceBase?: string; ask2?: string; kicker?: string; blog?: { title?: string; sub?: string; name?: string; url?: string; frames?: number };
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
@@ -75,12 +75,12 @@ const Dots: React.FC<{ total: number; idx: number; accent: string }> = ({ total,
 );
 
 // ---------- karaoke caption ----------
-const Caption: React.FC<{ words: Word[]; tCard: number; accent2: string }> = ({ words, tCard, accent2 }) => {
+const Caption: React.FC<{ words: Word[]; tCard: number; accent2: string; roomy?: boolean }> = ({ words, tCard, accent2, roomy }) => {
   if (!words?.length) return null;
   return (
     <div style={{
-      position: "absolute", left: 90, right: 150, bottom: 600, display: "flex", flexWrap: "wrap", gap: "0 16px",
-      fontSize: 42, fontWeight: 800, lineHeight: 1.4, justifyContent: "center", textAlign: "center",
+      position: "absolute", left: 90, right: 150, bottom: roomy ? 450 : 600, display: "flex", flexWrap: "wrap", gap: "0 16px",
+      fontSize: roomy ? 44 : 42, fontWeight: 800, lineHeight: 1.4, justifyContent: "center", textAlign: "center",
     }}>
       {words.map((wd, i) => {
         const spoken = tCard >= wd.s; const current = tCard >= wd.s && tCard < wd.e;
@@ -103,7 +103,8 @@ const Stage: React.FC<{ card: Card; accent: string; accent2: string; cta: Data["
     const srcs = card.images ?? [card.image as string];
     const two = srcs.length > 1;
     // 캡션이 붙으면 그만큼 그림을 줄인다. 안 줄이면 자막 띠(y≈1140)를 침범한다.
-    const H = two ? 400 : card.caption ? 370 : 460;
+    // roomy(넓은 배치): 그림을 가로 꽉 차게, 더 크게. 자막 띠를 아래로 내린 만큼 쓴다(자막 윗끝 y≈1290).
+    const H = card.roomy ? (two ? 470 : card.caption ? 470 : 550) : two ? 400 : card.caption ? 370 : 460;
     return (
       <div style={{ ...box, display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
         <div style={{ display: "flex", gap: 24, alignItems: "flex-end", justifyContent: "center", width: "100%" }}>
@@ -111,7 +112,7 @@ const Stage: React.FC<{ card: Card; accent: string; accent2: string; cta: Data["
             const a = spring({ frame: frame - 4 - i * 9, fps, config: { damping: 18 } });
             return (
               <div key={i} style={{
-                width: two ? "48%" : "86%", height: H, borderRadius: 28, overflow: "hidden",
+                width: two ? "48%" : card.roomy ? "100%" : "86%", height: H, borderRadius: 28, overflow: "hidden",
                 background: `${mix(accent, 10)}1a`, border: `1px solid ${mix(accent, 40)}`,
                 opacity: a, transform: `translateY(${(1 - a) * 28}px) scale(${0.94 + a * 0.06})`,
                 display: "flex", alignItems: "center", justifyContent: "center",
@@ -602,13 +603,14 @@ const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, d
       <Dots total={total} idx={card.idx} accent={data.accent} />
       {/* watermark */}
       <div style={{ position: "absolute", right: 70, top: 150, fontSize: 300, fontWeight: 900, color: "rgba(255,255,255,0.035)", lineHeight: 1 }}>{String(card.idx + 1).padStart(2, "0")}</div>
-      <div style={{ position: "absolute", inset: 0, padding: "232px 150px 860px 90px", display: "flex", flexDirection: "column" }}>
+      {card.roomy && <div style={{ position: "absolute", left: -200, right: -200, bottom: -260, height: 900, background: `radial-gradient(ellipse at 50% 100%, ${mix(data.accent, 60)}55 0%, transparent 62%)` }} />}
+      <div style={{ position: "absolute", inset: 0, padding: card.roomy ? "218px 150px 0px 90px" : "232px 150px 860px 90px", display: "flex", flexDirection: "column" }}>
         {/* chip */}
         <div style={{ opacity: appear, transform: `translateY(${(1 - appear) * 20}px)`, display: "inline-flex", alignSelf: "flex-start", alignItems: "center", gap: 14, padding: "16px 28px", border: `1px solid ${mix(data.accent, 55)}`, borderRadius: 99, fontSize: 30, fontWeight: 700, color: mix(data.accent, 80) }}>
           <span style={{ color: "#0b1220", background: data.accent, borderRadius: 8, padding: "2px 12px", fontSize: 28 }}>{String(card.idx + 1).padStart(2, "0")}</span>{card.tag}
         </div>
         {/* title with word stagger */}
-        <div style={{ marginTop: 54, fontSize: 88, lineHeight: 1.26, fontWeight: 800, letterSpacing: -1, color: "#f4f9fb" }}>
+        <div style={{ marginTop: card.roomy ? 40 : 54, fontSize: card.roomy ? 84 : 88, lineHeight: card.roomy ? 1.22 : 1.26, fontWeight: 800, letterSpacing: -1, color: "#f4f9fb" }}>
           {lines.map((toks, li) => (
             <div key={li}>
               {toks.map((tk, ti) => {
@@ -622,14 +624,14 @@ const CardView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, d
             </div>
           ))}
         </div>
-        {card.sub && <div style={{ marginTop: 40, fontSize: 40, lineHeight: 1.5, fontWeight: 500, color: "#9fb4c6", opacity: appear }}>{card.sub}</div>}
+        {card.sub && <div style={{ marginTop: card.roomy ? 26 : 40, fontSize: 40, lineHeight: 1.5, fontWeight: 500, color: "#9fb4c6", opacity: appear }}>{card.sub}</div>}
         {/* paddingBottom - 자막 띠(bottom:600, 최대 3줄 ≈ 180px)를 침범하지 않게 띄운다.
             자막 bottom:600 + 3줄(약 180px) 이면 자막 윗끝이 y≈1140 이므로 1920-1140=780. */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", paddingBottom: 780 }}>
+        <div style={card.roomy ? { marginTop: 40, display: "flex", flexDirection: "column" } : { flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", paddingBottom: 780 }}>
           <Stage card={card} accent={data.accent} accent2={data.accent2} cta={data.cta} appear={appear} />
         </div>
       </div>
-      <Caption words={card.words} tCard={tCard} accent2={data.accent2} />
+      <Caption words={card.words} tCard={tCard} accent2={data.accent2} roomy={card.roomy} />
       {/* brand strip - kept high (above YouTube Shorts bottom UI) */}
       <div style={{ position: "absolute", left: 90, right: 150, top: 116, display: "flex", alignItems: "center", justifyContent: "space-between", opacity: 0.9 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 32, fontWeight: 800, color: "#dbe7f0" }}>
