@@ -17,7 +17,7 @@
    "dur": 4,
    "title": "<b>구설의 별</b>을<br>타고난 사람",
    "sub": "거문에 화기가 붙는 해에 태어났다",
-   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/fa7dbee269f77460f3f44bc3eb7990638c053b24/_shorts/assets/mindlumi/char/square/거문.jpg",
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/423e532a4c02fab32ff7c619d4cd89875077f883/_shorts/assets/mindlumi/char/square/거문.jpg",
    "caption": "말의 별, 거문",
    "narration": "끝자리 칠 년생은 구설의 별, 거문화기를 타고납니다."
   },
@@ -26,37 +26,35 @@
    "dur": 4,
    "title": "테니스의<br><b>조코비치</b>",
    "sub": "1987년 정묘년생",
-   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/fa7dbee269f77460f3f44bc3eb7990638c053b24/mindlumi/people/assets/djokovic-tennis.png",
-   "narration": "천구백팔십칠년생 테니스 선수 조코비치가 그렇습니다."
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/423e532a4c02fab32ff7c619d4cd89875077f883/mindlumi/people/assets/djokovic-tennis.png",
+   "narration": "천구백팔십칠년생 테니스 선수 조코비치입니다."
   },
   {
    "tag": "원명반",
    "dur": 5,
    "title": "<b>명궁</b>에<br>거문화기",
    "sub": "나 자신의 자리",
-   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/fa7dbee269f77460f3f44bc3eb7990638c053b24/mindlumi/people/assets/djokovic-wonban.png",
-   "fit": "contain",
-   "narration": "명반을 보면, 나 자신의 자리인 명궁에 거문화기가 있습니다."
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/423e532a4c02fab32ff7c619d4cd89875077f883/mindlumi/people/assets/djokovic-wonban.png",
+   "narration": "명반을 보면 나 자신의 자리, 명궁에 거문화기가 있습니다."
   },
   {
    "tag": "제2명반",
    "dur": 5,
    "title": "겹쳐 보면<br><b>윗사람 자리</b>로",
    "sub": "부모궁 - 윗사람 · 기관 · 규정",
-   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/fa7dbee269f77460f3f44bc3eb7990638c053b24/mindlumi/people/assets/djokovic-second.png",
-   "fit": "contain",
-   "narration": "제이명반을 겹치면, 거문화기가 윗사람과 규정의 자리로 갑니다."
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/423e532a4c02fab32ff7c619d4cd89875077f883/mindlumi/people/assets/djokovic-second.png",
+   "narration": "제이명반을 겹치면 거문화기가 윗사람과 규정의 자리로 갑니다."
   },
   {
    "tag": "실제로",
-   "dur": 7,
+   "dur": 6,
    "title": "상대는 <b>심판</b>과<br><b>당국</b>이었다",
    "sub": "보도된 사실",
    "flow": [
-    "2020 US오픈 - 선심이 공에 맞아 실격",
-    "2022 호주오픈 - 비자 취소로 출국"
+    "2020 US오픈 실격",
+    "2022 호주 입국 취소"
    ],
-   "narration": "이천이십 년 유에스오픈 실격, 이천이십이 년 호주 입국 취소. 두 번 다 상대는 심판과 당국이었습니다."
+   "narration": "유에스오픈 실격, 호주 입국 취소. 두 번 다 상대는 심판과 당국이었습니다."
   },
   {
    "tag": "2027 정미년",
@@ -64,7 +62,7 @@
    "title": "내 <b>거문</b>은<br>어느 궁에?",
    "sub": "결제 없이 바로 확인",
    "cta": true,
-   "narration": "이천이십칠년은 모두에게 거문화기의 해입니다. 내 거문은 어느 궁에 있을까요? 네이버에서 마인드루미를 검색해 무료로 확인하세요."
+   "narration": "이천이십칠년은 모두에게 거문화기의 해입니다. 내 거문은 어디에 있을까요? 네이버에서 마인드루미를 검색해 확인하세요."
   }
  ]
 }
