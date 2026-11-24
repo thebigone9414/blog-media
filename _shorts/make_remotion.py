@@ -37,6 +37,7 @@ def main():
     shown = lambda t: PAIR.sub(lambda m: m.group(1), t)
     said = lambda t: PAIR.sub(lambda m: m.group(2), t)
     roomy = spec.get("layout") == "roomy"
+    cine = spec.get("layout") == "cine"  # 화면 가득 장면 그림 + 금색 자막 (전설 · 이야기형)
     for i, c in enumerate(spec["cards"]):
         narr_raw = narration_for(c); narr = said(narr_raw); narr_show = shown(narr_raw)
         if c.get("narration2"): c = dict(c, narration2=said(c["narration2"]))
@@ -63,6 +64,7 @@ def main():
             wl.append({"w": w, "s": round(s, 3), "e": round(e, 3)})
         card = {k: v for k, v in c.items() if k not in ("dur", "narration", "narration2", "narration2_at")}
         if roomy: card["roomy"] = True
+        if cine and card.get("image"): card["cine"] = True
         card.update({"idx": i, "startFrame": cursor, "durFrames": nF, "words": wl})
         cards.append(card); cursor += nF
 
