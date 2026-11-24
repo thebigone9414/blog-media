@@ -126,6 +126,11 @@
     "youtube": 402,
     "measuredAt": "2026-11-22T15:30+09:00",
     "note": "발행 27시간 뒤"
+   },
+   "viewsAt20261125": {
+    "youtube": 405,
+    "measuredAt": "2026-11-25T06:28+09:00",
+    "note": "발행 3일 반 뒤"
    }
   },
   {
@@ -144,7 +149,12 @@
    "hookType": "찾아보기형 pop",
    "playlist": "",
    "tiktokUrl": "https://www.tiktok.com/@mindlumi_ai/video/7710825159367642369",
-   "viewsNote": "11-22 15:30 유튜브 406(발행 7시간 반 뒤). 24시간 값은 11-23 06:15 에"
+   "viewsNote": "11-22 15:30 유튜브 406(발행 7시간 반 뒤). 24시간 값은 11-23 06:15 에",
+   "viewsAt20261125": {
+    "youtube": 402,
+    "measuredAt": "2026-11-25T06:28+09:00",
+    "note": "발행 3일 뒤"
+   }
   },
   {
    "date": "2026-11-24",
@@ -178,7 +188,12 @@
    "instagramUrl": "https://www.instagram.com/reel/DgGQ2TCCuLl/",
    "tiktokUrl": "https://www.tiktok.com/@mindlumi_ai/video/7711469683416796423",
    "clipUrl": "https://clip.naver.com/contents?serviceType=CLIP&seedMediaId=9E702D186FE697C313036F850D20745D59CD",
-   "playlist": ""
+   "playlist": "",
+   "viewsAt20261125": {
+    "youtube": 11,
+    "measuredAt": "2026-11-25T06:28+09:00",
+    "note": "발행 25시간 뒤"
+   }
   },
   {
    "date": "2026-11-23",
@@ -198,7 +213,12 @@
    "mp4": "mindlumi/shorts/20261123-palace-yeomjeong-hwagi-m.mp4",
    "playlist": "",
    "playlistTodo": "2027 신년운세 - 자미두수로 보는 정미년",
-   "note": "11-24 메인이 뒤늦게 기록(11-23 메인 회차가 돌지 않음)"
+   "note": "11-24 메인이 뒤늦게 기록(11-23 메인 회차가 돌지 않음)",
+   "viewsAt20261125": {
+    "youtube": 298,
+    "measuredAt": "2026-11-25T06:28+09:00",
+    "note": "발행 48시간 뒤"
+   }
   },
   {
    "date": "2026-11-25",
@@ -208,7 +228,7 @@
    "snsPostId": "post_daefbcbacc562a40",
    "clipPostId": "post_84982c36532d1312",
    "youtubeTitle": "같은 데서 자꾸 걸리나요? 😮‍💨 내 출생연도 찾기 #자미두수 #사주",
-   "status": "scheduled",
+   "status": "published",
    "scheduledAt": "2026-11-25T05:40+09:00",
    "hookType": "찾아보기형 pop · 출생연도 · 문제 훅",
    "shortsKind": "출생연도",
@@ -216,7 +236,14 @@
    "angle": "B",
    "example": "consulting 06a",
    "spec": "_shorts/spec_mindlumi_20261125-lookup-hwagi-m.json",
-   "mp4": "mindlumi/shorts/20261125-lookup-hwagi-m.mp4"
+   "mp4": "mindlumi/shorts/20261125-lookup-hwagi-m.mp4",
+   "publishedAt": "2026-11-25T05:40+09:00",
+   "youtubeUrl": "https://www.youtube.com/watch?v=aKrQGvX3SdQ",
+   "instagramUrl": "https://www.instagram.com/reel/DgI1dJ1DL0q/",
+   "tiktokUrl": "https://www.tiktok.com/@mindlumi_ai/video/7711840615314541876",
+   "clipUrl": "https://clip.naver.com/contents?serviceType=CLIP&seedMediaId=EE5CE3E8F3BDB7214836C740AE4AA75FBBA3",
+   "playlist": "",
+   "playlistTodo": "출생연도 · 띠로 찾는 내 별"
   },
   {
    "date": "2026-11-26",
@@ -247,7 +274,9 @@
    ],
    "draft": "mindlumi/w48/a2.md",
    "spec": "_shorts/spec_mindlumi_20261126-lookup-sijin-m.json",
-   "mp4": "mindlumi/shorts/20261126-lookup-sijin-m.mp4"
+   "mp4": "mindlumi/shorts/20261126-lookup-sijin-m.mp4",
+   "youtubeAt": "2026-11-26T07:30+09:00",
+   "youtubeAtNote": "11-25 메인: 유튜브만 07:30 으로(장부 6번 판정). 글 · 인스타 · 틱톡 · 클립은 05:40 그대로"
   },
   {
    "date": "2026-11-27",
@@ -336,7 +365,9 @@
    "angle": "A",
    "example": "sohan 03",
    "spec": "_shorts/spec_mindlumi_20261130-palace-cheondong-hwagwon-m.json",
-   "mp4": "mindlumi/shorts/20261130-palace-cheondong-hwagwon-m.mp4"
+   "mp4": "mindlumi/shorts/20261130-palace-cheondong-hwagwon-m.mp4",
+   "youtubeAt": "2026-11-30T07:30+09:00",
+   "youtubeAtNote": "11-25 메인: 유튜브만 07:30 으로(장부 6번 판정). 인스타 · 틱톡 · 클립은 05:40 그대로"
   },
   {
    "logNo": "224477055499",
