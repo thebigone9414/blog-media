@@ -590,20 +590,21 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
 
 
 // ---------- cinematic (전설 · 이야기형) ----------
-// 화면 가득 장면 그림 + 느린 줌/이동 + 금색 자막 띠. 카드(슬라이드) 틀을 쓰지 않는다.
+// 위쪽 절반에 장면 그림(느린 줌/이동) + 그 아래 금색 자막. 카드(슬라이드) 틀을 쓰지 않는다.
 // spec 맨 위에 "layout": "cine". 카드마다 image(세로 그림)가 있어야 한다. 예전 전설 숏츠(금색 글씨 · 반투명 검은 띠)의 결을 따른다.
 const CINE_GOLD = "#E8C87A";
 const SFONT = "'Noto Serif CJK KR','Noto Serif KR','Noto Sans CJK KR',serif";
 const CineView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, data, total }) => {
+  // 2026-11-25 운영자: 그림은 화면 위쪽 절반(위를 조금 띄우고), 설명 · 자막은 그 아래. 그림과 글이 겹치지 않는다.
+  // 그림 칸 y 190~1150(960px). 글 칸 y 1190~1500. 그 아래 420px 는 쇼츠 화면 단추 자리라 비운다.
   const frame = useCurrentFrame(); const { fps } = useVideoConfig();
   const t = frame / fps; const D = card.durFrames;
   const p = frame / Math.max(1, D);
   const dir = card.idx % 4;
-  const sc = dir % 2 === 0 ? 1.06 + 0.12 * p : 1.18 - 0.12 * p;
-  const tx = (dir === 1 ? -1 : dir === 2 ? 1 : 0) * (30 - 60 * p);
-  const ty = (dir === 0 ? 1 : dir === 3 ? -1 : 0) * (24 - 48 * p);
+  const sc = dir % 2 === 0 ? 1.04 + 0.1 * p : 1.14 - 0.1 * p;
+  const tx = (dir === 1 ? -1 : dir === 2 ? 1 : 0) * (20 - 40 * p);
+  const ty = (dir === 0 ? 1 : dir === 3 ? -1 : 0) * (14 - 28 * p);
   const fin = interpolate(frame, [0, 10], [0, 1], { extrapolateRight: "clamp" });
-  const fout = interpolate(frame, [D - 6, D], [1, 0.25], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const src = card.image && /^https?:/.test(card.image) ? card.image : staticFile(card.image ?? "");
   // 자막: 낱말을 14자 안팎으로 묶어 지금 말하는 묶음만 띄운다.
   const groups: Word[][] = []; let cur: Word[] = []; let n = 0;
@@ -620,40 +621,45 @@ const CineView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, d
   const lines = parseTitle(card.title ?? "");
   const hook = card.idx === 0; const end = !!card.cta;
   const tA = spring({ frame: frame - 6, fps, config: { damping: 20 } });
+  const IMG_TOP = 190, IMG_H = 960;
   return (
-    <AbsoluteFill style={{ background: "#000", fontFamily: FONT }}>
-      <AbsoluteFill style={{ opacity: fin * fout }}>
-        <Img src={src} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${sc}) translate(${tx}px,${ty}px)`, filter: end ? "brightness(0.5)" : "none" }} />
+    <AbsoluteFill style={{ background: "#07060c", fontFamily: FONT }}>
+      {/* 바탕: 같은 그림을 흐리고 어둡게 깔아 위아래가 이어져 보이게 한다 */}
+      <AbsoluteFill style={{ opacity: 0.55 * fin }}>
+        <Img src={src} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "blur(60px) brightness(0.45) saturate(1.2)", transform: "scale(1.3)" }} />
       </AbsoluteFill>
-      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 52%, rgba(0,0,0,0.78) 100%)" }} />
-      <AbsoluteFill style={{ boxShadow: "inset 0 0 260px rgba(0,0,0,0.6)" }} />
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(7,6,12,0.75) 0%, rgba(7,6,12,0.15) 12%, rgba(7,6,12,0.15) 55%, rgba(7,6,12,0.92) 72%, #07060c 100%)" }} />
       {/* 위: 연재 이름 */}
-      <div style={{ position: "absolute", top: 120, left: 0, right: 0, textAlign: "center", fontFamily: SFONT, color: CINE_GOLD, fontSize: 34, fontWeight: 700, letterSpacing: 6, textShadow: "0 2px 12px rgba(0,0,0,0.9)" }}>
+      <div style={{ position: "absolute", top: 96, left: 0, right: 0, textAlign: "center", fontFamily: SFONT, color: CINE_GOLD, fontSize: 34, fontWeight: 700, letterSpacing: 6 }}>
         {data.series === "MindLumi" ? "자미두수 전설" : data.series}{card.ep ? ` · ${card.ep}` : ""}
       </div>
-      <div style={{ position: "absolute", top: 176, left: "50%", width: 90, height: 2, marginLeft: -45, background: CINE_GOLD, opacity: 0.7 }} />
-      {/* 훅 · 마무리: 큰 제목 */}
-      {(hook || end) && (
-        <div style={{ position: "absolute", left: 70, right: 70, top: end ? 560 : 1010, textAlign: "center", opacity: tA, transform: `translateY(${(1 - tA) * 30}px)` }}>
+      <div style={{ position: "absolute", top: 154, left: "50%", width: 90, height: 2, marginLeft: -45, background: CINE_GOLD, opacity: 0.7 }} />
+      {/* 그림 칸 */}
+      <div style={{ position: "absolute", left: 0, right: 0, top: IMG_TOP, height: IMG_H, overflow: "hidden", opacity: fin }}>
+        <Img src={src} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${sc}) translate(${tx}px,${ty}px)` }} />
+        <div style={{ position: "absolute", inset: 0, boxShadow: "inset 0 0 120px rgba(0,0,0,0.55)" }} />
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 150, background: "linear-gradient(180deg, rgba(7,6,12,0) 0%, #07060c 100%)" }} />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 70, background: "linear-gradient(0deg, rgba(7,6,12,0) 0%, rgba(7,6,12,0.85) 100%)" }} />
+      </div>
+      {/* 글 칸: 훅 · 마무리는 큰 제목, 가운데 카드는 금색 자막 */}
+      {(hook || end) ? (
+        <div style={{ position: "absolute", left: 60, right: 60, top: IMG_TOP + IMG_H + 6, textAlign: "center", opacity: tA, transform: `translateY(${(1 - tA) * 24}px)` }}>
           {lines.map((toks, li) => (
-            <div key={li} style={{ fontFamily: SFONT, fontSize: hook ? 92 : 84, lineHeight: 1.28, fontWeight: 900, color: "#fff", textShadow: "0 4px 24px rgba(0,0,0,0.95), 0 0 4px rgba(0,0,0,0.9)", wordBreak: "keep-all" }}>
+            <div key={li} style={{ fontFamily: SFONT, fontSize: end ? 70 : 78, lineHeight: 1.26, fontWeight: 900, color: "#fff", wordBreak: "keep-all" }}>
               {toks.map((tk, ti) => <span key={ti} style={{ whiteSpace: "pre", color: tk.b || tk.em ? CINE_GOLD : "#fff" }}>{tk.t}</span>)}
             </div>
           ))}
-          {card.sub && <div style={{ marginTop: 26, fontSize: 40, fontWeight: 700, color: "rgba(255,255,255,0.88)", textShadow: "0 2px 14px rgba(0,0,0,0.95)" }}>{card.sub}</div>}
+          {card.sub && !end && <div style={{ marginTop: 18, fontSize: 38, fontWeight: 700, color: "rgba(255,255,255,0.8)" }}>{card.sub}</div>}
           {end && (
-            <div style={{ marginTop: 70 }}>
-              <div style={{ display: "inline-block", fontSize: 64, fontWeight: 900, color: "#1a1206", background: CINE_GOLD, borderRadius: 99, padding: "18px 56px", transform: `scale(${1 + 0.03 * Math.sin(frame / 7)})` }}>{data.cta.site ?? ""}</div>
-              {data.cta.siteLabel && <div style={{ marginTop: 24, fontSize: 38, fontWeight: 800, color: "#fff", textShadow: "0 2px 12px rgba(0,0,0,0.9)" }}>{data.cta.siteLabel}</div>}
-              {data.cta.naver && <div style={{ marginTop: 18, fontSize: 30, fontWeight: 700, color: "rgba(255,255,255,0.85)" }}>전체 이야기 · {data.cta.naver}</div>}
+            <div style={{ marginTop: 22 }}>
+              <div style={{ display: "inline-block", fontSize: 54, fontWeight: 900, color: "#1a1206", background: CINE_GOLD, borderRadius: 99, padding: "12px 48px", transform: `scale(${1 + 0.03 * Math.sin(frame / 7)})` }}>{data.cta.site ?? ""}</div>
+              {data.cta.siteLabel && <div style={{ marginTop: 12, fontSize: 32, fontWeight: 800, color: "rgba(255,255,255,0.9)" }}>{data.cta.siteLabel}</div>}
             </div>
           )}
         </div>
-      )}
-      {/* 자막 띠: 금색 글씨 · 반투명 검은 띠. 쇼츠 아래 UI(약 420px)를 피한다. */}
-      {g && !hook && (
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 440, display: "flex", justifyContent: "center", opacity: gA }}>
-          <div style={{ maxWidth: 900, background: "rgba(0,0,0,0.5)", padding: "18px 40px", borderRadius: 6, fontSize: 58, fontWeight: 800, lineHeight: 1.35, color: CINE_GOLD, textAlign: "center", wordBreak: "keep-all", textShadow: "0 2px 6px rgba(0,0,0,0.8)" }}>
+      ) : g && (
+        <div style={{ position: "absolute", left: 60, right: 60, top: IMG_TOP + IMG_H + 30, height: 260, display: "flex", alignItems: "center", justifyContent: "center", opacity: gA }}>
+          <div style={{ fontSize: 66, fontWeight: 800, lineHeight: 1.34, color: CINE_GOLD, textAlign: "center", wordBreak: "keep-all" }}>
             {g.map((w) => w.w).join(" ")}
           </div>
         </div>

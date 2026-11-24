@@ -9,12 +9,12 @@ import base64, io, json, os, sys, time, urllib.request, urllib.error
 MODEL = os.environ.get("SCENE_MODEL", "gemini-3.1-flash-image")
 URL = f"https://generativelanguage.googleapis.com/v1/models/{MODEL}:generateContent"
 KEY = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or ""
-MAX_SCENES = 12  # 한 파일에 12장까지. 비용 상한(2K 한 장 약 0.1달러).
+MAX_SCENES = 12  # 한 파일에 12장까지. 비용 상한(1K 한 장 약 0.067달러).
 
 def gen(prompt):
     body = {"contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {"responseModalities": ["TEXT", "IMAGE"],
-                                 "responseFormat": {"image": {"aspectRatio": "9:16", "imageSize": "2K"}}}}
+                                 "responseFormat": {"image": {"aspectRatio": "1:1", "imageSize": "1K"}}}}
     req = urllib.request.Request(URL, data=json.dumps(body).encode(), method="POST",
                                  headers={"x-goog-api-key": KEY, "Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=180) as r:
@@ -45,9 +45,9 @@ def main():
                 try:
                     raw = gen((style + " " + sc["prompt"]).strip())
                     im = Image.open(io.BytesIO(raw)).convert("RGB"); w, h = im.size
-                    tw = int(h * 9 / 16)
-                    if tw < w: im = im.crop(((w - tw) // 2, 0, (w - tw) // 2 + tw, h))
-                    im.resize((1080, 1920), Image.LANCZOS).save(dst, quality=90)
+                    # 화면 위쪽 절반(1080x960)에 들어간다. 정사각으로 받아 1080x1080 으로 두고, 영상에서 위아래를 조금 잘라 쓴다.
+                    m = min(w, h); im = im.crop(((w - m) // 2, (h - m) // 2, (w - m) // 2 + m, (h - m) // 2 + m))
+                    im.resize((1080, 1080), Image.LANCZOS).save(dst, quality=90)
                     lines.append(f"success {sc['id']} {w}x{h}"); err = ""; break
                 except urllib.error.HTTPError as e:
                     err = f"HTTP {e.code} " + e.read().decode("utf-8", "replace")[:240].replace("\n", " ")
