@@ -1,0 +1,38 @@
+name: Scene images
+# mindlumi/scenes/<이름>.json 을 푸시하면 장면 그림을 만들어 저장소에 커밋한다.
+# 키는 저장소 비밀값 GEMINI_API_KEY (Settings > Secrets and variables > Actions). 결과는 <이름>.status.txt.
+on:
+  push:
+    branches: [main]
+    paths: ['mindlumi/scenes/*.json']
+permissions:
+  contents: write
+concurrency:
+  group: scene-images
+  cancel-in-progress: false
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 2 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install -q pillow
+      - name: generate
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: |
+          files=$(git diff --name-only HEAD~1 HEAD -- 'mindlumi/scenes/*.json' | tr '\n' ' ')
+          echo "files: $files"
+          [ -n "$files" ] && python3 _shorts/tools/gen_scenes.py $files || true
+      - name: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _shorts/assets/mindlumi/scene mindlumi/scenes
+          git diff --cached --quiet && exit 0
+          git commit -q -m "scene: 장면 그림 생성 결과 [skip ci]"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done

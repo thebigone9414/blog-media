@@ -1,0 +1,34 @@
+{
+ "episode": "18화 경양 - 양전 (시안)",
+ "style": "Cinematic dark fantasy digital painting, vertical 9:16 composition, ancient Chinese Shang dynasty mythic era, realistic painterly detail, dramatic film lighting, deep indigo and violet tones with warm gold firelight, keep the lower third calm and darker for subtitles. No text, no letters, no captions, no watermark, no blood, no gore.",
+ "scenes": [
+  {
+   "id": "01-hook",
+   "prompt": "A young Taoist warrior in dark lamellar armor holding a long three-pointed spear, seen from behind, facing an enormous shadowy beast with glowing eyes looming out of mist above him."
+  },
+  {
+   "id": "02-siege",
+   "prompt": "A besieged walled fortress city at dusk seen from a hill, four army camps with banners surrounding it, torches and smoke, storm clouds."
+  },
+  {
+   "id": "03-beast",
+   "prompt": "A giant white spotted winged beast with a wide open mouth leaping down from the night sky toward a lone warrior standing on a battlefield, the warrior small against the beast, torches and banners, dust and motion."
+  },
+  {
+   "id": "04-mourning",
+   "prompt": "On top of a fortress wall at night, an old white-bearded strategist in robes and several armored soldiers stand in silence with bowed heads, looking down at an empty dark battlefield, a single spear left on the ground far below, cold moonlight, mist."
+  },
+  {
+   "id": "05-return",
+   "prompt": "A young Taoist warrior in dark armor walking calmly out of an enemy camp at night toward the viewer, carrying glowing magical treasures - a radiant jeweled umbrella and a shining lute - golden light spilling from them, tents and sleeping guards behind him, a faint ghostly outline of a beast dissolving into mist."
+  },
+  {
+   "id": "06-star",
+   "prompt": "A single ancient bronze sword raised upright toward the night sky by an armored hand at the bottom of the frame, one bright star shining directly above the blade tip, light running down the blade, mountains in silhouette."
+  },
+  {
+   "id": "07-chart",
+   "prompt": "A vast starry night sky above a quiet palace roof silhouette, twelve softly glowing golden lights arranged in a large square ring in the sky like an ancient star chart, one light brighter than the others, drifting mist, calm and mysterious."
+  }
+ ]
+}
