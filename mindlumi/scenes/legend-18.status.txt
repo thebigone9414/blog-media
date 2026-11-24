@@ -1,4 +1,4 @@
-2026-11-24 22:46 UTC
+2026-11-24 23:03 UTC
 model=gemini-3.1-flash-image
 failure 01-hook no_key - 저장소 비밀값 GEMINI_API_KEY 가 없다
 failure 02-siege no_key - 저장소 비밀값 GEMINI_API_KEY 가 없다
