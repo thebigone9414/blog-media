@@ -614,6 +614,12 @@ const CineView: React.FC<{ card: Card; data: Data; total: number }> = ({ card, d
     if (/[.?!]$/.test(w.w)) { groups.push(cur); cur = []; n = 0; }  // 문장이 끝나면 묶음도 끊는다
   }
   if (cur.length) groups.push(cur);
+  // 한 낱말만 남은 묶음은 앞 묶음에 붙인다(같은 문장이고 합쳐서 22자 이하일 때). 「나왔죠.」 혼자 뜨는 것을 막는다.
+  for (let i = groups.length - 1; i > 0; i--) {
+    const prev = groups[i - 1]; const one = groups[i];
+    const len = (ws: Word[]) => ws.reduce((a, w) => a + w.w.length + 1, 0);
+    if (one.length === 1 && !/[.?!]$/.test(prev[prev.length - 1].w) && len(prev) + len(one) <= 22) { groups[i - 1] = prev.concat(one); groups.splice(i, 1); }
+  }
   let gi = -1;
   for (let i = 0; i < groups.length; i++) if (t >= groups[i][0].s - 0.05) gi = i;
   const g = gi >= 0 ? groups[gi] : null;

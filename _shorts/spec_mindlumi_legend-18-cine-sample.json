@@ -1,0 +1,74 @@
+{
+ "series": "MindLumi",
+ "layout": "cine",
+ "accent": "#a855f7",
+ "accent2": "#f5c542",
+ "footer_brand": "MindLumi",
+ "cta": {
+  "naver": "blog.naver.com/sweetspring978",
+  "tistory": "mindlumi.ai",
+  "site": "mindlumi.ai",
+  "siteLabel": "내 원반과 제2명반 보기"
+ },
+ "voice_sid": 8,
+ "voice_speed": 1.1,
+ "cards": [
+  {
+   "title": "괴물에게 삼켜진 도사가<br><b>칼의 별</b>이 됐다",
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/scene/legend-18/01-hook.jpg",
+   "narration": "괴물에게 삼켜진 도사가 칼의 별이 됐습니다. 봉신연의의 양전입니다.",
+   "dur": 5,
+   "ep": "18화 경양",
+   "tag": "자미두수 전설"
+  },
+  {
+   "title": "",
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/scene/legend-18/02-siege.jpg",
+   "narration": "네 장수가 성을 에워쌌습니다. 성은 버티기만 할 뿐이었죠.",
+   "dur": 4,
+   "ep": "18화 경양",
+   "tag": "자미두수 전설"
+  },
+  {
+   "title": "",
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/scene/legend-18/03-beast.jpg",
+   "narration": "그때 사람을 삼키는 짐승이 풀려났고, 양전이 그대로 삼켜졌습니다.",
+   "dur": 5,
+   "ep": "18화 경양",
+   "tag": "자미두수 전설"
+  },
+  {
+   "title": "",
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/scene/legend-18/04-mourning.jpg",
+   "narration": "모두 그가 죽었다고 여겼습니다.",
+   "dur": 3.5,
+   "ep": "18화 경양",
+   "tag": "자미두수 전설"
+  },
+  {
+   "title": "",
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/scene/legend-18/05-return.jpg",
+   "narration": "하지만 그는 안에서 일을 끝냈습니다. 그 짐승의 모습으로 적진에 들어가 보물까지 들고 나왔죠.",
+   "dur": 6,
+   "ep": "18화 경양",
+   "tag": "자미두수 전설"
+  },
+  {
+   "title": "",
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/scene/legend-18/06-star.jpg",
+   "narration": "그래서 경양은 결단의 별입니다. 미루지 않고 매듭짓는 힘이죠.",
+   "dur": 5,
+   "ep": "18화 경양",
+   "tag": "자미두수 전설"
+  },
+  {
+   "title": "내 <b>경양</b>은<br>어느 궁에?",
+   "image": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/scene/legend-18/07-chart.jpg",
+   "cta": true,
+   "narration": "이 칼이 일에 있는지 돈에 있는지는 내 명반의 궁이 정합니다.",
+   "dur": 5,
+   "ep": "18화 경양",
+   "tag": "자미두수 전설"
+  }
+ ]
+}
