@@ -1,9 +1,10 @@
-2026-11-25 00:39 UTC
+2026-11-25 00:41 UTC
 model=gemini-3.1-flash-image
-failure 01-hook HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
-failure 02-siege HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
-failure 03-beast HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
-failure 04-mourning HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
-failure 05-return HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
-failure 06-star HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
-failure 07-chart HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
+variant=v1beta-imageConfig
+success 01-hook 1024x1024
+success 02-siege 1024x1024
+success 03-beast 1024x1024
+success 04-mourning 1024x1024
+success 05-return 1024x1024
+success 06-star 1024x1024
+success 07-chart 1024x1024
