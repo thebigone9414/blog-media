@@ -1,9 +1,9 @@
-2026-11-24 23:03 UTC
+2026-11-25 00:39 UTC
 model=gemini-3.1-flash-image
-failure 01-hook no_key - 저장소 비밀값 GEMINI_API_KEY 가 없다
-failure 02-siege no_key - 저장소 비밀값 GEMINI_API_KEY 가 없다
-failure 03-beast no_key - 저장소 비밀값 GEMINI_API_KEY 가 없다
-failure 04-mourning no_key - 저장소 비밀값 GEMINI_API_KEY 가 없다
-failure 05-return no_key - 저장소 비밀값 GEMINI_API_KEY 가 없다
-failure 06-star no_key - 저장소 비밀값 GEMINI_API_KEY 가 없다
-failure 07-chart no_key - 저장소 비밀값 GEMINI_API_KEY 가 없다
+failure 01-hook HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
+failure 02-siege HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
+failure 03-beast HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
+failure 04-mourning HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
+failure 05-return HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
+failure 06-star HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
+failure 07-chart HTTP 400 {   "error": {     "code": 400,     "message": "Invalid value at 'generation_config.response_format.image.aspect_ratio' (type.googleapis.com/google.ai.generativelanguage.v1.ImageResponseFormat.AspectRatio), \"1:1\"\nInvalid value at 'genera
