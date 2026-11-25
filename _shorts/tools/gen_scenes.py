@@ -7,15 +7,24 @@
 import base64, io, json, os, sys, time, urllib.request, urllib.error
 
 MODEL = os.environ.get("SCENE_MODEL", "gemini-3.1-flash-image")
-URL = f"https://generativelanguage.googleapis.com/v1/models/{MODEL}:generateContent"
 KEY = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or ""
 MAX_SCENES = 12  # 한 파일에 12장까지. 비용 상한(1K 한 장 약 0.067달러).
 
-def gen(prompt):
-    body = {"contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"responseModalities": ["TEXT", "IMAGE"],
-                                 "responseFormat": {"image": {"aspectRatio": "1:1", "imageSize": "1K"}}}}
-    req = urllib.request.Request(URL, data=json.dumps(body).encode(), method="POST",
+BASE = "https://generativelanguage.googleapis.com"
+# 요청 모양이 문서와 실제가 달라(2026-11-25: v1 의 responseFormat.image 가 "1:1" 을 거절) 되는 모양을 차례로 시도하고, 된 것을 기억한다.
+VARIANTS = [
+    ("v1beta-imageConfig", "v1beta", {"responseModalities": ["TEXT", "IMAGE"], "imageConfig": {"aspectRatio": "1:1", "imageSize": "1K"}}),
+    ("v1beta-imageConfig-ratio", "v1beta", {"responseModalities": ["TEXT", "IMAGE"], "imageConfig": {"aspectRatio": "1:1"}}),
+    ("v1-responseFormat-size", "v1", {"responseModalities": ["TEXT", "IMAGE"], "responseFormat": {"image": {"imageSize": "1K"}}}),
+    ("v1beta-plain", "v1beta", {"responseModalities": ["TEXT", "IMAGE"]}),
+    ("v1-plain", "v1", {}),
+]
+GOOD = []
+
+def call(ver, cfg, prompt):
+    body = {"contents": [{"parts": [{"text": prompt}]}]}
+    if cfg: body["generationConfig"] = cfg
+    req = urllib.request.Request(f"{BASE}/{ver}/models/{MODEL}:generateContent", data=json.dumps(body).encode(), method="POST",
                                  headers={"x-goog-api-key": KEY, "Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=180) as r:
         d = json.load(r)
@@ -27,6 +36,21 @@ def gen(prompt):
             if data: img = data
     if not img: raise RuntimeError("no image in response: " + json.dumps(d)[:300])
     return base64.b64decode(img)
+
+def gen(prompt, notes):
+    order = GOOD + [v for v in VARIANTS if v not in GOOD]
+    last = None
+    for v in order:
+        try:
+            raw = call(v[1], v[2], prompt)
+            if v not in GOOD: GOOD.insert(0, v); notes.append(f"variant={v[0]}")
+            return raw
+        except urllib.error.HTTPError as e:
+            msg = e.read().decode("utf-8", "replace")[:500].replace("\n", " ")
+            last = urllib.error.HTTPError(e.url, e.code, msg, e.headers, None); last.short = f"HTTP {e.code} [{v[0]}] {msg}"
+            if e.code == 400 and not GOOD: notes.append(f"400 [{v[0]}] {msg[:300]}"); continue
+            raise last
+    raise last
 
 def main():
     from PIL import Image
@@ -43,14 +67,14 @@ def main():
             err = ""
             for attempt in range(3):
                 try:
-                    raw = gen((style + " " + sc["prompt"]).strip())
+                    raw = gen((style + " " + sc["prompt"]).strip(), lines)
                     im = Image.open(io.BytesIO(raw)).convert("RGB"); w, h = im.size
                     # 화면 위쪽 절반(1080x960)에 들어간다. 정사각으로 받아 1080x1080 으로 두고, 영상에서 위아래를 조금 잘라 쓴다.
                     m = min(w, h); im = im.crop(((w - m) // 2, (h - m) // 2, (w - m) // 2 + m, (h - m) // 2 + m))
                     im.resize((1080, 1080), Image.LANCZOS).save(dst, quality=90)
                     lines.append(f"success {sc['id']} {w}x{h}"); err = ""; break
                 except urllib.error.HTTPError as e:
-                    err = f"HTTP {e.code} " + e.read().decode("utf-8", "replace")[:240].replace("\n", " ")
+                    err = getattr(e, "short", f"HTTP {e.code}")
                     if e.code in (400, 401, 403, 404): break
                 except Exception as e:
                     err = type(e).__name__ + " " + str(e)[:240]
