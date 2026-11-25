@@ -1,6 +1,6 @@
 {
  "episode": "18화 경양 - 양전 (시안)",
- "style": "Cinematic dark fantasy digital painting, square 1:1 composition with the main subject centered, ancient Chinese Shang dynasty mythic era, realistic painterly detail, dramatic film lighting, deep indigo and violet tones with warm gold firelight. No text, no letters, no captions, no watermark, no blood, no gore.",
+ "style": "Cinematic dark fantasy digital painting, square 1:1 composition with the main subject centered, ancient Chinese Shang dynasty mythic era, realistic painterly detail, dramatic film lighting, deep indigo and violet tones with warm gold firelight. Full-bleed image that fills the whole canvas, no border, no frame, no vignette edge. No text, no letters, no captions, no watermark, no blood, no gore.",
  "scenes": [
   {
    "id": "01-hook",
@@ -20,7 +20,7 @@
   },
   {
    "id": "05-return",
-   "prompt": "A young Taoist warrior in dark armor walking calmly out of an enemy camp at night toward the viewer, carrying glowing magical treasures - a radiant jeweled umbrella and a shining lute - golden light spilling from them, tents and sleeping guards behind him, a faint ghostly outline of a beast dissolving into mist."
+   "prompt": "A young Taoist warrior in dark armor walking calmly out of an enemy camp at night toward the viewer, holding one glowing magical treasure - a radiant jeweled umbrella - golden light spilling from it, tents and sleeping guards behind him, a faint ghostly outline of a beast dissolving into mist beside him. He carries nothing else."
   },
   {
    "id": "06-star",
@@ -31,5 +31,5 @@
    "prompt": "A vast starry night sky above a quiet palace roof silhouette, twelve softly glowing golden lights arranged in a large square ring in the sky like an ancient star chart, one light brighter than the others, drifting mist, calm and mysterious."
   }
  ],
- "requested": "2026-11-25 09:50 KST"
+ "requested": "2026-11-25 09:58 KST 05 06 다시"
 }
