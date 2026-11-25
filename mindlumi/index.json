@@ -193,6 +193,11 @@
     "youtube": 11,
     "measuredAt": "2026-11-25T06:28+09:00",
     "note": "발행 25시간 뒤"
+   },
+   "viewsAt20261126": {
+    "youtube": 13,
+    "measuredAt": "2026-11-26T06:20+09:00",
+    "note": "발행 49시간 뒤"
    }
   },
   {
@@ -243,7 +248,12 @@
    "tiktokUrl": "https://www.tiktok.com/@mindlumi_ai/video/7711840615314541876",
    "clipUrl": "https://clip.naver.com/contents?serviceType=CLIP&seedMediaId=EE5CE3E8F3BDB7214836C740AE4AA75FBBA3",
    "playlist": "",
-   "playlistTodo": "출생연도 · 띠로 찾는 내 별"
+   "playlistTodo": "출생연도 · 띠로 찾는 내 별",
+   "views24h": {
+    "youtube": 392,
+    "measuredAt": "2026-11-26T06:20+09:00",
+    "note": "발행 24시간 40분 뒤. 05:40 발행분"
+   }
   },
   {
    "date": "2026-11-26",
@@ -255,7 +265,7 @@
    "snsPostId": "post_5bf0c5b40c4aa9c6",
    "clipPostId": "post_e7560a27364a902a",
    "youtubeTitle": "아직도 띠로만 사주 보시나요? 🕰️ 내가 태어난 시(時) 찾기 #자미두수 #사주",
-   "status": "scheduled",
+   "status": "published",
    "scheduledAt": "2026-11-26T05:40+09:00",
    "hookType": "찾아보기형 pop · 시(時) 표 · 문제 훅",
    "shortsKind": "태어난 시",
@@ -276,7 +286,15 @@
    "spec": "_shorts/spec_mindlumi_20261126-lookup-sijin-m.json",
    "mp4": "mindlumi/shorts/20261126-lookup-sijin-m.mp4",
    "youtubeAt": "2026-11-26T07:30+09:00",
-   "youtubeAtNote": "11-25 메인: 유튜브만 07:30 으로(장부 6번 판정). 글 · 인스타 · 틱톡 · 클립은 05:40 그대로"
+   "youtubeAtNote": "11-25 메인: 유튜브만 07:30 으로(장부 6번 판정). 글 · 인스타 · 틱톡 · 클립은 05:40 그대로",
+   "publishedAt": "2026-11-26T05:41+09:00",
+   "url": "https://blog.naver.com/sweetspring978/224492439138",
+   "instagramUrl": "https://www.instagram.com/reel/DgLaPoutqqt/",
+   "tiktokUrl": "https://www.tiktok.com/@mindlumi_ai/video/7712211704121167125",
+   "clipUrl": "https://clip.naver.com/contents?serviceType=CLIP&seedMediaId=F25190B37097E313D2247EC1E8097FD61426",
+   "youtubeStatus": "scheduled 07:30 (11-26 06:20 확인). 발행 · 첫 댓글은 11-27 06:15 회차에",
+   "playlist": "",
+   "playlistTodo": "자미두수 처음이라면"
   },
   {
    "date": "2026-11-27",
