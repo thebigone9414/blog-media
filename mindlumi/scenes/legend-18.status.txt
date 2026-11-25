@@ -1,10 +1,10 @@
-2026-11-25 00:41 UTC
+2026-11-25 00:43 UTC
 model=gemini-3.1-flash-image
+skip 01-hook (있음)
+skip 02-siege (있음)
+skip 03-beast (있음)
+skip 04-mourning (있음)
 variant=v1beta-imageConfig
-success 01-hook 1024x1024
-success 02-siege 1024x1024
-success 03-beast 1024x1024
-success 04-mourning 1024x1024
 success 05-return 1024x1024
 success 06-star 1024x1024
-success 07-chart 1024x1024
+skip 07-chart (있음)
