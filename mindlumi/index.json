@@ -292,9 +292,16 @@
    "instagramUrl": "https://www.instagram.com/reel/DgLaPoutqqt/",
    "tiktokUrl": "https://www.tiktok.com/@mindlumi_ai/video/7712211704121167125",
    "clipUrl": "https://clip.naver.com/contents?serviceType=CLIP&seedMediaId=F25190B37097E313D2247EC1E8097FD61426",
-   "youtubeStatus": "scheduled 07:30 (11-26 06:20 확인). 발행 · 첫 댓글은 11-27 06:15 회차에",
+   "youtubeStatus": "published 07:30 (11-27 06:20 확인). 첫 댓글 1",
    "playlist": "",
-   "playlistTodo": "자미두수 처음이라면"
+   "playlistTodo": "자미두수 처음이라면",
+   "youtubeUrl": "https://www.youtube.com/watch?v=gPZNSLHowSg",
+   "youtubePublishedAt": "2026-11-26T07:30+09:00",
+   "views24h": {
+    "youtube": 22,
+    "measuredAt": "2026-11-27T06:26+09:00",
+    "note": "발행 23시간 뒤. 07:30 발행분(장부 6번 시험)"
+   }
   },
   {
    "date": "2026-11-27",
@@ -304,7 +311,7 @@
    "snsPostId": "post_5a18c5d6b2c00f75",
    "clipPostId": "post_434b2465e4845492",
    "youtubeTitle": "쏟은 물은 다시 못 담는다, 이 말의 주인공이 별이 됐다 | 자미두수 거문 #Shorts",
-   "status": "scheduled",
+   "status": "published",
    "scheduledAt": "2026-11-27T05:40+09:00",
    "hookType": "이야기형(설명형 카드 6장 38초)",
    "shortsKind": "이야기",
@@ -312,7 +319,15 @@
    "angle": "G",
    "spec": "_shorts/spec_mindlumi_20261127-story-geomun-water.json",
    "mp4": "mindlumi/shorts/20261127-story-geomun-water.mp4",
-   "sources": "야객총서 출전 · 강태공과 마씨: knnews.co.kr 636119, 5000yan. 99회 소추성 마씨 epochtimes n1713743"
+   "sources": "야객총서 출전 · 강태공과 마씨: knnews.co.kr 636119, 5000yan. 99회 소추성 마씨 epochtimes n1713743",
+   "publishedAt": "2026-11-27T05:40+09:00",
+   "youtubeUrl": "https://www.youtube.com/watch?v=CZP6OnLtOvM",
+   "instagramUrl": "https://www.instagram.com/reel/DgN_BrhRITB/",
+   "tiktokUrl": "https://www.tiktok.com/@mindlumi_ai/video/7712581791940447494",
+   "clipUrl": "https://clip.naver.com/contents?serviceType=CLIP&seedMediaId=8B5C25C2F2BD94CFB00DA588870BD4E7473A",
+   "playlist": "",
+   "playlistTodo": "자미두수 전설",
+   "viewsNote": "11-27 06:26 유튜브 0(발행 46분 뒤). 24시간 값은 11-28 15:25 에(장부 12번)"
   },
   {
    "date": "2026-11-28",
