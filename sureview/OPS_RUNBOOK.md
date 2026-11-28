@@ -24,7 +24,6 @@
 | 숏츠 3편 x 4채널 | 토·일 10:12, 15:12 | `shorts/index.json` 에 그 주 글 3편의 항목 + 유튜브·릴스·클립 주소. 틱톡은 주소 또는 예약 postId → get_post 로 상태. `sureview/shorts-run-log.md` 최근 회차 |
 | 댓글·교류 | 매일 12:40, 21:40 | `sureview/engage-log.md` 에 오늘 회차 |
 | 전략 점검 | 수 04:50 | `_shorts/strategy.md` 맨 위 날짜가 이번 주 |
-| 트렌드코어 | 토 08:47 | `_shorts/trendcore_notes.md` 갱신일 |
 | 재생목록 | 토 11:10 | 못 읽으면 건너뛴다(운영자 PC 브라우저가 필요한 작업) |
 - list_accounts 로 5개 계정이 active·health ok 인지, bridge_status 로 네이버 확장이 online 인지도 본다.
 
@@ -40,10 +39,6 @@
   - 인스타·유튜브 실패: 오류 코드를 get_help 로 확인하고 한 번 다시 보낸다. reconsent_required·account_expired 면 운영자 할 일(https://uplika.com/dashboard/connections 에서 그 계정 다시 연결).
 - **댓글 회차가 없음**: `sureview/ENGAGE_RUNBOOK.md` 를 읽고 관제가 직접 수행한다.
 - **`sureview/shorts-run-log.md`·`engage-log.md` 에 실패·못 읽음 기록**: 원인을 읽고 고칠 수 있으면 고친다(spec·절차서·playbook 수정). 같은 실패가 두 회차 이어지면 playbook 「주의」에 한 줄로 올린다.
-- **`_shorts/trendcore_notes.md` 의 「제안」「따로 해야 함」 항목 가운데 닫히지 않은 것**: 하나씩 판정해 닫는다.
-  - 문서·규칙·spec·지시 절차로 반영할 수 있는 것 → 관제가 반영하고 「반영 <날짜>」로 닫는다. 엔진 코드를 고칠 때는 템플릿을 실제로 렌더해 프레임을 보고 깨짐이 없을 때만 커밋한다.
-  - 외부 프로그램 설치·유료 가입·계정 설정이 필요한 것 → 「보류 - <사유>」로 닫고, 정말 값어치가 있는 것만 운영자 제안으로 1건 올린다.
-  - 「잘 안 되었다」로만 끝난 항목을 그대로 두지 않는다. 고치든지, 안 하기로 하든지 둘 중 하나로 닫는다.
 - 같은 문제를 한 회차에 두 번 넘게 다시 시도하지 않는다. 안 되면 열린 일로 남기고 다음 회차가 이어받는다.
 
 ## [2-1] 블로그 글 품질 확인 (운영자 지정 2026-11-28, 12-05 글부터)
