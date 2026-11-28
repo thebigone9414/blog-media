@@ -339,7 +339,7 @@
    "snsPostId": "post_8694c8fc70f70cab",
    "clipPostId": "post_e3a97247c2439333",
    "youtubeTitle": "3년 삼재, 2027년에 끝나는 띠는? 🔓 내 띠 찾기 #삼재 #자미두수",
-   "status": "scheduled",
+   "status": "published",
    "scheduledAt": "2026-11-28T21:00+09:00",
    "shortsAt": "2026-11-28T21:30+09:00",
    "hookType": "찾아보기형 pop · 띠 · 문제 훅(제목은 「끝나는 띠」)",
@@ -362,7 +362,16 @@
    "draft": "mindlumi/w48/a3.md",
    "spec": "_shorts/spec_mindlumi_20261128-lookup-samjae-m.json",
    "mp4": "mindlumi/shorts/20261128-lookup-samjae-m.mp4",
-   "sources": "설 2027-02-07 · 입춘 02-04: KASI 2027 달력자료, 세계일보 20260629506183. 삼재: 한국민족문화대백과 E0026787"
+   "sources": "설 2027-02-07 · 입춘 02-04: KASI 2027 달력자료, 세계일보 20260629506183. 삼재: 한국민족문화대백과 E0026787",
+   "publishedAt": "2026-11-28T21:01+09:00",
+   "shortsPublishedAt": "2026-11-28T21:30+09:00",
+   "url": "https://blog.naver.com/sweetspring978/224496219112",
+   "youtubeUrl": "https://www.youtube.com/watch?v=lbIU1gLGp4U",
+   "instagramUrl": "https://www.instagram.com/reel/DgSQk4YBx8d/",
+   "tiktokUrl": "https://www.tiktok.com/@mindlumi_ai/video/7713198280850541831",
+   "clipUrl": "https://clip.naver.com/contents?serviceType=CLIP&seedMediaId=419E04D3DE892C44140208D942789F29120B",
+   "playlist": "",
+   "playlistTodo": "2027 신년운세 - 자미두수로 보는 정미년"
   },
   {
    "date": "2026-11-29",
@@ -380,7 +389,8 @@
    "angle": "C",
    "example": "iljik 06a",
    "spec": "_shorts/spec_mindlumi_20261129-lookup-cheonma-m.json",
-   "mp4": "mindlumi/shorts/20261129-lookup-cheonma-m.mp4"
+   "mp4": "mindlumi/shorts/20261129-lookup-cheonma-m.mp4",
+   "mediaNote": "11-28 22:27 영상 다시 올림(3건 교체), 만료 11-30 22:27"
   },
   {
    "date": "2026-11-30",
@@ -400,7 +410,8 @@
    "spec": "_shorts/spec_mindlumi_20261130-palace-cheondong-hwagwon-m.json",
    "mp4": "mindlumi/shorts/20261130-palace-cheondong-hwagwon-m.mp4",
    "youtubeAt": "2026-11-30T07:30+09:00",
-   "youtubeAtNote": "11-25 메인: 유튜브만 07:30 으로(장부 6번 판정). 인스타 · 틱톡 · 클립은 05:40 그대로"
+   "youtubeAtNote": "11-25 메인: 유튜브만 07:30 으로(장부 6번 판정). 인스타 · 틱톡 · 클립은 05:40 그대로",
+   "mediaNote": "11-28 22:27 영상 다시 올림(3건 교체), 만료 11-30 22:27"
   },
   {
    "logNo": "224477055499",
