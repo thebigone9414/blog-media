@@ -548,7 +548,7 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
         <AbsoluteFill style={{ opacity: exA, background: T.out, alignItems: "center" }}>
           <div style={{ marginTop: 150, fontSize: 58, lineHeight: 1.2, fontWeight: 900, color: T.text, textAlign: "center", textShadow: `0 5px 0 rgba(${T.sh},0.55)` }}>
             {/* 기본은 사이트 보고서 화면. example.heading 을 주면 그 문구로 바꾼다(책 속 장면 등 보고서가 아닌 그림일 때 꼭 준다). */}
-            <span style={{ color: T.hl }}>{EX.headingHl ?? "mindlumi.ai"}</span>{EX.heading ? <> {EX.heading}</> : <> 에서는<br />이렇게 나옵니다</>}
+            <span style={{ color: T.hl }}>{EX.headingHl ?? "mindlumi.ai"}</span>{EX.heading ? <>{EX.heading}</> : <> 에서는<br />이렇게 나옵니다</>}
           </div>
           <div style={{ marginTop: 22, fontSize: 34, fontWeight: 900, color: INK, background: GOLD, borderRadius: 99, padding: "8px 30px" }}>{EX.pill ?? `📄 실제 감명 보고서 화면${EX.label ? ` · ${EX.label}` : ""}`}</div>
           <div style={{ marginTop: 30, width: EXW, height: Math.min(EXVH, exH), overflow: "hidden", borderRadius: 30, background: "#ffffff", border: `6px solid ${GOLD}`, boxShadow: `0 16px 40px rgba(${T.sh},0.6)`, transform: `translateY(${(1 - exUp) * 260}px)` }}>
