@@ -1,0 +1,120 @@
+{
+ "series": "MindLumi",
+ "accent": "#a855f7",
+ "accent2": "#f5c542",
+ "footer_brand": "MindLumi",
+ "cta": {
+  "naver": "blog.naver.com/sweetspring978",
+  "tistory": "mindlumi.ai",
+  "site": "mindlumi.ai",
+  "siteLabel": "내 원반과 제2명반 보기"
+ },
+ "voice_sid": 8,
+ "voice_speed": 1.1,
+ "cards": [
+  {
+   "dur": 22,
+   "pop": true,
+   "motion": true,
+   "theme": "violet",
+   "tag": "열두 궁 책",
+   "kicker": "자미두수로 보는 내 사주",
+   "title": "내 <b>재백궁</b> 별은<br>어떤 돈?",
+   "pill": "💰 돈이 들어오는 길은 별마다 다르다",
+   "rows": [
+    [
+     "자미",
+     "자미",
+     "창고가 가득 차는 재물"
+    ],
+    [
+     "천기",
+     "천기",
+     "머리와 노력으로 버는 돈"
+    ],
+    [
+     "태양",
+     "태양",
+     "밝은 자리에서는 풍족",
+     "어두운 자리에서는 수고"
+    ],
+    [
+     "무곡",
+     "무곡",
+     "타고난 재물의 별"
+    ],
+    [
+     "천동",
+     "천동",
+     "맨손으로 일구는 늦복"
+    ],
+    [
+     "염정",
+     "염정",
+     "크게 벌고 크게 잃는 기질"
+    ],
+    [
+     "천부",
+     "천부",
+     "든든한 재물 창고"
+    ],
+    [
+     "태음",
+     "태음",
+     "밝으면 창고 가득",
+     "어두우면 흩어진다"
+    ],
+    [
+     "탐랑",
+     "탐랑",
+     "한꺼번에 큰돈을 만지는 기운"
+    ],
+    [
+     "거문",
+     "거문",
+     "경쟁 속에서 버는 돈",
+     "무너질 위험도 함께"
+    ],
+    [
+     "천상",
+     "천상",
+     "모자람 없이 풍족한 재물"
+    ],
+    [
+     "천량",
+     "천량",
+     "밝으면 상등의 부",
+     "어두우면 하루살이"
+    ],
+    [
+     "칠살",
+     "칠살",
+     "움직이며 버는 돈"
+    ],
+    [
+     "파군",
+     "파군",
+     "자리에 따라 금은보화",
+     "혹은 흩어짐"
+    ]
+   ],
+   "col2W": 150,
+   "faceBase": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/face/",
+   "note": "공궁이면 제2명반에서 들어오는 주성으로 읽는다",
+   "narration": "내 재백궁에는 어떤 별이 있나요? 돈이 들어오고 머무는 방식이 별마다 다릅니다.",
+   "narration2": "내 명반은 마인드루미에서 확인하세요. 별마다 한 장씩 풀이한 책은 탈잉에 있습니다.",
+   "narration2_at": 13.5,
+   "ask": "👉 내 명반 확인 · mindlumi.ai",
+   "ask2": "💬 내 재백궁 별은? 댓글로",
+   "hero": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/book/cover-square.jpg",
+   "example": {
+    "src": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/book/card-sample.jpg",
+    "h": 1331,
+    "heading": "에는 별마다 한 장씩",
+    "headingHl": "책",
+    "pill": "📖 열두 궁으로 읽는 나의 삶",
+    "foot": "👉 명반은 mindlumi.ai · 풀이는 책에"
+   }
+  }
+ ]
+}

@@ -1,0 +1,118 @@
+{
+ "series": "MindLumi",
+ "accent": "#a855f7",
+ "accent2": "#f5c542",
+ "footer_brand": "MindLumi",
+ "cta": {
+  "naver": "blog.naver.com/sweetspring978",
+  "tistory": "mindlumi.ai",
+  "site": "mindlumi.ai",
+  "siteLabel": "내 원반과 제2명반 보기"
+ },
+ "voice_sid": 8,
+ "voice_speed": 1.1,
+ "cards": [
+  {
+   "dur": 22,
+   "pop": true,
+   "motion": true,
+   "theme": "violet",
+   "tag": "열두 궁 책",
+   "kicker": "자미두수로 보는 내 사주",
+   "title": "내 <b>부처궁</b> 별은<br>어떤 배우자?",
+   "pill": "💑 열네 별, 열네 가지 인연",
+   "rows": [
+    [
+     "자미",
+     "자미",
+     "품격 있고 리더십 있는 배우자"
+    ],
+    [
+     "천기",
+     "천기",
+     "똑똑하지만 마음이 잘 움직이는 배우자"
+    ],
+    [
+     "태양",
+     "태양",
+     "밖에서 빛나는 헌신적인 배우자"
+    ],
+    [
+     "무곡",
+     "무곡",
+     "돈 관리에 강한 현실파 배우자",
+     "늦을수록 좋다"
+    ],
+    [
+     "천동",
+     "천동",
+     "정이 두터운 다정한 배우자"
+    ],
+    [
+     "염정",
+     "염정",
+     "뜨겁지만 기복이 큰 관계"
+    ],
+    [
+     "천부",
+     "천부",
+     "든든한 곳간 같은 배우자"
+    ],
+    [
+     "태음",
+     "태음",
+     "든든하게 뒷받침해 주는 다정한 배우자"
+    ],
+    [
+     "탐랑",
+     "탐랑",
+     "매력 넘치는 배우자",
+     "자리에 따라 복도 되고 화도 된다"
+    ],
+    [
+     "거문",
+     "거문",
+     "말이 상처가 되기 쉬운 관계"
+    ],
+    [
+     "천상",
+     "천상",
+     "소개로 만나 오래 가는 안정적인 관계"
+    ],
+    [
+     "천량",
+     "천량",
+     "나를 부모처럼 챙겨 주는 배우자"
+    ],
+    [
+     "칠살",
+     "칠살",
+     "폭풍처럼 시작되는 강렬한 관계"
+    ],
+    [
+     "파군",
+     "파군",
+     "평범하지 않은 인연",
+     "변화가 많은 결혼 생활"
+    ]
+   ],
+   "col2W": 150,
+   "faceBase": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/face/",
+   "note": "공궁이면 제2명반에서 들어오는 주성으로 읽는다",
+   "narration": "내 부처궁에는 어떤 별이 있나요? 그 별 하나가 내가 만날 사람을 말해 줍니다.",
+   "narration2": "내 명반은 마인드루미에서 확인하세요. 별마다 한 장씩 풀이한 책은 탈잉에 있습니다.",
+   "narration2_at": 13.5,
+   "ask": "👉 내 명반 확인 · mindlumi.ai",
+   "ask2": "💬 내 부처궁 별은? 댓글로",
+   "hero": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/book/cover-square.jpg",
+   "example": {
+    "src": "https://raw.githubusercontent.com/thebigone9414/blog-media/main/_shorts/assets/mindlumi/book/card-sample.jpg",
+    "h": 1331,
+    "heading": "에는 별마다 한 장씩",
+    "headingHl": "책",
+    "pill": "📖 열두 궁으로 읽는 나의 삶",
+    "foot": "👉 명반은 mindlumi.ai · 풀이는 책에"
+   }
+  }
+ ]
+}

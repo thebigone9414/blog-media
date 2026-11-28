@@ -16,7 +16,7 @@ type Card = {
   // 찾아보기형(lookup). rows 가 있으면 카드 전체가 표 한 장이 된다 - 시청자가 자기 줄을 찾느라 멈추고 다시 본다.
   // 잘 되는 사주 숏츠(구독 수백 명 채널의 10만~30만 회)가 거의 이 형태였다(2026-11-16 벤치마크).
   // rows: [키, 값, 한마디]. note 는 표 아래 작은 주석, 자막은 띄우지 않는다(표를 가린다).
-  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; motion?: boolean; theme?: string; example?: { src: string; label?: string; h?: number }; hero?: string; roomy?: boolean; cine?: boolean; ep?: string; bright?: boolean; hl?: string; faceBase?: string; ask2?: string; kicker?: string; blog?: { title?: string; sub?: string; name?: string; url?: string; frames?: number };
+  rows?: string[][]; rowsHead?: string[]; note?: string; keyW?: number; col2W?: number; light?: boolean; pill?: string; ask?: string; pop?: boolean; motion?: boolean; theme?: string; example?: { src: string; label?: string; h?: number; heading?: string; headingHl?: string; pill?: string; foot?: string }; hero?: string; roomy?: boolean; cine?: boolean; ep?: string; bright?: boolean; hl?: string; faceBase?: string; ask2?: string; kicker?: string; blog?: { title?: string; sub?: string; name?: string; url?: string; frames?: number };
   startFrame: number; durFrames: number; words: Word[]; idx: number;
 };
 export type Data = {
@@ -547,13 +547,14 @@ const PopLookupView: React.FC<{ card: Card; data: Data }> = ({ card, data }) => 
       {EX && exA > 0 && (
         <AbsoluteFill style={{ opacity: exA, background: T.out, alignItems: "center" }}>
           <div style={{ marginTop: 150, fontSize: 58, lineHeight: 1.2, fontWeight: 900, color: T.text, textAlign: "center", textShadow: `0 5px 0 rgba(${T.sh},0.55)` }}>
-            <span style={{ color: T.hl }}>mindlumi.ai</span> 에서는<br />이렇게 나옵니다
+            {/* 기본은 사이트 보고서 화면. example.heading 을 주면 그 문구로 바꾼다(책 속 장면 등 보고서가 아닌 그림일 때 꼭 준다). */}
+            <span style={{ color: T.hl }}>{EX.headingHl ?? "mindlumi.ai"}</span>{EX.heading ? <> {EX.heading}</> : <> 에서는<br />이렇게 나옵니다</>}
           </div>
-          <div style={{ marginTop: 22, fontSize: 34, fontWeight: 900, color: INK, background: GOLD, borderRadius: 99, padding: "8px 30px" }}>📄 실제 감명 보고서 화면{EX.label ? ` · ${EX.label}` : ""}</div>
+          <div style={{ marginTop: 22, fontSize: 34, fontWeight: 900, color: INK, background: GOLD, borderRadius: 99, padding: "8px 30px" }}>{EX.pill ?? `📄 실제 감명 보고서 화면${EX.label ? ` · ${EX.label}` : ""}`}</div>
           <div style={{ marginTop: 30, width: EXW, height: Math.min(EXVH, exH), overflow: "hidden", borderRadius: 30, background: "#ffffff", border: `6px solid ${GOLD}`, boxShadow: `0 16px 40px rgba(${T.sh},0.6)`, transform: `translateY(${(1 - exUp) * 260}px)` }}>
             <Img src={EX.src} style={{ width: EXW, display: "block", transform: `translateY(${exPan}px)` }} />
           </div>
-          <div style={{ position: "absolute", bottom: 150, left: 0, right: 0, textAlign: "center", fontSize: 40, fontWeight: 900, color: T.text }}>👉 내 명반으로 받아 보기</div>
+          <div style={{ position: "absolute", bottom: 150, left: 0, right: 0, textAlign: "center", fontSize: 40, fontWeight: 900, color: T.text }}>{EX.foot ?? "👉 내 명반으로 받아 보기"}</div>
         </AbsoluteFill>
       )}
       {BL && outA > 0 && (
