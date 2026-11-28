@@ -12,6 +12,8 @@
 - S6 ai 유튜브/릴스/클립 = published·published·published (post_9d332a10cd4146d3), 틱톡 = scheduled 10:49 (post_118af81b2d76227a)
 - S6 market 유튜브/릴스/클립 = published·published·published (post_76a42a00a1d7adeb), 틱톡 = scheduled 10:54 (post_df9ee9dc51b12a46)
 - S7 index 3건 추가, playbook 관찰 1줄
+- S8 성과 읽음(11-21 3편): 유튜브 16 / 16 / 7 (합 39), 릴스 0 / 0 / 0, 틱톡 102 / 27 / 87 (합 216), 클립 3 / 3 / 0. 좋아요 0, 시청자 댓글 0. 클립 댓글 수는 못 읽음(도구가 주지 않음). history.json 에 추가
+- S9 끝 (틱톡 3편은 예약 상태로 끝남 - 다음 회차가 발행 여부 확인)
 
 ## 2026-11-22 15:13 KST 회차
 - S0 저장소 준비 성공 (작업 폴더에 clone 되어 있음, origin/main df811b1 동기화. add_repo 도구는 이 세션에 없음)

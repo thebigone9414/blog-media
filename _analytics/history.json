@@ -2,6 +2,150 @@
  "note": "매주 전략 점검이 누적한다. 최신 실행이 runs 맨 앞. 숫자는 도구가 준 값 그대로, 못 읽은 것은 unread 에 적는다.",
  "runs": [
   {
+   "checkedAt": "2026-11-28 10:33 KST",
+   "window": "11-21 발행 숏츠 3편 x 4채널",
+   "source": "uplika get_insights (누적값, 숏츠 제작 회차가 읽음)",
+   "totals": {
+    "유튜브 쇼츠": {
+     "count": 3,
+     "views": 39
+    },
+    "인스타 릴스": {
+     "count": 3,
+     "views": 0
+    },
+    "틱톡": {
+     "count": 3,
+     "views": 216
+    },
+    "네이버 클립": {
+     "count": 3,
+     "views": 6
+    }
+   },
+   "unread": [
+    "네이버 클립 댓글: 도구가 댓글 수를 주지 않음",
+    "list_replies 는 이번에 읽지 않음(유튜브·릴스 댓글 수가 운영 계정 첫 댓글 1건에서 그대로, 틱톡 0)",
+    "네이버 블로그 수치는 이번 회차에서 읽지 않음"
+   ],
+   "items": [
+    {
+     "date": "2026-11-21",
+     "series": "정보시스템감리",
+     "channel": "유튜브 쇼츠",
+     "views": 16,
+     "likes": 0,
+     "comments": 1,
+     "url": "https://www.youtube.com/watch?v=64VUavbBsKg",
+     "note": "댓글 1건은 운영 계정 첫 댓글(11-25 확인분과 같은 수)"
+    },
+    {
+     "date": "2026-11-21",
+     "series": "정보시스템감리",
+     "channel": "인스타 릴스",
+     "views": 0,
+     "likes": 0,
+     "comments": 1,
+     "url": "https://www.instagram.com/reel/Df_NKlgC_Kz/",
+     "note": "보관용(운영자 지정 11-28). 기록만"
+    },
+    {
+     "date": "2026-11-21",
+     "series": "정보시스템감리",
+     "channel": "틱톡",
+     "views": 102,
+     "likes": 0,
+     "comments": 0,
+     "url": "https://www.tiktok.com/@sureview_2026/video/7710458245864770836"
+    },
+    {
+     "date": "2026-11-21",
+     "series": "정보시스템감리",
+     "channel": "네이버 클립",
+     "views": 3,
+     "likes": 0,
+     "comments": null,
+     "note": "댓글 수는 도구가 주지 않음"
+    },
+    {
+     "date": "2026-11-21",
+     "series": "주간 AI",
+     "channel": "유튜브 쇼츠",
+     "views": 16,
+     "likes": 0,
+     "comments": 1,
+     "url": "https://www.youtube.com/watch?v=-gD2cQ5zEtk",
+     "note": "댓글 1건은 운영 계정 첫 댓글(11-25 확인분과 같은 수)"
+    },
+    {
+     "date": "2026-11-21",
+     "series": "주간 AI",
+     "channel": "인스타 릴스",
+     "views": 0,
+     "likes": 0,
+     "comments": 1,
+     "url": "https://www.instagram.com/reel/Df_NcwjBr2f/",
+     "note": "보관용(운영자 지정 11-28). 기록만"
+    },
+    {
+     "date": "2026-11-21",
+     "series": "주간 AI",
+     "channel": "틱톡",
+     "views": 27,
+     "likes": 0,
+     "comments": 0,
+     "url": "https://www.tiktok.com/@sureview_2026/video/7710463385032330517"
+    },
+    {
+     "date": "2026-11-21",
+     "series": "주간 AI",
+     "channel": "네이버 클립",
+     "views": 3,
+     "likes": 0,
+     "comments": null,
+     "note": "댓글 수는 도구가 주지 않음"
+    },
+    {
+     "date": "2026-11-21",
+     "series": "주간 시황",
+     "channel": "유튜브 쇼츠",
+     "views": 7,
+     "likes": 0,
+     "comments": 1,
+     "url": "https://www.youtube.com/watch?v=Oc1ffQPygyQ",
+     "note": "댓글 1건은 운영 계정 첫 댓글(11-25 확인분과 같은 수)"
+    },
+    {
+     "date": "2026-11-21",
+     "series": "주간 시황",
+     "channel": "인스타 릴스",
+     "views": 0,
+     "likes": 0,
+     "comments": 1,
+     "url": "https://www.instagram.com/reel/Df_NVRUTf97/",
+     "note": "보관용(운영자 지정 11-28). 기록만"
+    },
+    {
+     "date": "2026-11-21",
+     "series": "주간 시황",
+     "channel": "틱톡",
+     "views": 87,
+     "likes": 0,
+     "comments": 0,
+     "url": "https://www.tiktok.com/@sureview_2026/video/7710460814028786952"
+    },
+    {
+     "date": "2026-11-21",
+     "series": "주간 시황",
+     "channel": "네이버 클립",
+     "views": 0,
+     "likes": 0,
+     "comments": null,
+     "note": "댓글 수는 도구가 주지 않음"
+    }
+   ]
+  },
+  {
    "checkedAt": "2026-11-25 04:50 KST",
    "window": "2026-10-28 ~ 2026-11-25",
    "source": "uplika get_insights (누적값. 도구가 표시한 값의 기준일은 2026-11-24, 날짜는 한국 시간 발행일)",
