@@ -1,5 +1,12 @@
 # SureView 숏츠 실행 기록
 
+## 2026-11-28 15:12 KST 회차
+- S0 저장소 준비 성공 (작업 폴더에 clone 되어 있음, origin/main 5d4dbe0 동기화. add_repo 도구는 이 세션에 없음)
+- S1 대상 없음(이미 제작됨) - list_posts(since 11-25, 9건) 시리즈별 최신 글 3건([감리사로 가는 길] 16 post_89873856fc35f5ad, [주간 AI] post_6501f866a3f6394e, [주간 시황] post_b58bf23b7153882b) 모두 shorts/index.json 에 있음. 11-27 22:51Z 이후 새 블로그 글 없음
+- 참고: 10:12 회차 틱톡 예약 3편 모두 published 확인(gamli 10:44, ai 10:49, market 10:54 KST). index 의 tiktokUrl 과 일치. 대기·실패로 남은 채널 없음
+- S2~S8 건너뜀(대상 없음)
+- S9 끝
+
 ## 2026-11-28 10:12 KST 회차
 - S0 저장소 준비 성공 (작업 폴더에 clone 되어 있음, origin/main f42a7a1 동기화. add_repo 도구는 이 세션에 없음)
 - S1 대상 3건 - [감리사로 가는 길] 16. 감리 지적사항 사례 (post_89873856fc35f5ad) / [주간 AI] 젠슨 황 11일 만의 복귀와 AI 신용 경색 (post_6501f866a3f6394e) / [주간 시황] 코스피 +0.94% 제자리, 코스닥 +9.81% 급반등 (post_b58bf23b7153882b). 셋 다 네이버 published, index 에 없음
