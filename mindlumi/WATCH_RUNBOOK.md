@@ -42,6 +42,8 @@
             status 가 scheduled / published / failed / publishing 중 무엇인지, scheduledAt 이 맞는지
             월요일 제작 뒤: 이번 주 화·목·토 글 3 + 숏츠 7(유튜브) + 7(인스타그램·틱톡) + 7(네이버 클립) = 24건이 scheduled 인가
 인계 문서   Projects 로 JAMI 문서 목록을 보고 claude/weekly-*-handoff.md 중 「처리 완료」 표시가 없는 것이 있는가
+중복        같은 채널 · 같은 날에 제목(또는 본문 첫 줄)이 같은 예약이 2건이면 중복이다(2026-11-28 책 숏츠가 두 벌 걸려 있었다). 기록(index.json · BOOK.md · 보고함)에 id 가 없는 쪽을
+            delete_post 로 취소하고 본문 · 옵션을 ops/removed-<날짜>.md 에 남긴다. 취소가 거절되면 다시 시도하지 않고 장부 「운영자 요청 중」 에 한 줄
 연결        uplika bridge_status · list_accounts
 사이트(월 08:25)  mindlumi/site-log.md 맨 위가 어제인가 · Star-Chart Deploy 가 success 인가
 ```
@@ -64,6 +66,8 @@
       본문의 media 개수와 images + CTA 개수가 다르면 원고 파일로 되돌리지 말고, alt 글자로 짝을 맞춰 id 만 바꾼다. ⛔ 본문 글자는 건드리지 않는다
       ⚠️ options 를 같이 보낼 때는 title·categoryId·layout·openType·tags·seoKeywords 를 전부 다시 보낸다(빼면 지워진다). 본문만 바꿀 때는 options 를 보내지 않는다
     글 원고는 mindlumi/w<주차>/a1.md · a2.md · a3.md 에 있다({{IMG1}}~{{IMG4}} · {{CTA}} 자리 표시)
+영상 · 글을 다시 만들어 예약할 때 (2026-11-28)
+    → 새로 걸기 전에 옛 예약을 먼저 처리한다. update_post 로 mediaIds · 본문만 갈아 끼우는 것이 먼저고, 새 publish 를 걸었으면 옛 post id 를 그 자리에서 취소한다
 발행 실패(failed)
     → get_help 로 원인 확인 후 retry_post 1회. 또 실패하면 같은 내용을 새 publish 로 한 번. 그래도 안 되면 미해결로 적는다
 틱톡이 tiktok_creator_cap 으로 failed 이고 예약 시각에서 12시간이 지남 (자동 재시도 끝, 2026-11-22)
