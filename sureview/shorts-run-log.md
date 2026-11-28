@@ -7,6 +7,11 @@
 - S2 설치 성공 (sherpa-onnx, npm rc=0)
 - S3 gamli 렌더 성공(18.28초) / ai 렌더 성공(18.11초) / market 렌더 성공(18.05초)
 - S4 gamli 검증 통과(고친 것 없음) / ai 검증 통과 - 고친 것: -3.91% 줄을 「25일 하루 등락」으로 명확히(이틀 누적으로 읽힐 수 있어서) / market 검증 통과 - 고친 것: 📅 이모지가 「July 17」로 찍혀 🗓️ 로 교체, col2W 330, 음성 「이십구일에서 삼십일」. 세 편 모두 3장면 직접 확인 + 서브에이전트 원문 대조(확실한 불일치 0건)
+- S5 저장 성공 - 커밋 ecfa94e, shorts/{gamli,ai,market}/20261128.mp4 + _cover.jpg. media_from_url 6건 등록
+- S6 gamli 유튜브/릴스/클립 = published·published·published (post_a0a0a8c7f75affea), 틱톡 = scheduled 10:44 (post_97eaec637b3830be)
+- S6 ai 유튜브/릴스/클립 = published·published·published (post_9d332a10cd4146d3), 틱톡 = scheduled 10:49 (post_118af81b2d76227a)
+- S6 market 유튜브/릴스/클립 = published·published·published (post_76a42a00a1d7adeb), 틱톡 = scheduled 10:54 (post_df9ee9dc51b12a46)
+- S7 index 3건 추가, playbook 관찰 1줄
 
 ## 2026-11-22 15:13 KST 회차
 - S0 저장소 준비 성공 (작업 폴더에 clone 되어 있음, origin/main df811b1 동기화. add_repo 도구는 이 세션에 없음)
